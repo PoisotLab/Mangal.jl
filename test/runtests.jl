@@ -2,16 +2,13 @@ using Mangal
 using HTTP
 using JSON
 
+my_bearer_token = "614a28b6-6081-459c-b983-6020a0a30ebe"
 Mangal.login(my_bearer_token)
 
-all_datasets = datasets()
+Mangal.
 
-@info length(all_datasets)
-for ds in all_datasets
-    @info "dataset >> $(ds.name)"
-    ds_net = networks(ds)
-    @info "\t$(ds.name) => $(length(ds_net)) network(s)"
-end
+ponisio = dataset(27)
+@info ponisio
 
-@info dataset(first(all_datasets).name)
-@info dataset(first(all_datasets).id)
+@info ponisio.description
+@info networks(ponisio)
