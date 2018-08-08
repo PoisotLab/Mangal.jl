@@ -1,16 +1,4 @@
-struct Dataset
-    id::Int64
-    public::Bool
-    name::AbstractString
-    date::DateTime
-    created::DateTime
-    updated::DateTime
-    reference::Union{Int64,Void}
-    user::Int64
-    description::AbstractString
-end
-
-function format_dataset_response{T<:AbstractString}(d::Dict{T,Any})
+function format_dataset_response(d::Dict{T,Any}) where {T <: AbstractString}
     obj_id = d["id"]
     obj_public = d["public"]
     obj_name = d["name"]
@@ -21,7 +9,7 @@ function format_dataset_response{T<:AbstractString}(d::Dict{T,Any})
     obj_user = d["user_id"]
     obj_description = d["description"]
 
-    return Dataset(obj_id, obj_public, obj_name, obj_date, obj_created,
+    return MangalDataset(obj_id, obj_public, obj_name, obj_date, obj_created,
         obj_updated, obj_reference, obj_user, obj_description
         )
 end
@@ -38,7 +26,7 @@ function search_dataset_by_query(query::AbstractString)
     return [Mangal.format_dataset_response(d) for d in JSON.parse.(String(this_request.body))]
 end
 
-function datasets(;count::Int64=200, page::Int64=1, q::Union{AbstractString,Void}=nothing)
+function datasets(;count::Int64=200, page::Int64=1, q::Union{AbstractString,Nothing}=nothing)
     @assert 0 < count <= 1000
     @assert 0 < page
 

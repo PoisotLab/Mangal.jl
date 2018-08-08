@@ -1,9 +1,10 @@
 name = "Mangal"
 uuid = "c98fa588-9b20-11e8-354a-7faf2daa810a"
 authors = ["Timothée Poisot <timothee.poisot@umontreal.ca>"]
-version = "0.1.0"
+version = "0.0.1"
 
 [deps]
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
 GeoInterface = "cf35fbd7-0cd7-5166-be24-54bfbe79505f"
 HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
 JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"

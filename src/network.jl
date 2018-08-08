@@ -1,19 +1,4 @@
-struct Network
-    id::Int64
-    public::Bool
-    name::AbstractString
-    date::DateTime
-    position::AbstractGeometry
-    created::DateTime
-    updated::DateTime
-    user::Int64
-    description::AbstractString
-    environment::Union{Int64,Void}
-    complete::Bool
-    dataset::Int64
-end
-
-function format_network_response{T<:AbstractString}(d::Dict{T,Any})
+function format_network_response(d::Dict{T,Any}) where {T <: AbstractString}
 
     point_type = d["localisation"]["type"] == "Point" ? Point : Polygon
     point_coordinates = point_type(float.(d["localisation"]["coordinates"])...)
@@ -31,7 +16,7 @@ function format_network_response{T<:AbstractString}(d::Dict{T,Any})
     obj_complete = d["all_interactions"]
     obj_dataset = d["dataset_id"]
 
-    return Network(obj_id, obj_public, obj_name, obj_date, obj_position,
+    return MangalNetwork(obj_id, obj_public, obj_name, obj_date, obj_position,
         obj_created, obj_updated, obj_user, obj_description, obj_environment,
         obj_complete, obj_dataset)
 
@@ -45,13 +30,19 @@ function search_network_by_query(query::AbstractString)
     # Perform the request
     this_request = HTTP.get(endpoint*query, headers)
 
-    JSON.parse.(String(this_request.body))
+    if occursin("dataset_id=27", query)
+        @info String(this_request.body)
+        @info "dumped"
+        @info JSON.parse.(String(this_request.body))
+        @info "JSONed"
+    end
+
 
     # Return the collection
     return [Mangal.format_network_response(d) for d in JSON.parse.(String(this_request.body))]
 end
 
-function networks(;count::Int64=200, page::Int64=1, q::Union{AbstractString,Void}=nothing)
+function networks(;count::Int64=200, page::Int64=1, q::Union{AbstractString,Nothing}=nothing)
     @assert 0 < count <= 1000
     @assert 0 < page
 
@@ -60,7 +51,7 @@ function networks(;count::Int64=200, page::Int64=1, q::Union{AbstractString,Void
     return Mangal.search_network_by_query(query)
 end
 
-function networks(dataset::Dataset; count::Int64=200, page::Int64=1)
+function networks(dataset::MangalDataset; count::Int64=200, page::Int64=1)
     @assert 0 < count <= 1000
     @assert 0 < page
 

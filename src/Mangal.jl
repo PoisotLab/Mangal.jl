@@ -3,6 +3,7 @@ module Mangal
 using HTTP
 using JSON
 using GeoInterface
+using Dates
 
 const web_root = "http://poisotlab.biol.umontreal.ca/"
 const api_root = web_root * "api/v2/"
@@ -23,24 +24,27 @@ const api_endpoints = (
 # Login
 include(joinpath(".", "login.jl"))
 
+# Types
+include(joinpath(".", "types.jl"))
+export MangalDataset
+export MangalNetwork
+export MangalReferenceTaxon
+
 # Basic functions
 include(joinpath(".", "basics.jl"))
 
 # Datasets
 include(joinpath(".", "dataset.jl"))
-export Dataset
 export datasets
 export dataset
 
 # Networks
 include(joinpath(".", "network.jl"))
-export Network
 export networks
 export network
 
 # Taxonomy backbone(s)
 include(joinpath(".", "taxonomy.jl"))
-export ReferenceTaxon
 export backbone
 
 # Interactions

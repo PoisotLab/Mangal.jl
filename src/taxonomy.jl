@@ -1,17 +1,4 @@
-struct ReferenceTaxon
-    id::Int64
-    name::AbstractString
-    status::Symbol
-    bold::Union{Int64,Void}
-    tsn::Union{Int64,Void}
-    ncbi::Union{Int64,Void}
-    eol::Union{Int64,Void}
-    created::DateTime
-    updated::DateTime
-    description::Union{AbstractString,Void}
-end
-
-function format_backbone_response{T<:AbstractString}(d::Dict{T,Any})
+function format_backbone_response(d::Dict{T,Any}) where {T <: AbstractString}
 
     obj_id = d["id"]
     obj_name = d["name"]
@@ -24,7 +11,7 @@ function format_backbone_response{T<:AbstractString}(d::Dict{T,Any})
     obj_updated = DateTime(d["updated_at"][1:19])
     obj_description = d["description"]
 
-    return ReferenceTaxon(obj_id, obj_name, obj_status, obj_bold, obj_tsn,
+    return MangalReferenceTaxon(obj_id, obj_name, obj_status, obj_bold, obj_tsn,
         obj_ncbi, obj_eol, obj_created, obj_updated, obj_description)
 
 end
@@ -38,14 +25,12 @@ function search_backbone_by_query(query::AbstractString)
     # Perform the request
     this_request = HTTP.get(endpoint*query, headers)
 
-    JSON.parse.(String(this_request.body))
-
     # Return the collection
     return [Mangal.format_backbone_response(d) for d in JSON.parse.(String(this_request.body))]
 
 end
 
-function backbone(;count::Int64=200, page::Int64=1, q::Union{AbstractString,Void}=nothing)
+function backbone(;count::Int64=200, page::Int64=1, q::Union{AbstractString,Nothing}=nothing)
     @assert 0 < count <= 1000
     @assert 0 < page
 

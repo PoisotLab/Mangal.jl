@@ -1,18 +1,18 @@
 function login(token::AbstractString)
     ENV["MANGAL_BEARER_TOKEN"] = token
-    print_with_color(:green, "Logged in")
+    @info "Logged in"
 end
 
 function login()
     if haskey(ENV, "MANGAL_BEARER_TOKEN")
-        print_with_color(:green, "You are already logged in")
+        @info "You are already logged in"
     else
         Mangal.login_message()
     end
 end
 
 function login_message()
-    print_with_color(:blue, "You need to login:\n")
+    @info "You need to login"
     msg = """
     To login, please go to $(Mangal.web_root)auth/
     You will be prompted to login using ORCID - when this is done, you will be
@@ -24,7 +24,7 @@ function login_message()
     variable named MANGAL_BEARER_TOKEN -- this will let you use
     julia> Mangal.login()
     """
-    print(msg)
+    @info msg
 end
 
 function generate_base_header()
