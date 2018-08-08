@@ -37,3 +37,11 @@ struct MangalReferenceTaxon
     updated::DateTime
     description::Union{AbstractString,Nothing}
 end
+
+struct MangalNode
+    id::Int64
+    name::AbstractString
+    created::DateTime
+    updated::DateTime
+    taxon::MangalReferenceTaxon
+end

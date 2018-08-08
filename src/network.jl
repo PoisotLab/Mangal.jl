@@ -1,7 +1,14 @@
 function format_network_response(d::Dict{T,Any}) where {T <: AbstractString}
 
     point_type = d["localisation"]["type"] == "Point" ? Point : Polygon
-    point_coordinates = point_type(float.(d["localisation"]["coordinates"])...)
+    if point_type == Polygon
+        coords = [float.(x) for x in first(d["localisation"]["coordinates"])]
+        point_coordinates = point_type(coords)
+    else
+        coords = float.(d["localisation"]["coordinates"])
+        point_coordinates = point_type(coords...)
+    end
+
 
     obj_id = d["id"]
     obj_public = d["public"]
@@ -30,16 +37,13 @@ function search_network_by_query(query::AbstractString)
     # Perform the request
     this_request = HTTP.get(endpoint*query, headers)
 
-    if occursin("dataset_id=27", query)
-        @info String(this_request.body)
-        @info "dumped"
-        @info JSON.parse.(String(this_request.body))
-        @info "JSONed"
-    end
+    request_body = String(this_request.body)
 
+    # This fixes a temporary issue in the Ponisio et al. dataset
+    request_body = replace(request_body, "" => "-")
 
     # Return the collection
-    return [Mangal.format_network_response(d) for d in JSON.parse.(String(this_request.body))]
+    return [Mangal.format_network_response(d) for d in JSON.parse.(request_body)]
 end
 
 function networks(;count::Int64=200, page::Int64=1, q::Union{AbstractString,Nothing}=nothing)

@@ -44,11 +44,14 @@ export networks
 export network
 
 # Taxonomy backbone(s)
-include(joinpath(".", "taxonomy.jl"))
+include(joinpath(".", "backbone.jl"))
 export backbone
 
-# Interactions
+# Network nodes
+include(joinpath(".", "node.jl"))
+export nodes
+export node
 
-# Network-level taxonomy
+# Interactions
 
 end # module
