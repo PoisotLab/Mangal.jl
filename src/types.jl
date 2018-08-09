@@ -1,3 +1,7 @@
+"""
+Dataset of networks
+
+"""
 struct MangalDataset
     id::Int64
     public::Bool
@@ -10,6 +14,9 @@ struct MangalDataset
     description::AbstractString
 end
 
+"""
+Wrapper for species interactions
+"""
 struct MangalNetwork
     id::Int64
     public::Bool
@@ -25,6 +32,9 @@ struct MangalNetwork
     dataset::Int64
 end
 
+"""
+Reference taxon (unique identifier of network nodes)
+"""
 struct MangalReferenceTaxon
     id::Int64
     name::AbstractString
@@ -38,6 +48,9 @@ struct MangalReferenceTaxon
     description::Union{AbstractString,Nothing}
 end
 
+"""
+Node in a network
+"""
 struct MangalNode
     id::Int64
     name::AbstractString
