@@ -1,21 +1,3 @@
-function format_backbone_response(d::Dict{T,Any}) where {T <: AbstractString}
-
-    obj_id = d["id"]
-    obj_name = d["name"]
-    obj_status = Symbol(d["status"])
-    obj_bold = d["bold"]
-    obj_tsn = d["tsn"]
-    obj_ncbi = d["ncbi"]
-    obj_eol = d["eol"]
-    obj_created = DateTime(d["created_at"][1:19])
-    obj_updated = DateTime(d["updated_at"][1:19])
-    obj_description = d["description"]
-
-    return MangalReferenceTaxon(obj_id, obj_name, obj_status, obj_bold, obj_tsn,
-        obj_ncbi, obj_eol, obj_created, obj_updated, obj_description)
-
-end
-
 function search_backbone_by_query(query::AbstractString)
 
     # Endpoints

@@ -1,11 +1,11 @@
 function login(token::AbstractString)
     ENV["MANGAL_BEARER_TOKEN"] = token
-    @info "Logged in"
+    @info "Bearer token registered"
 end
 
 function login()
     if haskey(ENV, "MANGAL_BEARER_TOKEN")
-        @info "You are already logged in"
+        @info "Your bearer token is already registered"
     else
         Mangal.login_message()
     end
@@ -25,12 +25,4 @@ function login_message()
     julia> Mangal.login()
     """
     @info msg
-end
-
-function generate_base_header()
-    if haskey(ENV, "MANGAL_BEARER_TOKEN")
-        return ["Authorization" => "bearer $(ENV["MANGAL_BEARER_TOKEN"])"]
-    else
-        return []
-    end
 end

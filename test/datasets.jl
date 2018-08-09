@@ -1,10 +1,9 @@
 module MangalTestDataset
     using Mangal
     using Test
-    include("test/setup.jl")
+    include("setup.jl")
 
-    ds_1 = dataset(1)
-
-    @assert tyepof(ds_1) <: MangalDataset
+    @assert typeof(datasets()) <: Vector{MangalDataset}
+    @assert typeof(dataset(1)) <: MangalDataset
 
 end

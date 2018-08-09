@@ -30,6 +30,9 @@ export MangalDataset
 export MangalNetwork
 export MangalReferenceTaxon
 
+# Response formatters
+include("response_format.jl")
+
 # Basic functions
 include(joinpath(".", "basics.jl"))
 

@@ -1,15 +1,3 @@
-function format_node_response(d::Dict{T,Any}) where {T <: AbstractString}
-
-    obj_id = d["id"]
-    obj_name = d["original_name"]
-    obj_created = DateTime(d["created_at"][1:19])
-    obj_updated = DateTime(d["updated_at"][1:19])
-    obj_taxon = Mangal.backbone(d["taxo_id"])
-
-    return MangalNode(obj_id, obj_name, obj_created, obj_updated, obj_taxon)
-
-end
-
 function search_node_by_query(query::AbstractString)
 
     # Endpoints
