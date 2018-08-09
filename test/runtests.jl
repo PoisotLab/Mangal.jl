@@ -7,4 +7,7 @@ Mangal.login(my_bearer_token)
 
 n1 = networks(dataset(4))[1]
 @info n1
-@info nodes(n1)
+this_network_nodes = nodes(n1)
+
+@info this_network_nodes
+@info this_network_nodes[1].taxon
