@@ -44,3 +44,7 @@ function interactions(from::MangalNode, to::MangalNode, query::Vector{Pair{Strin
     push!(query, Pair("taxon_2", string(to.id)))
     return interactions(query)
 end
+
+function interaction(id::Int64)
+    return first(interactions([Pair("id", id)]))
+end
