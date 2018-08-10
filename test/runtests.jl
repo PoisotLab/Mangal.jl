@@ -2,11 +2,11 @@ using Mangal
 using Test
 
 my_tests = [
-   "datasets.jl",
-   "networks.jl",
-   "backbone.jl",
-   "nodes.jl",
-   "interactions.jl"
+    "backbone.jl",
+    "nodes.jl",
+    "datasets.jl",
+    "networks.jl",
+    "interactions.jl"
 ]
 
 global test_n

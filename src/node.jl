@@ -1,17 +1,21 @@
 function nodes()
-    return search_objects_by_query(
+    results = search_objects_by_query(
         Mangal.api_endpoints.node,
         nothing,
         Mangal.format_node_response
     )
+    Mangal.cache(results)
+    return results
 end
 
 function nodes(q::Vector{Pair{String,T}}) where {T <: Any}
-    return search_objects_by_query(
+    results = search_objects_by_query(
         Mangal.api_endpoints.node,
         q,
         Mangal.format_node_response
     )
+    Mangal.cache(results)
+    return results
 end
 
 
@@ -38,5 +42,5 @@ end
 
 
 function node(id::Int64)
-    return first(nodes([Pair("id", id)]))
+    return get(_MANGAL_CACHES[MangalNode], id, first(nodes([Pair("id", id)])))
 end

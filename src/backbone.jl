@@ -1,17 +1,21 @@
 function backbone()
-    return search_objects_by_query(
+    results = search_objects_by_query(
         Mangal.api_endpoints.taxonomy,
         nothing,
         Mangal.format_backbone_response
     )
+    Mangal.cache(results)
+    return results
 end
 
 function backbone(q::Vector{Pair{String,T}}) where {T <: Any}
-    return search_objects_by_query(
+    results = search_objects_by_query(
         Mangal.api_endpoints.taxonomy,
         q,
         Mangal.format_backbone_response
     )
+    Mangal.cache(results)
+    return results
 end
 
 function backbone(name::AbstractString)
@@ -19,5 +23,5 @@ function backbone(name::AbstractString)
 end
 
 function backbone(id::Int64)
-    return first(backbone([Pair("id", id)]))
+    return get(_MANGAL_CACHES[MangalReferenceTaxon], id, first(backbone([Pair("id", id)])))
 end

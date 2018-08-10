@@ -10,6 +10,14 @@ function isverbose()
     return parse(Bool, get(ENV, "MANGAL_VERBOSE", "false"))
 end
 
+function cache(results::Vector{T}) where {T <: Union{MangalReferenceTaxon,MangalNode}}
+    for result in results
+        if !haskey(_MANGAL_CACHES[T], result.id)
+            global _MANGAL_CACHES[T][result.id] = result
+        end
+    end
+end
+
 function generate_base_header()
     if haskey(ENV, "MANGAL_BEARER_TOKEN")
         return ["Authorization" => "bearer $(ENV["MANGAL_BEARER_TOKEN"])"]

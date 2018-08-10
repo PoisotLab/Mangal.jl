@@ -32,6 +32,12 @@ export MangalReferenceTaxon
 export MangalNode
 export MangalInteraction
 
+# The cache!
+global _MANGAL_CACHES = Dict(
+    MangalNode => Dict{Int64, MangalNode}(),
+    MangalReferenceTaxon => Dict{Int64, MangalReferenceTaxon}()
+    )
+
 # Response formatters
 include("response_format.jl")
 
