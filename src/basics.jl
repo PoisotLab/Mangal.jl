@@ -10,6 +10,14 @@ function isverbose()
     return parse(Bool, get(ENV, "MANGAL_VERBOSE", "false"))
 end
 
+"""
+Internally, the `Mangal` package uses a cache to store some objects that are
+likely to be queried more than once. These are `MangalNode` and
+`MangalReferenceTaxon`, which are called in a nested way during the querying of
+*e.g.* `Interactions`. This is **not** a fancy mechanism, and it only works when
+calling the nodes or backbones by their `id` (which is what the resources-hungry
+functions do internally anyways).
+"""
 function cache(results::Vector{T}) where {T <: Union{MangalReferenceTaxon,MangalNode}}
     for result in results
         if !haskey(_MANGAL_CACHES[T], result.id)
