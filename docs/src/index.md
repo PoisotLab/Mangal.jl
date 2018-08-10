@@ -10,6 +10,7 @@ Mangal.login
 
 ```@docs
 Mangal.verbose
+Mangal.isverbose
 ```
 
 ## List ot types

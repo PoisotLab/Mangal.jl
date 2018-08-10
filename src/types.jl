@@ -59,6 +59,8 @@ unique and (ii) nodes within the same networks can refer to various taxonomic
 levels. As an example, if a network has four distinct nodes identified as
 `Ascariasis sp.`, they will represent four nodes in the networks, but map onto
 the same `MangalReferenceTaxon` (representing the entire *Ascariasis* genus).
+This approach provides a seemless representation of the same taxon across
+different networks, but also of the same taxon *within* networks.
 """
 struct MangalNode
     id::Int64
