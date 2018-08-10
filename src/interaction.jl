@@ -49,8 +49,8 @@ function interactions(network::MangalNetwork)
     network_nodes = nodes(network)
     network_interactions = MangalInteraction[]
     for network_node in network_nodes
-        append!(network_interactions, interactions(n_from, :))
-        append!(network_interactions, interactions(:, n_from))
+        append!(network_interactions, interactions(network_node, :))
+        append!(network_interactions, interactions(:, network_node))
     end
     return unique(network_interactions)
 end
