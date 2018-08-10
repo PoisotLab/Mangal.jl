@@ -45,6 +45,26 @@ function interactions(from::MangalNode, to::MangalNode, query::Vector{Pair{Strin
     return interactions(query)
 end
 
+function interactions(network::MangalNetwork)
+    network_nodes = nodes(network)
+    network_interactions = MangalInteraction[]
+    for network_node in network_nodes
+        append!(network_interactions, interactions(n_from, :))
+        append!(network_interactions, interactions(:, n_from))
+    end
+    return unique(network_interactions)
+end
+
+function interactions(network::MangalNetwork, query::Vector{Pair{String,T}}) where {T <: Any}
+    network_nodes = nodes(network)
+    network_interactions = MangalInteraction[]
+    for network_node in network_nodes
+        append!(network_interactions, interactions(network_node, :, query))
+        append!(network_interactions, interactions(:, network_node, query))
+    end
+    return unique(network_interactions)
+end
+
 function interaction(id::Int64)
     return first(interactions([Pair("id", id)]))
 end
