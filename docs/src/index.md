@@ -17,8 +17,8 @@ Mangal.verbose
 ```@docs
 MangalDataset
 MangalNetwork
-MangalNode
 MangalReferenceTaxon
+MangalNode
 ```
 
 ## Methods
