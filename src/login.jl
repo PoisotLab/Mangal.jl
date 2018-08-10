@@ -22,10 +22,13 @@ end
 function login_message()
     @info "You need to login"
 
-    msg = """ To login, please go to $(Mangal.web_root)auth/ You will be prompted to
-    login using ORCID - when this is done, you will be returned to your profile
-    page, which contains the access_token. Copy and paste this value, and use it in
-    the login function:
+    msg = """ To login, please go to
+
+    $(Mangal.web_root)auth/
+
+    You will be prompted to login using ORCID - when this is done, you will be
+    returned to your profile page, which contains the access_token. Copy and
+    paste this value, and use it in the login function:
 
     julia> my_access_token = "12345654-1234-1234-4321-4343435353"
     julia> Mangal.login(my_access_token)

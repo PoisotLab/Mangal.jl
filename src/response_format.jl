@@ -94,7 +94,7 @@ function format_interaction_response(d::Dict{T,Any}) where {T <: AbstractString}
     obj_description = d["description"]
 
     return MangalInteraction(obj_id, obj_from, obj_to, obj_level, obj_date,
-    obj_directed, obj_interaction, obj_method, obj_strength, obj_user, obj_attr,
-    obj_created, obj_updated, obj_description)
+        obj_directed, obj_interaction, obj_method, obj_strength, obj_user,
+        obj_attr, obj_created, obj_updated, obj_description)
 
 end
