@@ -30,6 +30,7 @@ export MangalDataset
 export MangalNetwork
 export MangalReferenceTaxon
 export MangalNode
+export MangalInteraction
 
 # Response formatters
 include("response_format.jl")
@@ -57,5 +58,8 @@ export nodes
 export node
 
 # Interactions
+include(joinpath(".", "interaction.jl"))
+export interactions
+export interaction
 
 end # module

@@ -5,7 +5,8 @@ my_tests = [
    "datasets.jl",
    "networks.jl",
    "backbone.jl",
-   "nodes.jl"
+   "nodes.jl",
+   "interactions.jl"
 ]
 
 global test_n

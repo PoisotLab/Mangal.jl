@@ -69,3 +69,23 @@ struct MangalNode
     updated::DateTime
     taxon::MangalReferenceTaxon
 end
+
+"""
+Interaction
+"""
+struct MangalInteraction
+    id::Int64
+    from::MangalNode
+    to::MangalNode
+    level::NTuple{2,Symbol}
+    date::DateTime
+    directed::Bool
+    interaction::Symbol
+    method::AbstractString
+    strength::Union{Number,Nothing}
+    user::Int64
+    attribute::Int64
+    created::DateTime
+    updated::DateTime
+    description::Union{AbstractString,Nothing}
+end
