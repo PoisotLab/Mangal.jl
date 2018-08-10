@@ -2,11 +2,15 @@ using Mangal
 using Test
 
 my_tests = [
-   "datasets.jl"
+   "datasets.jl",
+   "networks.jl"
 ]
 
 global test_n
 global anyerrors
+
+# Shhhh...
+Mangal.verbose(false)
 
 test_n = 1
 anyerrors = false
