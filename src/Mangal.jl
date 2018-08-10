@@ -29,6 +29,7 @@ include(joinpath(".", "types.jl"))
 export MangalDataset
 export MangalNetwork
 export MangalReferenceTaxon
+export MangalNode
 
 # Response formatters
 include("response_format.jl")

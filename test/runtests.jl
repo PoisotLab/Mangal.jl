@@ -4,7 +4,8 @@ using Test
 my_tests = [
    "datasets.jl",
    "networks.jl",
-   "backbone.jl"
+   "backbone.jl",
+   "nodes.jl"
 ]
 
 global test_n

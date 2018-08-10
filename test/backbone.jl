@@ -9,4 +9,6 @@ module MangalTestBackbone
     @test backbone(1).name == "Abutilon theophrasti"
     @test backbone("Abutilon theophrasti").id == 1
 
+    @test length(backbone([Pair("count", 10)])) == 10
+
 end
