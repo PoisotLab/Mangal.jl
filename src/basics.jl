@@ -84,3 +84,25 @@ function search_objects_by_query(endpoint::AbstractString, query::Union{Vector{P
     # Return the formatted object(s)
     return formatter.(parsed_json)
 end
+
+function number_of_objects(endpoint::AbstractString, query::Union{Vector{Pair{String,T}},Nothing}) where {T <: Any}
+    # Headers
+    headers = Mangal.generate_base_header()
+
+    # Full endpoint
+    endpoint = Mangal.api_root * endpoint
+
+    # Convert query parameters
+    request_url = query == nothing ? endpoint : endpoint*generate_request_query(query)
+
+    # Perform the request
+    this_request = HTTP.get(request_url, headers)
+
+    content_range = first(filter(head -> head.first == "Content-Range", this_request.headers))
+    positions = parse.(Int64, split(content_range.second, [' ', '-', '/'])[2:end])
+    range_begin = positions[1]+1
+    range_stop = positions[2]+1
+    range_ends = positions[3]
+
+    return range_ends
+end
