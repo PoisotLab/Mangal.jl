@@ -10,7 +10,7 @@ end
 
 
 function count(::Type{MangalNetwork})
-    return Mangal.number_of_objects(Mangal.api_endpoints.dataset, nothing)
+    return Mangal.number_of_objects(Mangal.api_endpoints.network, nothing)
 end
 
 function count(::Type{MangalNetwork}, q::Vector{Pair{String,T}}) where {T <: Any}

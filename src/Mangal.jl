@@ -38,6 +38,9 @@ global _MANGAL_CACHES = Dict(
     MangalReferenceTaxon => Dict{Int64, MangalReferenceTaxon}()
     )
 
+# Counting objects
+include(joinpath(".", "count.jl"))
+
 # Response formatters
 include("response_format.jl")
 

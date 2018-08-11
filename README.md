@@ -39,3 +39,23 @@ To get networks within a given dataset,
 ~~~ julia
 networks(dataset(10))
 ~~~
+
+#### Counting objects
+
+~~~ julia
+using Mangal
+
+base_q = ["type" => "parasitism"]
+
+n_parasitism = count(MangalInteraction, base_q)
+page_size = 200
+n_pages = ceil(n_parasitism/page_size)
+parasitism_int = MangalInteraction[]
+@progress for p in 1:n_pages
+    @info "Starting page $p"
+    paging_q = ["count" => "$page_size", "page" => "$p"]
+    append!(paging_q, base_q)
+    append!(parasitism_int, interactions(paging_q))
+    @info "Page $p -- $length(parasitism_int) done"
+end
+~~~
