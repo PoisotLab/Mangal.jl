@@ -18,7 +18,6 @@ function nodes(q::Vector{Pair{String,T}}) where {T <: Any}
     return results
 end
 
-
 function nodes(network::MangalNetwork)
     query = [Pair("network_id", network.id)]
     return nodes(query)
@@ -29,7 +28,6 @@ function nodes(network::MangalNetwork, query::Vector{Pair{String,T}}) where {T <
     return nodes(query)
 end
 
-
 function nodes(taxon::MangalReferenceTaxon)
     query = [Pair("taxo_id", taxon.id)]
     return nodes(query)
@@ -39,7 +37,6 @@ function nodes(taxon::MangalReferenceTaxon, query::Vector{Pair{String,T}}) where
     push!(query, Pair("taxo_id", taxon.id))
     return nodes(query)
 end
-
 
 function node(id::Int64)
     return get(_MANGAL_CACHES[MangalNode], id, first(nodes([Pair("id", id)])))
