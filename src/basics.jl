@@ -59,7 +59,7 @@ function search_objects_by_query(endpoint::AbstractString, query::Union{Vector{P
     endpoint = Mangal.api_root * endpoint
 
     # Convert query parameters
-    request_url = query == nothing ? endpoint : endpoint*generate_request_query(query)
+    request_url = query == nothing ? endpoint : endpoint*Mangal.generate_request_query(query)
 
     # Perform the request
     this_request = HTTP.get(request_url, headers)
@@ -93,7 +93,7 @@ function number_of_objects(endpoint::AbstractString, query::Union{Vector{Pair{St
     endpoint = Mangal.api_root * endpoint
 
     # Convert query parameters
-    request_url = query == nothing ? endpoint : endpoint*generate_request_query(query)
+    request_url = query == nothing ? endpoint : endpoint*Mangal.generate_request_query(query)
 
     # Perform the request
     this_request = HTTP.get(request_url, headers)
