@@ -1,3 +1,8 @@
+"""
+    verbose()
+
+This function will *switch* the package to verbose mode.
+"""
 function verbose()
     Mangal.verbose(true)
 end
