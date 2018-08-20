@@ -34,8 +34,8 @@ dataset
 ### Networks
 
 ```@docs
-datasets
-dataset
+networks
+network
 ```
 
 ## Internals
