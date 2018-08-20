@@ -117,7 +117,7 @@
 <p><a id='Mangal.login' href='#Mangal.login'>#</a>
 <strong><code>Mangal.login</code></strong> &mdash; <em>Function</em>.</p>
 <p>This function will store the token in the <code>MANGAL_BEARER_TOKEN</code> environmental variable.</p>
-<p><a target='_blank' href='https://github.com/PoisotLab/Mangal.jl/blob/ceb64065a455b3849e3ac7675af24176913d49a2/src/login.jl#L1-L4' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/PoisotLab/Mangal.jl/blob/f6fc3af61502bebc957107ee6b2843e6013bf946/src/login.jl#L1-L4' class='documenter-source'>source</a><br></p>
 <p><a id='Verbosity-1'></a></p>
 <h2 id="verbosity">Verbosity</h2>
 <pre><code>Mangal.verbose
@@ -129,21 +129,21 @@ Mangal.isverbose
 <p><a id='Mangal.MangalDataset' href='#Mangal.MangalDataset'>#</a>
 <strong><code>Mangal.MangalDataset</code></strong> &mdash; <em>Type</em>.</p>
 <p>Dataset of networks</p>
-<p><a target='_blank' href='https://github.com/PoisotLab/Mangal.jl/blob/ceb64065a455b3849e3ac7675af24176913d49a2/src/types.jl#L1-L4' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/PoisotLab/Mangal.jl/blob/f6fc3af61502bebc957107ee6b2843e6013bf946/src/types.jl#L1-L4' class='documenter-source'>source</a><br></p>
 <p><a id='Mangal.MangalNetwork' href='#Mangal.MangalNetwork'>#</a>
 <strong><code>Mangal.MangalNetwork</code></strong> &mdash; <em>Type</em>.</p>
 <p>Wrapper for species interactions</p>
-<p><a target='_blank' href='https://github.com/PoisotLab/Mangal.jl/blob/ceb64065a455b3849e3ac7675af24176913d49a2/src/types.jl#L17-L19' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/PoisotLab/Mangal.jl/blob/f6fc3af61502bebc957107ee6b2843e6013bf946/src/types.jl#L17-L19' class='documenter-source'>source</a><br></p>
 <p><a id='Mangal.MangalReferenceTaxon' href='#Mangal.MangalReferenceTaxon'>#</a>
 <strong><code>Mangal.MangalReferenceTaxon</code></strong> &mdash; <em>Type</em>.</p>
 <p>Reference taxon (unique identifier of network nodes)</p>
-<p><a target='_blank' href='https://github.com/PoisotLab/Mangal.jl/blob/ceb64065a455b3849e3ac7675af24176913d49a2/src/types.jl#L35-L37' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/PoisotLab/Mangal.jl/blob/f6fc3af61502bebc957107ee6b2843e6013bf946/src/types.jl#L35-L37' class='documenter-source'>source</a><br></p>
 <p><a id='Mangal.MangalNode' href='#Mangal.MangalNode'>#</a>
 <strong><code>Mangal.MangalNode</code></strong> &mdash; <em>Type</em>.</p>
 <p>Node in a network</p>
 <p>The <code>taxon</code> field is a <code>MangalReferenceTaxon</code> object, so that one can, for example, query the TSN identifier of a node through <code>object.taxon.tsn</code>.</p>
 <p>This approach has been chosen because (i) names of nodes in networks can be non unique and (ii) nodes within the same networks can refer to various taxonomic levels. As an example, if a network has four distinct nodes identified as <code>Ascariasis sp.</code>, they will represent four nodes in the networks, but map onto the same <code>MangalReferenceTaxon</code> (representing the entire <em>Ascariasis</em> genus). This approach provides a seemless representation of the same taxon across different networks, but also of the same taxon <em>within</em> networks.</p>
-<p><a target='_blank' href='https://github.com/PoisotLab/Mangal.jl/blob/ceb64065a455b3849e3ac7675af24176913d49a2/src/types.jl#L51-L64' class='documenter-source'>source</a><br></p>
+<p><a target='_blank' href='https://github.com/PoisotLab/Mangal.jl/blob/f6fc3af61502bebc957107ee6b2843e6013bf946/src/types.jl#L51-L64' class='documenter-source'>source</a><br></p>
 <p><a id='Methods-1'></a></p>
 <h2 id="methods">Methods</h2>
 <p><a id='For-datasets-1'></a></p>
@@ -218,5 +218,5 @@ Mangal.search_objects_by_query
 
 <!--
 MkDocs version : 0.17.5
-Build Date UTC : 2018-08-20 20:07:48
+Build Date UTC : 2018-08-20 20:18:33
 -->
