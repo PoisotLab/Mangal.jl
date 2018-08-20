@@ -24,10 +24,20 @@ function networks(dataset::MangalDataset, query::Vector{Pair{String,T}}) where {
     return networks(query)
 end
 
+"""
+    network(name::AbstractString)
+
+Returns a network of a given name.
+"""
 function network(name::AbstractString)
     return first(networks([Pair("name", name)]))
 end
 
+"""
+    network(id::Int64)
+
+Returns a network of a given identifier.
+"""
 function network(id::Int64)
     return first(networks([Pair("id", id)]))
 end
