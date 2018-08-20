@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Easy access to ecological interaction data">
+  <meta name="author" content="Timothée Poisot">
+  <link rel="shortcut icon" href="./img/favicon.ico">
+  <title>Manual - Mangal.jl</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="./css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="./css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="./css/highlight.css">
+  <link href="./assets/Documenter.css" rel="stylesheet">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Manual";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = "/";
+  </script>
+  
+  <script src="./js/jquery-2.1.1.min.js"></script>
+  <script src="./js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="./js/highlight.pack.js"></script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="." class="icon icon-home"> Mangal.jl</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1 current">
+		
+    <a class="current" href=".">Manual</a>
+    <ul class="subnav">
+            
+    <li class="toctree-l2"><a href="#mangal">Mangal</a></li>
+    
+        <ul>
+        
+            <li><a class="toctree-l3" href="#login">Login</a></li>
+        
+            <li><a class="toctree-l3" href="#verbosity">Verbosity</a></li>
+        
+            <li><a class="toctree-l3" href="#list-ot-types">List ot types</a></li>
+        
+            <li><a class="toctree-l3" href="#methods">Methods</a></li>
+        
+            <li><a class="toctree-l3" href="#internals">Internals</a></li>
+        
+            <li><a class="toctree-l3" href="#other-functions">Other functions</a></li>
+        
+        </ul>
+    
+
+    </ul>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href=".">Mangal.jl</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Manual</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/PoisotLab/Mangal.jl/edit/master/docs/index.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p><a id='Mangal-1'></a></p>
+<h1 id="mangal">Mangal</h1>
+<p><a id='Login-1'></a></p>
+<h2 id="login">Login</h2>
+<p><a id='Mangal.login' href='#Mangal.login'>#</a>
+<strong><code>Mangal.login</code></strong> &mdash; <em>Function</em>.</p>
+<p>This function will store the token in the <code>MANGAL_BEARER_TOKEN</code> environmental variable.</p>
+<p><a target='_blank' href='https://github.com/PoisotLab/Mangal.jl/blob/ceb64065a455b3849e3ac7675af24176913d49a2/src/login.jl#L1-L4' class='documenter-source'>source</a><br></p>
+<p><a id='Verbosity-1'></a></p>
+<h2 id="verbosity">Verbosity</h2>
+<pre><code>Mangal.verbose
+Mangal.isverbose
+</code></pre>
+
+<p><a id='List-ot-types-1'></a></p>
+<h2 id="list-ot-types">List ot types</h2>
+<p><a id='Mangal.MangalDataset' href='#Mangal.MangalDataset'>#</a>
+<strong><code>Mangal.MangalDataset</code></strong> &mdash; <em>Type</em>.</p>
+<p>Dataset of networks</p>
+<p><a target='_blank' href='https://github.com/PoisotLab/Mangal.jl/blob/ceb64065a455b3849e3ac7675af24176913d49a2/src/types.jl#L1-L4' class='documenter-source'>source</a><br></p>
+<p><a id='Mangal.MangalNetwork' href='#Mangal.MangalNetwork'>#</a>
+<strong><code>Mangal.MangalNetwork</code></strong> &mdash; <em>Type</em>.</p>
+<p>Wrapper for species interactions</p>
+<p><a target='_blank' href='https://github.com/PoisotLab/Mangal.jl/blob/ceb64065a455b3849e3ac7675af24176913d49a2/src/types.jl#L17-L19' class='documenter-source'>source</a><br></p>
+<p><a id='Mangal.MangalReferenceTaxon' href='#Mangal.MangalReferenceTaxon'>#</a>
+<strong><code>Mangal.MangalReferenceTaxon</code></strong> &mdash; <em>Type</em>.</p>
+<p>Reference taxon (unique identifier of network nodes)</p>
+<p><a target='_blank' href='https://github.com/PoisotLab/Mangal.jl/blob/ceb64065a455b3849e3ac7675af24176913d49a2/src/types.jl#L35-L37' class='documenter-source'>source</a><br></p>
+<p><a id='Mangal.MangalNode' href='#Mangal.MangalNode'>#</a>
+<strong><code>Mangal.MangalNode</code></strong> &mdash; <em>Type</em>.</p>
+<p>Node in a network</p>
+<p>The <code>taxon</code> field is a <code>MangalReferenceTaxon</code> object, so that one can, for example, query the TSN identifier of a node through <code>object.taxon.tsn</code>.</p>
+<p>This approach has been chosen because (i) names of nodes in networks can be non unique and (ii) nodes within the same networks can refer to various taxonomic levels. As an example, if a network has four distinct nodes identified as <code>Ascariasis sp.</code>, they will represent four nodes in the networks, but map onto the same <code>MangalReferenceTaxon</code> (representing the entire <em>Ascariasis</em> genus). This approach provides a seemless representation of the same taxon across different networks, but also of the same taxon <em>within</em> networks.</p>
+<p><a target='_blank' href='https://github.com/PoisotLab/Mangal.jl/blob/ceb64065a455b3849e3ac7675af24176913d49a2/src/types.jl#L51-L64' class='documenter-source'>source</a><br></p>
+<p><a id='Methods-1'></a></p>
+<h2 id="methods">Methods</h2>
+<p><a id='For-datasets-1'></a></p>
+<h3 id="for-datasets">For datasets</h3>
+<pre><code>datasets
+dataset
+</code></pre>
+
+<p><a id='Networks-1'></a></p>
+<h3 id="networks">Networks</h3>
+<pre><code>networks
+network
+</code></pre>
+
+<p><a id='Internals-1'></a></p>
+<h2 id="internals">Internals</h2>
+<p><a id='Formatters-1'></a></p>
+<h3 id="formatters">Formatters</h3>
+<pre><code>Mangal.format_dataset_response
+Mangal.format_network_response
+Mangal.format_node_response
+Mangal.format_backbone_response
+</code></pre>
+
+<p><a id='Other-functions-1'></a></p>
+<h2 id="other-functions">Other functions</h2>
+<pre><code>Mangal.generate_base_header
+Mangal.generate_request_query
+Mangal.search_objects_by_query
+</code></pre>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/PoisotLab/Mangal.jl/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="./js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_HTML"></script>
+      <script src="./assets/mathjaxhelper.js"></script>
+      <script src="./search/require.js"></script>
+      <script src="./search/search.js"></script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 0.17.5
+Build Date UTC : 2018-08-20 20:07:48
+-->
