@@ -1,6 +1,7 @@
 """
-Dataset of networks
-
+A `MangalDataset` identifies a collection of networks, possibly containing
+a single element. A dataset is identified by its `id` or `name` (both of
+which are *unique*). 
 """
 struct MangalDataset
     id::Int64

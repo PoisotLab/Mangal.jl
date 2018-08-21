@@ -1,3 +1,6 @@
+"""
+    backbone()
+"""
 function backbone()
     results = search_objects_by_query(
         Mangal.api_endpoints.taxonomy,
