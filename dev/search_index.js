@@ -13,159 +13,247 @@ var documenterSearchIndex = {"docs": [
     "page": "Mangal",
     "title": "Mangal",
     "category": "section",
+    "text": "This manual describes the functionalities of the Mangal.jl package, to query data from species interaction networks. "
+},
+
+{
+    "location": "types/#",
+    "page": "Data types",
+    "title": "Data types",
+    "category": "page",
     "text": ""
 },
 
 {
-    "location": "#Mangal.login",
-    "page": "Mangal",
-    "title": "Mangal.login",
-    "category": "function",
-    "text": "This function will store the token in the MANGAL_BEARER_TOKEN environmental variable.\n\n\n\n\n\n"
-},
-
-{
-    "location": "#Login-1",
-    "page": "Mangal",
-    "title": "Login",
-    "category": "section",
-    "text": "Mangal.login"
-},
-
-{
-    "location": "#Mangal.verbose",
-    "page": "Mangal",
-    "title": "Mangal.verbose",
-    "category": "function",
-    "text": "verbose()\n\nThis function will switch the package to verbose mode.\n\n\n\n\n\nverbose(vrb::Bool)\n\nThis function will switch the package to verbose mode, or silence it.\n\n\n\n\n\n"
-},
-
-{
-    "location": "#Mangal.isverbose",
-    "page": "Mangal",
-    "title": "Mangal.isverbose",
-    "category": "function",
-    "text": "isverbose()\n\nThis function will return a Boolean for the current package verbosity.\n\n\n\n\n\n"
-},
-
-{
-    "location": "#Verbosity-1",
-    "page": "Mangal",
-    "title": "Verbosity",
-    "category": "section",
-    "text": "Mangal.verbose\nMangal.isverbose"
-},
-
-{
-    "location": "#Mangal.MangalDataset",
-    "page": "Mangal",
+    "location": "types/#Mangal.MangalDataset",
+    "page": "Data types",
     "title": "Mangal.MangalDataset",
     "category": "type",
     "text": "A MangalDataset identifies a collection of networks, possibly containing a single element. A dataset is identified by its id or name (both of which are unique). \n\n\n\n\n\n"
 },
 
 {
-    "location": "#Mangal.MangalNetwork",
-    "page": "Mangal",
+    "location": "types/#Mangal.MangalNetwork",
+    "page": "Data types",
     "title": "Mangal.MangalNetwork",
     "category": "type",
     "text": "Wrapper for species interactions\n\n\n\n\n\n"
 },
 
 {
-    "location": "#Mangal.MangalReferenceTaxon",
-    "page": "Mangal",
+    "location": "types/#Mangal.MangalInteraction",
+    "page": "Data types",
+    "title": "Mangal.MangalInteraction",
+    "category": "type",
+    "text": "Interaction\n\n\n\n\n\n"
+},
+
+{
+    "location": "types/#Core-types-1",
+    "page": "Data types",
+    "title": "Core types",
+    "category": "section",
+    "text": "MangalDataset\nMangalNetwork\nMangalInteraction"
+},
+
+{
+    "location": "types/#Mangal.MangalReferenceTaxon",
+    "page": "Data types",
     "title": "Mangal.MangalReferenceTaxon",
     "category": "type",
     "text": "Reference taxon (unique identifier of network nodes)\n\n\n\n\n\n"
 },
 
 {
-    "location": "#Mangal.MangalNode",
-    "page": "Mangal",
+    "location": "types/#Mangal.MangalNode",
+    "page": "Data types",
     "title": "Mangal.MangalNode",
     "category": "type",
     "text": "Node in a network\n\nThe taxon field is a MangalReferenceTaxon object, so that one can, for example, query the TSN identifier of a node through object.taxon.tsn.\n\nThis approach has been chosen because (i) names of nodes in networks can be non unique and (ii) nodes within the same networks can refer to various taxonomic levels. As an example, if a network has four distinct nodes identified as Ascariasis sp., they will represent four nodes in the networks, but map onto the same MangalReferenceTaxon (representing the entire Ascariasis genus). This approach provides a seemless representation of the same taxon across different networks, but also of the same taxon within networks.\n\n\n\n\n\n"
 },
 
 {
-    "location": "#List-of-types-1",
-    "page": "Mangal",
-    "title": "List of types",
+    "location": "types/#Taxonomy-types-1",
+    "page": "Data types",
+    "title": "Taxonomy types",
     "category": "section",
-    "text": "MangalDataset\nMangalNetwork\nMangalReferenceTaxon\nMangalNode"
+    "text": "MangalReferenceTaxon\nMangalNode"
 },
 
 {
-    "location": "#Methods-1",
-    "page": "Mangal",
-    "title": "Methods",
+    "location": "types/#Additional-information-1",
+    "page": "Data types",
+    "title": "Additional information",
     "category": "section",
+    "text": "MangalTrait\nMangalAttribute"
+},
+
+{
+    "location": "types/#Metadata-types-1",
+    "page": "Data types",
+    "title": "Metadata types",
+    "category": "section",
+    "text": "MangalUser\nMangalReference"
+},
+
+{
+    "location": "methods/#",
+    "page": "Getting data",
+    "title": "Getting data",
+    "category": "page",
     "text": ""
 },
 
 {
-    "location": "#Queries-1",
-    "page": "Mangal",
+    "location": "methods/#Queries-1",
+    "page": "Getting data",
     "title": "Queries",
     "category": "section",
     "text": "All queries are passed as vectors of pairs. For example, filtering interactions that are of the mutualist type can be done with [Pair(\"type\", \"mutualism\")]."
 },
 
 {
-    "location": "#Mangal.datasets",
-    "page": "Mangal",
+    "location": "methods/#Mangal.datasets",
+    "page": "Getting data",
     "title": "Mangal.datasets",
     "category": "function",
     "text": "datasets()\n\nWhen called with no arguments, this function will return a list of the most recent datasets.  The results will be returned as a vector of MangalDataset object.\n\n\n\n\n\ndatasets(q::Vector{Pair{String,T}}) where {T <: Any}\n\nWill return the most recent datasets that match a given query. The results will be returned as a vector of MangalDataset object.\n\n\n\n\n\n"
 },
 
 {
-    "location": "#Mangal.dataset",
-    "page": "Mangal",
+    "location": "methods/#Mangal.dataset",
+    "page": "Getting data",
     "title": "Mangal.dataset",
     "category": "function",
     "text": "dataset(name::AbstractString)\n\nReturn a single dataset by its name.\n\n\n\n\n\ndataset(id::Int64)\n\nReturn a single dataset by its unique numerical ID.\n\n\n\n\n\n"
 },
 
 {
-    "location": "#For-datasets-1",
-    "page": "Mangal",
+    "location": "methods/#For-datasets-1",
+    "page": "Getting data",
     "title": "For datasets",
     "category": "section",
     "text": "datasets\ndataset"
 },
 
 {
-    "location": "#Networks-1",
-    "page": "Mangal",
+    "location": "methods/#Networks-1",
+    "page": "Getting data",
     "title": "Networks",
     "category": "section",
     "text": "networks\nnetwork"
 },
 
 {
-    "location": "#Internals-1",
-    "page": "Mangal",
-    "title": "Internals",
+    "location": "methods/#Interactions-1",
+    "page": "Getting data",
+    "title": "Interactions",
     "category": "section",
+    "text": "interactions\ninteraction"
+},
+
+{
+    "location": "methods/#Nodes-1",
+    "page": "Getting data",
+    "title": "Nodes",
+    "category": "section",
+    "text": "nodes\nnode"
+},
+
+{
+    "location": "methods/#Mangal.backbone",
+    "page": "Getting data",
+    "title": "Mangal.backbone",
+    "category": "function",
+    "text": "backbone()\n\n\n\n\n\n"
+},
+
+{
+    "location": "methods/#Reference-taxon-1",
+    "page": "Getting data",
+    "title": "Reference taxon",
+    "category": "section",
+    "text": "backbone"
+},
+
+{
+    "location": "internals/#",
+    "page": "Internal functions",
+    "title": "Internal functions",
+    "category": "page",
     "text": ""
 },
 
 {
-    "location": "#Formatters-1",
-    "page": "Mangal",
+    "location": "internals/#Mangal.login",
+    "page": "Internal functions",
+    "title": "Mangal.login",
+    "category": "function",
+    "text": "This function will store the token in the MANGAL_BEARER_TOKEN environmental variable.\n\n\n\n\n\n"
+},
+
+{
+    "location": "internals/#Login-1",
+    "page": "Internal functions",
+    "title": "Login",
+    "category": "section",
+    "text": "Mangal.login"
+},
+
+{
+    "location": "internals/#Mangal.verbose",
+    "page": "Internal functions",
+    "title": "Mangal.verbose",
+    "category": "function",
+    "text": "verbose()\n\nThis function will switch the package to verbose mode.\n\n\n\n\n\nverbose(vrb::Bool)\n\nThis function will switch the package to verbose mode, or silence it.\n\n\n\n\n\n"
+},
+
+{
+    "location": "internals/#Mangal.isverbose",
+    "page": "Internal functions",
+    "title": "Mangal.isverbose",
+    "category": "function",
+    "text": "isverbose()\n\nThis function will return a Boolean for the current package verbosity.\n\n\n\n\n\n"
+},
+
+{
+    "location": "internals/#Verbosity-1",
+    "page": "Internal functions",
+    "title": "Verbosity",
+    "category": "section",
+    "text": "Mangal.verbose\nMangal.isverbose"
+},
+
+{
+    "location": "internals/#Formatters-1",
+    "page": "Internal functions",
     "title": "Formatters",
     "category": "section",
     "text": "Mangal.format_dataset_response\nMangal.format_network_response\nMangal.format_node_response\nMangal.format_backbone_response"
 },
 
 {
-    "location": "#Other-functions-1",
-    "page": "Mangal",
+    "location": "internals/#Other-functions-1",
+    "page": "Internal functions",
     "title": "Other functions",
     "category": "section",
     "text": "Mangal.generate_base_header\nMangal.generate_request_query\nMangal.search_objects_by_query"
+},
+
+{
+    "location": "internals/#Mangal.cache",
+    "page": "Internal functions",
+    "title": "Mangal.cache",
+    "category": "function",
+    "text": "Internally, the Mangal package uses a cache to store some objects that are likely to be queried more than once. These are MangalNode and MangalReferenceTaxon, which are called in a nested way during the querying of e.g. Interactions. This is not a fancy mechanism, and it only works when calling the nodes or backbones by their id (which is what the resources-hungry functions do internally anyways).\n\n\n\n\n\n"
+},
+
+{
+    "location": "internals/#Caching-1",
+    "page": "Internal functions",
+    "title": "Caching",
+    "category": "section",
+    "text": "Mangal.cache"
 },
 
 ]}
