@@ -71,4 +71,8 @@ include(joinpath(".", "interaction.jl"))
 export interactions
 export interaction
 
+# Get all objects
+include(joinpath(".", "getallof.jl"))
+export getallof
+
 end # module
