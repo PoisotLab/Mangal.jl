@@ -13,7 +13,7 @@ Mangal.verbose
 Mangal.isverbose
 ```
 
-## List ot types
+## List of types
 
 ```@docs
 MangalDataset
@@ -23,6 +23,12 @@ MangalNode
 ```
 
 ## Methods
+
+### Queries
+
+All queries are passed as *vectors of pairs*. For example, filtering
+interactions that are of the mutualist type can be done with `[Pair("type",
+"mutualism")]`.
 
 ### For datasets
 

@@ -7,10 +7,20 @@ function verbose()
     Mangal.verbose(true)
 end
 
+"""
+    verbose(vrb::Bool)
+
+This function will *switch* the package to verbose mode, or silence it.
+"""
 function verbose(vrb::Bool)
     ENV["MANGAL_VERBOSE"] = vrb
 end
 
+"""
+    isverbose()
+
+This function will return a Boolean for the current package verbosity.
+"""
 function isverbose()
     return parse(Bool, get(ENV, "MANGAL_VERBOSE", "false"))
 end
