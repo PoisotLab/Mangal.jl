@@ -41,6 +41,11 @@ function cache(results::Vector{T}) where {T <: Union{MangalReferenceTaxon,Mangal
     end
 end
 
+"""
+    generate_base_header()
+
+If a bearer token is present, this function will add it to the header.
+"""
 function generate_base_header()
     if haskey(ENV, "MANGAL_BEARER_TOKEN")
         return ["Authorization" => "bearer $(ENV["MANGAL_BEARER_TOKEN"])"]
