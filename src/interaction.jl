@@ -50,7 +50,6 @@ function interactions(network::MangalNetwork)
     network_interactions = MangalInteraction[]
     for network_node in network_nodes
         append!(network_interactions, interactions(network_node, :))
-        append!(network_interactions, interactions(:, network_node))
     end
     return unique(network_interactions)
 end
@@ -60,7 +59,6 @@ function interactions(network::MangalNetwork, query::Vector{Pair{String,T}}) whe
     network_interactions = MangalInteraction[]
     for network_node in network_nodes
         append!(network_interactions, interactions(network_node, :, query))
-        append!(network_interactions, interactions(:, network_node, query))
     end
     return unique(network_interactions)
 end
