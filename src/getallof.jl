@@ -27,7 +27,7 @@ for op in ops
             for page in 1:pages_to_do
                 paging_query = ["count" => page_size, "page" => page-1]
                 append!(paging_query, base_query)
-                append!(result_set, $filterfunc(paging_query))
+                append!(result_set, $filterfunc(n, paging_query))
             end
             return unique(result_set)
         end
@@ -48,7 +48,7 @@ for op in ops
             for page in 1:pages_to_do
                 paging_query = ["count" => page_size, "page" => page-1]
                 append!(paging_query, base_query)
-                append!(result_set, $filterfunc(paging_query))
+                append!(result_set, $filterfunc(n, paging_query))
             end
             return unique(result_set)
         end
