@@ -1,6 +1,7 @@
 ops = [
     (MangalNode, MangalNetwork, "network_id", nodes),
-    (MangalNetwork, MangalDataset, "dataset_id", networks)
+    (MangalNetwork, MangalDataset, "dataset_id", networks),
+    (MangalInteraction, MangalNode, "node_id", interactions)
     ]
 
 #=
