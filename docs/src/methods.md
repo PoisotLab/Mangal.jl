@@ -6,6 +6,9 @@ interactions that are of the mutualist type can be done with `[Pair("type",
 
 ## A convenient shortcut
 
+In *most* cases, one wants to retrieve all descendants of an object -- for
+example, all nodes in a network, or all networks in a dataset.
+
 ```@docs
 getallof
 ```
