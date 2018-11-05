@@ -117,7 +117,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Getting data",
     "title": "Mangal.getallof",
     "category": "function",
-    "text": "gimme(::Type{MangalNode}, n::MangalNetwork)\n\nReturns all MangalNode objects contained into the MangalNetwork object passed as its second argument.\n\n\n\n\n\ngimme(::Type{MangalNetwork}, n::MangalDataset)\n\nReturns all MangalNetwork objects contained into the MangalDataset object passed as its second argument.\n\n\n\n\n\n"
+    "text": "getallof(::Type{MangalNode}, n::MangalNetwork)\n\nReturns all MangalNode objects contained into the MangalNetwork object passed as its second argument.\n\n\n\n\n\ngetallof(::Type{MangalNode}, n::MangalNetwork, query::Vector{Pair{String,T}}) where {T <: Any}\n\nReturns all MangalNode objects contained into the MangalNetwork object passed as its second argument.\n\n\n\n\n\ngetallof(::Type{MangalNetwork}, n::MangalDataset)\n\nReturns all MangalNetwork objects contained into the MangalDataset object passed as its second argument.\n\n\n\n\n\ngetallof(::Type{MangalNetwork}, n::MangalDataset, query::Vector{Pair{String,T}}) where {T <: Any}\n\nReturns all MangalNetwork objects contained into the MangalDataset object passed as its second argument.\n\n\n\n\n\n"
 },
 
 {
@@ -125,7 +125,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Getting data",
     "title": "A convenient shortcut",
     "category": "section",
-    "text": "getallof"
+    "text": "In most cases, one wants to retrieve all descendants of an object – for example, all nodes in a network, or all networks in a dataset.getallof"
 },
 
 {
