@@ -16,7 +16,8 @@ for op in ops
             getallof(::Type{$($t1)}, n::$($t2))
 
         Returns all $($t1) objects contained into the $($t2) object passed as
-        its second argument.
+        its second argument. Internally, this is wrapper around $($filterfunc),
+        where nodes are sorted according to their "$($filterfield)".
         """
         function getallof(::Type{$t1}, n::$t2)
             base_query = [$filterfield => n.id]
@@ -36,7 +37,8 @@ for op in ops
             getallof(::Type{$($t1)}, n::$($t2), query::Vector{Pair{String,T}}) where {T <: Any}
 
         Returns all $($t1) objects contained into the $($t2) object passed as
-        its second argument.
+        its second argument. This function will also apply a `query` passed as
+        the third argument.
         """
         function getallof(::Type{$t1}, n::$t2, query::Vector{Pair{String,T}}) where {T <: Any}
             base_query = [$filterfield => n.id]
