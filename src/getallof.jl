@@ -1,14 +1,7 @@
 ops = [
     (MangalNode, MangalNetwork, "network_id", nodes),
-    (MangalNetwork, MangalDataset, "dataset_id", networks),
-    (MangalInteraction, MangalNode, "node_id", interactions)
+    (MangalNetwork, MangalDataset, "dataset_id", networks)
     ]
-
-#=
-
-This block is a code generator.
-
-=#
 
 for op in ops
     t1, t2, filterfield, filterfunc = op
