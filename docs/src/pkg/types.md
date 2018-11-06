@@ -9,8 +9,8 @@ MangalInteraction
 ## Taxonomy types
 
 ```@docs
-MangalReferenceTaxon
 MangalNode
+MangalReferenceTaxon
 ```
 
 ## Additional information
