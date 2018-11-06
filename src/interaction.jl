@@ -63,6 +63,11 @@ function interactions(network::MangalNetwork, query::Vector{Pair{String,T}}) whe
     return unique(network_interactions)
 end
 
+"""
+    interaction(id::Int64)
+
+Returns an interaction by its id.
+"""
 function interaction(id::Int64)
     return first(interactions([Pair("id", id)]))
 end

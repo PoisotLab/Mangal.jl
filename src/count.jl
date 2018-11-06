@@ -1,8 +1,5 @@
 import Base.count
 
-"""
-a
-"""
 function count(::Type{MangalDataset})
     return Mangal.number_of_objects(Mangal.api_endpoints.dataset, nothing)
 end
