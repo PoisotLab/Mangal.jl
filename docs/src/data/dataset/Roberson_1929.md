@@ -15,5 +15,12 @@ Insects observed to pollinate flowers, ten miles of Carlinville, Illinois, USA
 ## Programmatic access
 
     using Mangal
-    Roberson_1929 = dataset(1)
+    Roberson_1929 = dataset("Roberson_1929") # or dataset(1)
+
+## Networks
+
+| id | name | description | public | nodes |
+|:--:|------|-------------|--------|-------|
+| `1` | `Roberson_1929` | Insects observed to pollinate flowers, ten miles of Carlinville, Illinois, USA | ✓ | 1500 |
+
 

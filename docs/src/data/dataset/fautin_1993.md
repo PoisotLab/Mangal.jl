@@ -15,5 +15,12 @@ Anemonfishes-anemons intractions in the tropical Indo-Pacific ocean
 ## Programmatic access
 
     using Mangal
-    fautin_1993 = dataset(19)
+    fautin_1993 = dataset("fautin_1993") # or dataset(19)
+
+## Networks
+
+| id | name | description | public | nodes |
+|:--:|------|-------------|--------|-------|
+| `806` | `fautin_1993` | Anemonfishes-anemons intractions in the tropical Indo-Pacific ocean | ✓ | 36 |
+
 

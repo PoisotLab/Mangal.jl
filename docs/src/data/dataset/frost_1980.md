@@ -15,5 +15,12 @@ Fruit-frugivore interactions in a South African costal dune forest
 ## Programmatic access
 
     using Mangal
-    frost_1980 = dataset(12)
+    frost_1980 = dataset("frost_1980") # or dataset(12)
+
+## Networks
+
+| id | name | description | public | nodes |
+|:--:|------|-------------|--------|-------|
+| `11` | `frost_1980` | Fruit-frugivore interactions in a South African costal dune forest | ✓ | 26 |
+
 

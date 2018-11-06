@@ -15,5 +15,12 @@ Plant-pollinator interaction at Garajonay, Gomera, Spain (Canary Islands)
 ## Programmatic access
 
     using Mangal
-    olesen = dataset(26)
+    olesen = dataset("olesen") # or dataset(26)
+
+## Networks
+
+| id | name | description | public | nodes |
+|:--:|------|-------------|--------|-------|
+| `878` | `olesen` | Plant-pollinator interaction at Garajonay, Gomera, Spain (Canary Islands) | ✓ | 84 |
+
 

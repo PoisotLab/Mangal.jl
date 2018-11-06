@@ -15,5 +15,12 @@ Plant-pollinator interaction at Morant Point, Jamaica
 ## Programmatic access
 
     using Mangal
-    percival_1974 = dataset(14)
+    percival_1974 = dataset("percival_1974") # or dataset(14)
+
+## Networks
+
+| id | name | description | public | nodes |
+|:--:|------|-------------|--------|-------|
+| `13` | `percival_1974` | Plant-pollinator interaction at Morant Point, Jamaica  | ✓ | 97 |
+
 

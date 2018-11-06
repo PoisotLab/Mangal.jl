@@ -15,5 +15,12 @@ Pollination of a bromeliad community in the high montane Atlantic rain forest in
 ## Programmatic access
 
     using Mangal
-    kaehler_et_al_2005 = dataset(7)
+    kaehler_et_al_2005 = dataset("kaehler_et_al_2005") # or dataset(7)
+
+## Networks
+
+| id | name | description | public | nodes |
+|:--:|------|-------------|--------|-------|
+| `7` | `kaehler_et_al_2005` | Pollination of a bromeliad community in the high montane Atlantic rain forest in Paran? state, Brazil | ✓ | 19 |
+
 

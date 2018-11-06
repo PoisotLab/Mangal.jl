@@ -15,5 +15,14 @@ Plant-pollinator interaction at three altudinal levels (subandean scrub, cushion
 ## Programmatic access
 
     using Mangal
-    arroyo_1982 = dataset(9)
+    arroyo_1982 = dataset("arroyo_1982") # or dataset(9)
+
+## Networks
+
+| id | name | description | public | nodes |
+|:--:|------|-------------|--------|-------|
+| `16` | `arroyo_1982_subandean` | Plant-polinator interaction in subandean scrub in the Andrean zone on the Cordon del Cepo in central Chile | ✓ | 185 |
+| `17` | `arroyo_1982_cushion-plant` | Plant-polinator interaction of cushion-plant in the Andrean zone on the Cordon del Cepo in central Chile | ✓ | 105 |
+| `18` | `arroyo_1982_subnival_feldfiel` | Plant-polinator interaction in subnival feldfield in the Andrean zone on the Cordon del Cepo in central Chile | ✓ | 68 |
+
 

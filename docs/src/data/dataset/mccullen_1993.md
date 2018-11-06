@@ -15,5 +15,12 @@ compilation of records on plant-flower visitor interactions in the Galápagos ar
 ## Programmatic access
 
     using Mangal
-    mccullen_1993 = dataset(20)
+    mccullen_1993 = dataset("mccullen_1993") # or dataset(20)
+
+## Networks
+
+| id | name | description | public | nodes |
+|:--:|------|-------------|--------|-------|
+| `807` | `mccullen_1993` | compilation of records on plant-flower visitor interactions in the Galápagos archipelago found in the literature. Pinta Island |  | 156 |
+
 

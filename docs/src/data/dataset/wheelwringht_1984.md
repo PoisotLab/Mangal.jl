@@ -15,5 +15,12 @@ Bird-fruit interaction in the lower montane forests of Monteverde, Costa Rica
 ## Programmatic access
 
     using Mangal
-    wheelwringht_1984 = dataset(22)
+    wheelwringht_1984 = dataset("wheelwringht_1984") # or dataset(22)
+
+## Networks
+
+| id | name | description | public | nodes |
+|:--:|------|-------------|--------|-------|
+| `809` | `wheelwringht_1984` | Bird-fruit interaction in the lower montane forests of Monteverde, Costa Rica | ✓ | 209 |
+
 

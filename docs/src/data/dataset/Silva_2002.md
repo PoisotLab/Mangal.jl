@@ -15,5 +15,12 @@ Fruit-bird interaction at the Intervales State Park, Brazil
 ## Programmatic access
 
     using Mangal
-    Silva_2002 = dataset(4)
+    Silva_2002 = dataset("Silva_2002") # or dataset(4)
+
+## Networks
+
+| id | name | description | public | nodes |
+|:--:|------|-------------|--------|-------|
+| `4` | `Silva_2002` | Fruit-bird interaction at the Intervales State Park, Brazil | ✓ | 317 |
+
 

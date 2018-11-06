@@ -15,5 +15,12 @@ null
 ## Programmatic access
 
     using Mangal
-    Elberling_Olesen = dataset(15)
+    Elberling_Olesen = dataset("Elberling_Olesen") # or dataset(15)
+
+## Networks
+
+| id | name | description | public | nodes |
+|:--:|------|-------------|--------|-------|
+| `14` | `Elberling_Olesen` | null | ✓ | 107 |
+
 

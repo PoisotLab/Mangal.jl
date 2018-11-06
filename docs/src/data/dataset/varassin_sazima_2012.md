@@ -15,5 +15,12 @@ Bromeliad-pollinator interaction in the Estacao Biologica de Santa Lucia in sout
 ## Programmatic access
 
     using Mangal
-    varassin_sazima_2012 = dataset(10)
+    varassin_sazima_2012 = dataset("varassin_sazima_2012") # or dataset(10)
+
+## Networks
+
+| id | name | description | public | nodes |
+|:--:|------|-------------|--------|-------|
+| `9` | `varassin_sazima_2012` | Bromeliad-pollinator interaction in the Estacao Biologica de Santa Lucia in southeastern Brazil | ✓ | 45 |
+
 

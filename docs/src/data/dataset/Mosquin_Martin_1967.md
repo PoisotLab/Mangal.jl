@@ -15,5 +15,12 @@ Occurence of flower-visiting insect on plant species, two miles north of Bailey 
 ## Programmatic access
 
     using Mangal
-    Mosquin_Martin_1967 = dataset(5)
+    Mosquin_Martin_1967 = dataset("Mosquin_Martin_1967") # or dataset(5)
+
+## Networks
+
+| id | name | description | public | nodes |
+|:--:|------|-------------|--------|-------|
+| `5` | `Mosquin_Martin_1967` | Occurence of flower-visiting insect on plant species, two miles north of Bailey Point, Melville Island, N.W.T., Canada | ✓ | 29 |
+
 
