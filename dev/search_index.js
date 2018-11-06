@@ -13,7 +13,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Mangal",
     "title": "Mangal",
     "category": "section",
-    "text": "This manual describes the functionalities of the Mangal.jl package, to query data from species interaction networks. This package is a wrapper around the new API for the mangal ecological interactions database. It uses Julia 1.0 to provide a programmatic interface to read the data. Development of this package and the underlying database was funded by the Canadian Foundation for Innovation."
+    "text": "This manual describes the functionalities of the Mangal.jl package, to query data from species interaction networks. This package is a wrapper around the new API for the mangal ecological interactions database. It uses Julia 1.0 to provide a programmatic interface to read the data. Development of this package and the underlying database was funded by the Canadian Foundation for Innovation and the Natural Sciences and Engineering Research Council of Canada."
 },
 
 {
@@ -121,6 +121,14 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "methods/#A-note-about-paging-1",
+    "page": "Getting data",
+    "title": "A note about paging",
+    "category": "section",
+    "text": "danger: Paging maters\nBy default, functions will only return the top n results, where n depends on the server settings. If you need to see all results, then looping through pages is required.Paging is controlled by two parameters in the query argument of every function: page, and count. The queries start at \"page\" => 0 by default, and count can be increased up to 200. Getting records 201 to 400 for a request would be done with [\"page\" => 1, \"count\" => 200]."
+},
+
+{
     "location": "methods/#Mangal.getallof",
     "page": "Getting data",
     "title": "Mangal.getallof",
@@ -133,7 +141,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Getting data",
     "title": "A convenient shortcut",
     "category": "section",
-    "text": "In most cases, one wants to retrieve all descendants of an object – for example, all nodes in a network, or all networks in a dataset. These methods are automatically generated, and basically take care of doing the paging for you.important: Paging\nBy default, functions other than getallof will only return the top n results, where n depends on the server settings. If you need to see all results, then looping through pages is required. Simply add \"page\" => page to your query.getallof"
+    "text": "In most cases, one wants to retrieve all descendants of an object – for example, all nodes in a network, or all networks in a dataset. These methods are automatically generated, and basically take care of doing the paging for you.getallof"
 },
 
 {
@@ -213,7 +221,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Internal functions",
     "title": "Mangal.login",
     "category": "function",
-    "text": "This function will store the token in the MANGAL_BEARER_TOKEN environmental variable.\n\n\n\n\n\n"
+    "text": "login(token::AbstractString)\n\nThis function will store the token in the MANGAL_BEARER_TOKEN environmental variable. To get the your token, please use login with no argument.\n\n\n\n\n\nlogin()\n\nRead the bearer token from the MANGAL_BEARER_TOKEN environment variable. If not found, displays a login message with a login URL.\n\n\n\n\n\n"
 },
 
 {
@@ -221,7 +229,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Internal functions",
     "title": "Login",
     "category": "section",
-    "text": "Mangal.login"
+    "text": "info: Login\nMangal relies on ORCID for authentication and login. As long as you have an ORCID profile, you can login.Mangal.login"
 },
 
 {
