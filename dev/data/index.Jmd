@@ -30,7 +30,7 @@ tpl = mt"""
 
 """
 
-for d in datasets()
+for d in datasets(["sort" => "id"])
    _clean_name = titlecase(replace(d.name, "_" => " "))
    _infos = Dict(
       "name" => _clean_name,
