@@ -1,10 +1,23 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>List · Mangal.jl</title><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../assets/documenter.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link href="../assets/documenter.css" rel="stylesheet" type="text/css"/></head><body><nav class="toc"><a href="../index.html"><img class="logo" src="../assets/logo.png" alt="Mangal.jl logo"/></a><h1>Mangal.jl</h1><select id="version-selector" onChange="window.location.href=this.value" style="visibility: hidden"></select><form class="search" id="search-form" action="../search/"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../">Mangal</a></li><li><span class="toctext">Datasets</span><ul><li class="current"><a class="toctext" href>List</a><ul class="internal"></ul></li><li><span class="toctext">Details</span></li></ul></li><li><span class="toctext">Package documentation</span><ul><li><a class="toctext" href="../pkg/gettingdata/">Getting data</a></li><li><a class="toctext" href="../pkg/types/">Data types</a></li><li><a class="toctext" href="../pkg/methods/">Methods for data retrieval</a></li><li><a class="toctext" href="../pkg/internals/">Internal functions</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>Datasets</li><li><a href>List</a></li></ul><a class="edit-page" href="https://github.com/PoisotLab/Mangal.jl/blob/master/docs/src/data/index.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/><div id="topbar"><span>List</span><a class="fa fa-bars" href="#"></a></div></header><pre><code class="language-julia">using Mustache
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Data list · Mangal.jl</title><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../assets/documenter.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link href="../assets/documenter.css" rel="stylesheet" type="text/css"/></head><body><nav class="toc"><a href="../index.html"><img class="logo" src="../assets/logo.png" alt="Mangal.jl logo"/></a><h1>Mangal.jl</h1><select id="version-selector" onChange="window.location.href=this.value" style="visibility: hidden"></select><form class="search" id="search-form" action="../search/"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../">Mangal</a></li><li class="current"><a class="toctext" href>Data list</a><ul class="internal"></ul></li><li><span class="toctext">Dataset details</span></li><li><span class="toctext">Package documentation</span><ul><li><a class="toctext" href="../pkg/gettingdata/">Getting data</a></li><li><a class="toctext" href="../pkg/types/">Data types</a></li><li><a class="toctext" href="../pkg/methods/">Methods for data retrieval</a></li><li><a class="toctext" href="../pkg/internals/">Internal functions</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li><a href>Data list</a></li></ul><a class="edit-page" href="https://github.com/PoisotLab/Mangal.jl/blob/master/docs/src/data/index.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/><div id="topbar"><span>Data list</span><a class="fa fa-bars" href="#"></a></div></header><pre><code class="language-julia">using Mustache
+using Dates
 
 tpl = mt&quot;&quot;&quot;
+## General informations
+
+**Dataset**: {{name}} [`{{id}}`]
+
+**Sampling date**: {{date}}
+
+**Added on**: {{created}} (last update on {{updated}})
+
+**Number of networks**: {{ncount}}
+
+## Description
+
 {{description}}
 
-To get this dataset from the package, use
+## Programmatic access
 
     using Mangal
     {{rawname}} = dataset({{id}})
@@ -17,7 +30,11 @@ for d in datasets()
       &quot;name&quot; =&gt; _clean_name,
       &quot;rawname&quot; =&gt; d.name,
       &quot;description&quot; =&gt; d.description,
-      &quot;id&quot; =&gt; d.id
+      &quot;id&quot; =&gt; d.id,
+      &quot;date&quot; =&gt; Dates.format(d.date, &quot;yyyy-mm-dd&quot;),
+      &quot;created&quot; =&gt; Dates.format(d.created, &quot;yyyy-mm-dd&quot;),
+      &quot;updated&quot; =&gt; Dates.format(d.updated, &quot;yyyy-mm-dd&quot;),
+      &quot;ncount&quot; =&gt; count(MangalNetwork, [&quot;dataset_id&quot; =&gt; d.id])
       )
    _text = render(tpl, _infos)
    write(joinpath(&quot;docs&quot;, &quot;src&quot;, &quot;data&quot;, &quot;dataset&quot;, &quot;$(d.name).md&quot;), _text)

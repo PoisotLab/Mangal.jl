@@ -26,10 +26,10 @@ var documenterSearchIndex = {"docs": [
 
 {
     "location": "data/#",
-    "page": "List",
-    "title": "List",
+    "page": "Data list",
+    "title": "Data list",
     "category": "page",
-    "text": "using Mustache\n\ntpl = mt\"\"\"\n{{description}}\n\nTo get this dataset from the package, use\n\n    using Mangal\n    {{rawname}} = dataset({{id}})\n\n\"\"\"\n\nfor d in datasets()\n   _clean_name = titlecase(replace(d.name, \"_\" => \" \"))\n   _infos = Dict(\n      \"name\" => _clean_name,\n      \"rawname\" => d.name,\n      \"description\" => d.description,\n      \"id\" => d.id\n      )\n   _text = render(tpl, _infos)\n   write(joinpath(\"docs\", \"src\", \"data\", \"dataset\", \"$(d.name).md\"), _text)\nend"
+    "text": "using Mustache\nusing Dates\n\ntpl = mt\"\"\"\n## General informations\n\n**Dataset**: {{name}} [`{{id}}`]\n\n**Sampling date**: {{date}}\n\n**Added on**: {{created}} (last update on {{updated}})\n\n**Number of networks**: {{ncount}}\n\n## Description\n\n{{description}}\n\n## Programmatic access\n\n    using Mangal\n    {{rawname}} = dataset({{id}})\n\n\"\"\"\n\nfor d in datasets()\n   _clean_name = titlecase(replace(d.name, \"_\" => \" \"))\n   _infos = Dict(\n      \"name\" => _clean_name,\n      \"rawname\" => d.name,\n      \"description\" => d.description,\n      \"id\" => d.id,\n      \"date\" => Dates.format(d.date, \"yyyy-mm-dd\"),\n      \"created\" => Dates.format(d.created, \"yyyy-mm-dd\"),\n      \"updated\" => Dates.format(d.updated, \"yyyy-mm-dd\"),\n      \"ncount\" => count(MangalNetwork, [\"dataset_id\" => d.id])\n      )\n   _text = render(tpl, _infos)\n   write(joinpath(\"docs\", \"src\", \"data\", \"dataset\", \"$(d.name).md\"), _text)\nend"
 },
 
 {
@@ -37,7 +37,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Elberling Olesen",
     "title": "Elberling Olesen",
     "category": "page",
-    "text": "nullTo get this dataset from the package, useusing Mangal\nElberling_Olesen = dataset(15)"
+    "text": ""
+},
+
+{
+    "location": "data/dataset/Elberling_Olesen/#General-informations-1",
+    "page": "Elberling Olesen",
+    "title": "General informations",
+    "category": "section",
+    "text": "Dataset: Elberling Olesen [15]Sampling date: 1111-11-11Added on: 2018-03-28 (last update on 2018-03-28)Number of networks: 1"
+},
+
+{
+    "location": "data/dataset/Elberling_Olesen/#Description-1",
+    "page": "Elberling Olesen",
+    "title": "Description",
+    "category": "section",
+    "text": "null"
+},
+
+{
+    "location": "data/dataset/Elberling_Olesen/#Programmatic-access-1",
+    "page": "Elberling Olesen",
+    "title": "Programmatic access",
+    "category": "section",
+    "text": "using Mangal\nElberling_Olesen = dataset(15)"
 },
 
 {
@@ -45,7 +69,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Howking 1968",
     "title": "Howking 1968",
     "category": "page",
-    "text": "Insect activity recorded on flower at Lake Hazen, Ellesmere Island, N.W.T., CanadaTo get this dataset from the package, useusing Mangal\nHowking_1968 = dataset(2)"
+    "text": ""
+},
+
+{
+    "location": "data/dataset/Howking_1968/#General-informations-1",
+    "page": "Howking 1968",
+    "title": "General informations",
+    "category": "section",
+    "text": "Dataset: Howking 1968 [2]Sampling date: 1963-06-01Added on: 2018-03-27 (last update on 2018-03-27)Number of networks: 1"
+},
+
+{
+    "location": "data/dataset/Howking_1968/#Description-1",
+    "page": "Howking 1968",
+    "title": "Description",
+    "category": "section",
+    "text": "Insect activity recorded on flower at Lake Hazen, Ellesmere Island, N.W.T., Canada"
+},
+
+{
+    "location": "data/dataset/Howking_1968/#Programmatic-access-1",
+    "page": "Howking 1968",
+    "title": "Programmatic access",
+    "category": "section",
+    "text": "using Mangal\nHowking_1968 = dataset(2)"
 },
 
 {
@@ -53,7 +101,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Lundgren Olesen 2005",
     "title": "Lundgren Olesen 2005",
     "category": "page",
-    "text": "Pollnator activity recorded on flowers, Uummannaq Island, Greenland, DanmarkTo get this dataset from the package, useusing Mangal\nLundgren_Olesen_2005 = dataset(6)"
+    "text": ""
+},
+
+{
+    "location": "data/dataset/Lundgren_Olesen_2005/#General-informations-1",
+    "page": "Lundgren Olesen 2005",
+    "title": "General informations",
+    "category": "section",
+    "text": "Dataset: Lundgren Olesen 2005 [6]Sampling date: 2002-08-04Added on: 2018-03-28 (last update on 2018-03-28)Number of networks: 1"
+},
+
+{
+    "location": "data/dataset/Lundgren_Olesen_2005/#Description-1",
+    "page": "Lundgren Olesen 2005",
+    "title": "Description",
+    "category": "section",
+    "text": "Pollnator activity recorded on flowers, Uummannaq Island, Greenland, Danmark"
+},
+
+{
+    "location": "data/dataset/Lundgren_Olesen_2005/#Programmatic-access-1",
+    "page": "Lundgren Olesen 2005",
+    "title": "Programmatic access",
+    "category": "section",
+    "text": "using Mangal\nLundgren_Olesen_2005 = dataset(6)"
 },
 
 {
@@ -61,7 +133,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Mosquin Martin 1967",
     "title": "Mosquin Martin 1967",
     "category": "page",
-    "text": "Occurence of flower-visiting insect on plant species, two miles north of Bailey Point, Melville Island, N.W.T., CanadaTo get this dataset from the package, useusing Mangal\nMosquin_Martin_1967 = dataset(5)"
+    "text": ""
+},
+
+{
+    "location": "data/dataset/Mosquin_Martin_1967/#General-informations-1",
+    "page": "Mosquin Martin 1967",
+    "title": "General informations",
+    "category": "section",
+    "text": "Dataset: Mosquin Martin 1967 [5]Sampling date: 1965-07-31Added on: 2018-03-27 (last update on 2018-03-27)Number of networks: 1"
+},
+
+{
+    "location": "data/dataset/Mosquin_Martin_1967/#Description-1",
+    "page": "Mosquin Martin 1967",
+    "title": "Description",
+    "category": "section",
+    "text": "Occurence of flower-visiting insect on plant species, two miles north of Bailey Point, Melville Island, N.W.T., Canada"
+},
+
+{
+    "location": "data/dataset/Mosquin_Martin_1967/#Programmatic-access-1",
+    "page": "Mosquin Martin 1967",
+    "title": "Programmatic access",
+    "category": "section",
+    "text": "using Mangal\nMosquin_Martin_1967 = dataset(5)"
 },
 
 {
@@ -69,7 +165,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Olesen Al 2002",
     "title": "Olesen Al 2002",
     "category": "page",
-    "text": "Pollination networks for two oceanic islands, the Azorean Flores and the Mauritian Ile aux AigrettesTo get this dataset from the package, useusing Mangal\nOlesen_al_2002 = dataset(13)"
+    "text": ""
+},
+
+{
+    "location": "data/dataset/Olesen_al_2002/#General-informations-1",
+    "page": "Olesen Al 2002",
+    "title": "General informations",
+    "category": "section",
+    "text": "Dataset: Olesen Al 2002 [13]Sampling date: 2000-01-01Added on: 2018-03-28 (last update on 2018-03-28)Number of networks: 2"
+},
+
+{
+    "location": "data/dataset/Olesen_al_2002/#Description-1",
+    "page": "Olesen Al 2002",
+    "title": "Description",
+    "category": "section",
+    "text": "Pollination networks for two oceanic islands, the Azorean Flores and the Mauritian Ile aux Aigrettes"
+},
+
+{
+    "location": "data/dataset/Olesen_al_2002/#Programmatic-access-1",
+    "page": "Olesen Al 2002",
+    "title": "Programmatic access",
+    "category": "section",
+    "text": "using Mangal\nOlesen_al_2002 = dataset(13)"
 },
 
 {
@@ -77,7 +197,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Roberson 1929",
     "title": "Roberson 1929",
     "category": "page",
-    "text": "Insects observed to pollinate flowers, ten miles of Carlinville, Illinois, USATo get this dataset from the package, useusing Mangal\nRoberson_1929 = dataset(1)"
+    "text": ""
+},
+
+{
+    "location": "data/dataset/Roberson_1929/#General-informations-1",
+    "page": "Roberson 1929",
+    "title": "General informations",
+    "category": "section",
+    "text": "Dataset: Roberson 1929 [1]Sampling date: 1899-07-01Added on: 2018-03-27 (last update on 2018-03-27)Number of networks: 1"
+},
+
+{
+    "location": "data/dataset/Roberson_1929/#Description-1",
+    "page": "Roberson 1929",
+    "title": "Description",
+    "category": "section",
+    "text": "Insects observed to pollinate flowers, ten miles of Carlinville, Illinois, USA"
+},
+
+{
+    "location": "data/dataset/Roberson_1929/#Programmatic-access-1",
+    "page": "Roberson 1929",
+    "title": "Programmatic access",
+    "category": "section",
+    "text": "using Mangal\nRoberson_1929 = dataset(1)"
 },
 
 {
@@ -85,7 +229,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Salix Kolpelke",
     "title": "Salix Kolpelke",
     "category": "page",
-    "text": "Food-web structure of willow-galling sawflies and their natural enemies across Europe.To get this dataset from the package, useusing Mangal\nSalix_Kolpelke = dataset(18)"
+    "text": ""
+},
+
+{
+    "location": "data/dataset/Salix_Kolpelke/#General-informations-1",
+    "page": "Salix Kolpelke",
+    "title": "General informations",
+    "category": "section",
+    "text": "Dataset: Salix Kolpelke [18]Sampling date: 1111-11-11Added on: 2018-04-13 (last update on 2018-04-13)Number of networks: 783"
+},
+
+{
+    "location": "data/dataset/Salix_Kolpelke/#Description-1",
+    "page": "Salix Kolpelke",
+    "title": "Description",
+    "category": "section",
+    "text": "Food-web structure of willow-galling sawflies and their natural enemies across Europe."
+},
+
+{
+    "location": "data/dataset/Salix_Kolpelke/#Programmatic-access-1",
+    "page": "Salix Kolpelke",
+    "title": "Programmatic access",
+    "category": "section",
+    "text": "using Mangal\nSalix_Kolpelke = dataset(18)"
 },
 
 {
@@ -93,7 +261,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Silva 2002",
     "title": "Silva 2002",
     "category": "page",
-    "text": "Fruit-bird interaction at the Intervales State Park, BrazilTo get this dataset from the package, useusing Mangal\nSilva_2002 = dataset(4)"
+    "text": ""
+},
+
+{
+    "location": "data/dataset/Silva_2002/#General-informations-1",
+    "page": "Silva 2002",
+    "title": "General informations",
+    "category": "section",
+    "text": "Dataset: Silva 2002 [4]Sampling date: 2000-03-01Added on: 2018-03-27 (last update on 2018-03-27)Number of networks: 1"
+},
+
+{
+    "location": "data/dataset/Silva_2002/#Description-1",
+    "page": "Silva 2002",
+    "title": "Description",
+    "category": "section",
+    "text": "Fruit-bird interaction at the Intervales State Park, Brazil"
+},
+
+{
+    "location": "data/dataset/Silva_2002/#Programmatic-access-1",
+    "page": "Silva 2002",
+    "title": "Programmatic access",
+    "category": "section",
+    "text": "using Mangal\nSilva_2002 = dataset(4)"
 },
 
 {
@@ -101,7 +293,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Witt 1998",
     "title": "Witt 1998",
     "category": "page",
-    "text": "UnknownTo get this dataset from the package, useusing Mangal\nWitt_1998 = dataset(3)"
+    "text": ""
+},
+
+{
+    "location": "data/dataset/Witt_1998/#General-informations-1",
+    "page": "Witt 1998",
+    "title": "General informations",
+    "category": "section",
+    "text": "Dataset: Witt 1998 [3]Sampling date: 1998-01-01Added on: 2018-03-27 (last update on 2018-03-27)Number of networks: 1"
+},
+
+{
+    "location": "data/dataset/Witt_1998/#Description-1",
+    "page": "Witt 1998",
+    "title": "Description",
+    "category": "section",
+    "text": "Unknown"
+},
+
+{
+    "location": "data/dataset/Witt_1998/#Programmatic-access-1",
+    "page": "Witt 1998",
+    "title": "Programmatic access",
+    "category": "section",
+    "text": "using Mangal\nWitt_1998 = dataset(3)"
 },
 
 {
@@ -109,7 +325,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Arroyo 1982",
     "title": "Arroyo 1982",
     "category": "page",
-    "text": "Plant-pollinator interaction at three altudinal levels (subandean scrub, cushion-plant, subnival feldfield) in the Andrean zone on the Cordon del Cepo in central ChileTo get this dataset from the package, useusing Mangal\narroyo_1982 = dataset(9)"
+    "text": ""
+},
+
+{
+    "location": "data/dataset/arroyo_1982/#General-informations-1",
+    "page": "Arroyo 1982",
+    "title": "General informations",
+    "category": "section",
+    "text": "Dataset: Arroyo 1982 [9]Sampling date: 1981-03-01Added on: 2018-03-28 (last update on 2018-03-28)Number of networks: 3"
+},
+
+{
+    "location": "data/dataset/arroyo_1982/#Description-1",
+    "page": "Arroyo 1982",
+    "title": "Description",
+    "category": "section",
+    "text": "Plant-pollinator interaction at three altudinal levels (subandean scrub, cushion-plant, subnival feldfield) in the Andrean zone on the Cordon del Cepo in central Chile"
+},
+
+{
+    "location": "data/dataset/arroyo_1982/#Programmatic-access-1",
+    "page": "Arroyo 1982",
+    "title": "Programmatic access",
+    "category": "section",
+    "text": "using Mangal\narroyo_1982 = dataset(9)"
 },
 
 {
@@ -117,7 +357,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Barret Helenurm 1987",
     "title": "Barret Helenurm 1987",
     "category": "page",
-    "text": "Understory perennial plants interaction with pollinator, 5 km east of Doaktown, Northumberland County, central New Brunswick, CanadaTo get this dataset from the package, useusing Mangal\nbarret_helenurm_1987 = dataset(16)"
+    "text": ""
+},
+
+{
+    "location": "data/dataset/barret_helenurm_1987/#General-informations-1",
+    "page": "Barret Helenurm 1987",
+    "title": "General informations",
+    "category": "section",
+    "text": "Dataset: Barret Helenurm 1987 [16]Sampling date: 1979-01-01Added on: 2018-03-28 (last update on 2018-03-28)Number of networks: 1"
+},
+
+{
+    "location": "data/dataset/barret_helenurm_1987/#Description-1",
+    "page": "Barret Helenurm 1987",
+    "title": "Description",
+    "category": "section",
+    "text": "Understory perennial plants interaction with pollinator, 5 km east of Doaktown, Northumberland County, central New Brunswick, Canada"
+},
+
+{
+    "location": "data/dataset/barret_helenurm_1987/#Programmatic-access-1",
+    "page": "Barret Helenurm 1987",
+    "title": "Programmatic access",
+    "category": "section",
+    "text": "using Mangal\nbarret_helenurm_1987 = dataset(16)"
 },
 
 {
@@ -125,7 +389,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Bezerra 2009",
     "title": "Bezerra 2009",
     "category": "page",
-    "text": "oil-flowers (Malpighiaceae) and their bee visitors from a Brazilian steppe, Parque Nacional do Catimbau, in the municipality of Buique (PE), northeastern BrazilTo get this dataset from the package, useusing Mangal\nbezerra_2009 = dataset(11)"
+    "text": ""
+},
+
+{
+    "location": "data/dataset/bezerra_2009/#General-informations-1",
+    "page": "Bezerra 2009",
+    "title": "General informations",
+    "category": "section",
+    "text": "Dataset: Bezerra 2009 [11]Sampling date: 2006-12-01Added on: 2018-03-28 (last update on 2018-03-28)Number of networks: 1"
+},
+
+{
+    "location": "data/dataset/bezerra_2009/#Description-1",
+    "page": "Bezerra 2009",
+    "title": "Description",
+    "category": "section",
+    "text": "oil-flowers (Malpighiaceae) and their bee visitors from a Brazilian steppe, Parque Nacional do Catimbau, in the municipality of Buique (PE), northeastern Brazil"
+},
+
+{
+    "location": "data/dataset/bezerra_2009/#Programmatic-access-1",
+    "page": "Bezerra 2009",
+    "title": "Programmatic access",
+    "category": "section",
+    "text": "using Mangal\nbezerra_2009 = dataset(11)"
 },
 
 {
@@ -133,7 +421,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Elberling Olesen 1999",
     "title": "Elberling Olesen 1999",
     "category": "page",
-    "text": "Flower-visiting insect at Mt. Latnjatjarro, northern SwedenTo get this dataset from the package, useusing Mangal\nelberling_olesen_1999 = dataset(8)"
+    "text": ""
+},
+
+{
+    "location": "data/dataset/elberling_olesen_1999/#General-informations-1",
+    "page": "Elberling Olesen 1999",
+    "title": "General informations",
+    "category": "section",
+    "text": "Dataset: Elberling Olesen 1999 [8]Sampling date: 1994-08-23Added on: 2018-03-28 (last update on 2018-03-28)Number of networks: 1"
+},
+
+{
+    "location": "data/dataset/elberling_olesen_1999/#Description-1",
+    "page": "Elberling Olesen 1999",
+    "title": "Description",
+    "category": "section",
+    "text": "Flower-visiting insect at Mt. Latnjatjarro, northern Sweden"
+},
+
+{
+    "location": "data/dataset/elberling_olesen_1999/#Programmatic-access-1",
+    "page": "Elberling Olesen 1999",
+    "title": "Programmatic access",
+    "category": "section",
+    "text": "using Mangal\nelberling_olesen_1999 = dataset(8)"
 },
 
 {
@@ -141,7 +453,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Fautin 1993",
     "title": "Fautin 1993",
     "category": "page",
-    "text": "Anemonfishes-anemons intractions in the tropical Indo-Pacific oceanTo get this dataset from the package, useusing Mangal\nfautin_1993 = dataset(19)"
+    "text": ""
+},
+
+{
+    "location": "data/dataset/fautin_1993/#General-informations-1",
+    "page": "Fautin 1993",
+    "title": "General informations",
+    "category": "section",
+    "text": "Dataset: Fautin 1993 [19]Sampling date: 1993-01-01Added on: 2018-04-23 (last update on 2018-04-23)Number of networks: 1"
+},
+
+{
+    "location": "data/dataset/fautin_1993/#Description-1",
+    "page": "Fautin 1993",
+    "title": "Description",
+    "category": "section",
+    "text": "Anemonfishes-anemons intractions in the tropical Indo-Pacific ocean"
+},
+
+{
+    "location": "data/dataset/fautin_1993/#Programmatic-access-1",
+    "page": "Fautin 1993",
+    "title": "Programmatic access",
+    "category": "section",
+    "text": "using Mangal\nfautin_1993 = dataset(19)"
 },
 
 {
@@ -149,7 +485,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Frost 1980",
     "title": "Frost 1980",
     "category": "page",
-    "text": "Fruit-frugivore interactions in a South African costal dune forestTo get this dataset from the package, useusing Mangal\nfrost_1980 = dataset(12)"
+    "text": ""
+},
+
+{
+    "location": "data/dataset/frost_1980/#General-informations-1",
+    "page": "Frost 1980",
+    "title": "General informations",
+    "category": "section",
+    "text": "Dataset: Frost 1980 [12]Sampling date: 1980-01-01Added on: 2018-03-28 (last update on 2018-03-28)Number of networks: 1"
+},
+
+{
+    "location": "data/dataset/frost_1980/#Description-1",
+    "page": "Frost 1980",
+    "title": "Description",
+    "category": "section",
+    "text": "Fruit-frugivore interactions in a South African costal dune forest"
+},
+
+{
+    "location": "data/dataset/frost_1980/#Programmatic-access-1",
+    "page": "Frost 1980",
+    "title": "Programmatic access",
+    "category": "section",
+    "text": "using Mangal\nfrost_1980 = dataset(12)"
 },
 
 {
@@ -157,7 +517,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Hadfield 2014",
     "title": "Hadfield 2014",
     "category": "page",
-    "text": "Flea distribution and abundance on small mammals (Soricomorpha and Rodentia) in 51 different regions of the PalearcticTo get this dataset from the package, useusing Mangal\nhadfield_2014 = dataset(24)"
+    "text": ""
+},
+
+{
+    "location": "data/dataset/hadfield_2014/#General-informations-1",
+    "page": "Hadfield 2014",
+    "title": "General informations",
+    "category": "section",
+    "text": "Dataset: Hadfield 2014 [24]Sampling date: 2014-02-01Added on: 2018-04-25 (last update on 2018-04-25)Number of networks: 51"
+},
+
+{
+    "location": "data/dataset/hadfield_2014/#Description-1",
+    "page": "Hadfield 2014",
+    "title": "Description",
+    "category": "section",
+    "text": "Flea distribution and abundance on small mammals (Soricomorpha and Rodentia) in 51 different regions of the Palearctic"
+},
+
+{
+    "location": "data/dataset/hadfield_2014/#Programmatic-access-1",
+    "page": "Hadfield 2014",
+    "title": "Programmatic access",
+    "category": "section",
+    "text": "using Mangal\nhadfield_2014 = dataset(24)"
 },
 
 {
@@ -165,7 +549,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Kaehler Et Al 2005",
     "title": "Kaehler Et Al 2005",
     "category": "page",
-    "text": "Pollination of a bromeliad community in the high montane Atlantic rain forest in Paran? state, BrazilTo get this dataset from the package, useusing Mangal\nkaehler_et_al_2005 = dataset(7)"
+    "text": ""
+},
+
+{
+    "location": "data/dataset/kaehler_et_al_2005/#General-informations-1",
+    "page": "Kaehler Et Al 2005",
+    "title": "General informations",
+    "category": "section",
+    "text": "Dataset: Kaehler Et Al 2005 [7]Sampling date: 2002-04-01Added on: 2018-03-28 (last update on 2018-03-28)Number of networks: 1"
+},
+
+{
+    "location": "data/dataset/kaehler_et_al_2005/#Description-1",
+    "page": "Kaehler Et Al 2005",
+    "title": "Description",
+    "category": "section",
+    "text": "Pollination of a bromeliad community in the high montane Atlantic rain forest in Paran? state, Brazil"
+},
+
+{
+    "location": "data/dataset/kaehler_et_al_2005/#Programmatic-access-1",
+    "page": "Kaehler Et Al 2005",
+    "title": "Programmatic access",
+    "category": "section",
+    "text": "using Mangal\nkaehler_et_al_2005 = dataset(7)"
 },
 
 {
@@ -173,7 +581,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Kato 1993",
     "title": "Kato 1993",
     "category": "page",
-    "text": "Flower and anthophilous insect interactions in the primary cool-temperate subalpine forests and meadows at Mt. Kushigata, Yamanashi Prefecture, JapanTo get this dataset from the package, useusing Mangal\nkato_1993 = dataset(21)"
+    "text": ""
+},
+
+{
+    "location": "data/dataset/kato_1993/#General-informations-1",
+    "page": "Kato 1993",
+    "title": "General informations",
+    "category": "section",
+    "text": "Dataset: Kato 1993 [21]Sampling date: 1991-09-01Added on: 2018-04-23 (last update on 2018-04-23)Number of networks: 1"
+},
+
+{
+    "location": "data/dataset/kato_1993/#Description-1",
+    "page": "Kato 1993",
+    "title": "Description",
+    "category": "section",
+    "text": "Flower and anthophilous insect interactions in the primary cool-temperate subalpine forests and meadows at Mt. Kushigata, Yamanashi Prefecture, Japan"
+},
+
+{
+    "location": "data/dataset/kato_1993/#Programmatic-access-1",
+    "page": "Kato 1993",
+    "title": "Programmatic access",
+    "category": "section",
+    "text": "using Mangal\nkato_1993 = dataset(21)"
 },
 
 {
@@ -181,7 +613,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Kohler 2011",
     "title": "Kohler 2011",
     "category": "page",
-    "text": "Hummingbirds-flowers interactions in an altitudinal gradient in the Brazilian Atlantic RainforestTo get this dataset from the package, useusing Mangal\nkohler_2011 = dataset(17)"
+    "text": ""
+},
+
+{
+    "location": "data/dataset/kohler_2011/#General-informations-1",
+    "page": "Kohler 2011",
+    "title": "General informations",
+    "category": "section",
+    "text": "Dataset: Kohler 2011 [17]Sampling date: 2011-01-01Added on: 2018-03-28 (last update on 2018-03-28)Number of networks: 3"
+},
+
+{
+    "location": "data/dataset/kohler_2011/#Description-1",
+    "page": "Kohler 2011",
+    "title": "Description",
+    "category": "section",
+    "text": "Hummingbirds-flowers interactions in an altitudinal gradient in the Brazilian Atlantic Rainforest"
+},
+
+{
+    "location": "data/dataset/kohler_2011/#Programmatic-access-1",
+    "page": "Kohler 2011",
+    "title": "Programmatic access",
+    "category": "section",
+    "text": "using Mangal\nkohler_2011 = dataset(17)"
 },
 
 {
@@ -189,7 +645,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Mccullen 1993",
     "title": "Mccullen 1993",
     "category": "page",
-    "text": "compilation of records on plant-flower visitor interactions in the Galápagos archipelago found in the literature. Pinta IslandTo get this dataset from the package, useusing Mangal\nmccullen_1993 = dataset(20)"
+    "text": ""
+},
+
+{
+    "location": "data/dataset/mccullen_1993/#General-informations-1",
+    "page": "Mccullen 1993",
+    "title": "General informations",
+    "category": "section",
+    "text": "Dataset: Mccullen 1993 [20]Sampling date: 1993-01-01Added on: 2018-04-23 (last update on 2018-04-23)Number of networks: 1"
+},
+
+{
+    "location": "data/dataset/mccullen_1993/#Description-1",
+    "page": "Mccullen 1993",
+    "title": "Description",
+    "category": "section",
+    "text": "compilation of records on plant-flower visitor interactions in the Galápagos archipelago found in the literature. Pinta Island"
+},
+
+{
+    "location": "data/dataset/mccullen_1993/#Programmatic-access-1",
+    "page": "Mccullen 1993",
+    "title": "Programmatic access",
+    "category": "section",
+    "text": "using Mangal\nmccullen_1993 = dataset(20)"
 },
 
 {
@@ -197,7 +677,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Motten 1982",
     "title": "Motten 1982",
     "category": "page",
-    "text": "spring wildflower community of mesic deciduous forests in piedmont North CarolinaTo get this dataset from the package, useusing Mangal\nmotten_1982 = dataset(23)"
+    "text": ""
+},
+
+{
+    "location": "data/dataset/motten_1982/#General-informations-1",
+    "page": "Motten 1982",
+    "title": "General informations",
+    "category": "section",
+    "text": "Dataset: Motten 1982 [23]Sampling date: 1982-01-01Added on: 2018-04-24 (last update on 2018-04-24)Number of networks: 1"
+},
+
+{
+    "location": "data/dataset/motten_1982/#Description-1",
+    "page": "Motten 1982",
+    "title": "Description",
+    "category": "section",
+    "text": "spring wildflower community of mesic deciduous forests in piedmont North Carolina"
+},
+
+{
+    "location": "data/dataset/motten_1982/#Programmatic-access-1",
+    "page": "Motten 1982",
+    "title": "Programmatic access",
+    "category": "section",
+    "text": "using Mangal\nmotten_1982 = dataset(23)"
 },
 
 {
@@ -205,7 +709,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Olesen",
     "title": "Olesen",
     "category": "page",
-    "text": "Plant-pollinator interaction at Garajonay, Gomera, Spain (Canary Islands)To get this dataset from the package, useusing Mangal\nolesen = dataset(26)"
+    "text": ""
+},
+
+{
+    "location": "data/dataset/olesen/#General-informations-1",
+    "page": "Olesen",
+    "title": "General informations",
+    "category": "section",
+    "text": "Dataset: Olesen [26]Sampling date: 1111-11-11Added on: 2018-04-25 (last update on 2018-04-25)Number of networks: 1"
+},
+
+{
+    "location": "data/dataset/olesen/#Description-1",
+    "page": "Olesen",
+    "title": "Description",
+    "category": "section",
+    "text": "Plant-pollinator interaction at Garajonay, Gomera, Spain (Canary Islands)"
+},
+
+{
+    "location": "data/dataset/olesen/#Programmatic-access-1",
+    "page": "Olesen",
+    "title": "Programmatic access",
+    "category": "section",
+    "text": "using Mangal\nolesen = dataset(26)"
 },
 
 {
@@ -213,7 +741,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Percival 1974",
     "title": "Percival 1974",
     "category": "page",
-    "text": "Plant-pollinator interaction at Morant Point, JamaicaTo get this dataset from the package, useusing Mangal\npercival_1974 = dataset(14)"
+    "text": ""
+},
+
+{
+    "location": "data/dataset/percival_1974/#General-informations-1",
+    "page": "Percival 1974",
+    "title": "General informations",
+    "category": "section",
+    "text": "Dataset: Percival 1974 [14]Sampling date: 1974-01-01Added on: 2018-03-28 (last update on 2018-03-28)Number of networks: 1"
+},
+
+{
+    "location": "data/dataset/percival_1974/#Description-1",
+    "page": "Percival 1974",
+    "title": "Description",
+    "category": "section",
+    "text": "Plant-pollinator interaction at Morant Point, Jamaica"
+},
+
+{
+    "location": "data/dataset/percival_1974/#Programmatic-access-1",
+    "page": "Percival 1974",
+    "title": "Programmatic access",
+    "category": "section",
+    "text": "using Mangal\npercival_1974 = dataset(14)"
 },
 
 {
@@ -221,7 +773,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Ponisio 2017",
     "title": "Ponisio 2017",
     "category": "page",
-    "text": "assembly of plant-pollinator communities at native plant restoration sites in an agricultural landscape, CaliforniaTo get this dataset from the package, useusing Mangal\nponisio_2017 = dataset(27)"
+    "text": ""
+},
+
+{
+    "location": "data/dataset/ponisio_2017/#General-informations-1",
+    "page": "Ponisio 2017",
+    "title": "General informations",
+    "category": "section",
+    "text": "Dataset: Ponisio 2017 [27]Sampling date: 2017-01-01Added on: 2018-04-27 (last update on 2018-04-27)Number of networks: 141"
+},
+
+{
+    "location": "data/dataset/ponisio_2017/#Description-1",
+    "page": "Ponisio 2017",
+    "title": "Description",
+    "category": "section",
+    "text": "assembly of plant-pollinator communities at native plant restoration sites in an agricultural landscape, California"
+},
+
+{
+    "location": "data/dataset/ponisio_2017/#Programmatic-access-1",
+    "page": "Ponisio 2017",
+    "title": "Programmatic access",
+    "category": "section",
+    "text": "using Mangal\nponisio_2017 = dataset(27)"
 },
 
 {
@@ -229,7 +805,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Ricciardi 2010",
     "title": "Ricciardi 2010",
     "category": "page",
-    "text": "structure of local anemonefish-anemone networks across the Manado region of Sulawesi, IndonesiaTo get this dataset from the package, useusing Mangal\nricciardi_2010 = dataset(25)"
+    "text": ""
+},
+
+{
+    "location": "data/dataset/ricciardi_2010/#General-informations-1",
+    "page": "Ricciardi 2010",
+    "title": "General informations",
+    "category": "section",
+    "text": "Dataset: Ricciardi 2010 [25]Sampling date: 2006-07-01Added on: 2018-04-25 (last update on 2018-04-25)Number of networks: 16"
+},
+
+{
+    "location": "data/dataset/ricciardi_2010/#Description-1",
+    "page": "Ricciardi 2010",
+    "title": "Description",
+    "category": "section",
+    "text": "structure of local anemonefish-anemone networks across the Manado region of Sulawesi, Indonesia"
+},
+
+{
+    "location": "data/dataset/ricciardi_2010/#Programmatic-access-1",
+    "page": "Ricciardi 2010",
+    "title": "Programmatic access",
+    "category": "section",
+    "text": "using Mangal\nricciardi_2010 = dataset(25)"
 },
 
 {
@@ -237,7 +837,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Varassin Sazima 2012",
     "title": "Varassin Sazima 2012",
     "category": "page",
-    "text": "Bromeliad-pollinator interaction in the Estacao Biologica de Santa Lucia in southeastern BrazilTo get this dataset from the package, useusing Mangal\nvarassin_sazima_2012 = dataset(10)"
+    "text": ""
+},
+
+{
+    "location": "data/dataset/varassin_sazima_2012/#General-informations-1",
+    "page": "Varassin Sazima 2012",
+    "title": "General informations",
+    "category": "section",
+    "text": "Dataset: Varassin Sazima 2012 [10]Sampling date: 2001-06-01Added on: 2018-03-28 (last update on 2018-03-28)Number of networks: 1"
+},
+
+{
+    "location": "data/dataset/varassin_sazima_2012/#Description-1",
+    "page": "Varassin Sazima 2012",
+    "title": "Description",
+    "category": "section",
+    "text": "Bromeliad-pollinator interaction in the Estacao Biologica de Santa Lucia in southeastern Brazil"
+},
+
+{
+    "location": "data/dataset/varassin_sazima_2012/#Programmatic-access-1",
+    "page": "Varassin Sazima 2012",
+    "title": "Programmatic access",
+    "category": "section",
+    "text": "using Mangal\nvarassin_sazima_2012 = dataset(10)"
 },
 
 {
@@ -245,7 +869,31 @@ var documenterSearchIndex = {"docs": [
     "page": "Wheelwringht 1984",
     "title": "Wheelwringht 1984",
     "category": "page",
-    "text": "Bird-fruit interaction in the lower montane forests of Monteverde, Costa RicaTo get this dataset from the package, useusing Mangal\nwheelwringht_1984 = dataset(22)"
+    "text": ""
+},
+
+{
+    "location": "data/dataset/wheelwringht_1984/#General-informations-1",
+    "page": "Wheelwringht 1984",
+    "title": "General informations",
+    "category": "section",
+    "text": "Dataset: Wheelwringht 1984 [22]Sampling date: 1978-01-01Added on: 2018-04-24 (last update on 2018-04-24)Number of networks: 1"
+},
+
+{
+    "location": "data/dataset/wheelwringht_1984/#Description-1",
+    "page": "Wheelwringht 1984",
+    "title": "Description",
+    "category": "section",
+    "text": "Bird-fruit interaction in the lower montane forests of Monteverde, Costa Rica"
+},
+
+{
+    "location": "data/dataset/wheelwringht_1984/#Programmatic-access-1",
+    "page": "Wheelwringht 1984",
+    "title": "Programmatic access",
+    "category": "section",
+    "text": "using Mangal\nwheelwringht_1984 = dataset(22)"
 },
 
 {
