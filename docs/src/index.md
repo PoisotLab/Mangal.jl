@@ -9,10 +9,9 @@ data. Development of this package and the underlying database was funded by the
 [Natural Sciences and Engineering Research Council of
 Canada](http://www.nserc-crsng.gc.ca/).
 
-
 ## Original publication
 
-> Poisot, T. , Baiser, B. , Dunne, J. A., Kéfi, S. , Massol, F. , Mouquet, N. ,
-> Romanuk, T. N., Stouffer, D. B., Wood, S. A. and Gravel, D. (2016), mangal –
-> making ecological network analysis simple. Ecography, 39: 384-390.
-> doi:10.1111/ecog.00976
+Poisot, T. , Baiser, B. , Dunne, J. A., Kéfi, S. , Massol, F. , Mouquet, N. ,
+Romanuk, T. N., Stouffer, D. B., Wood, S. A. and Gravel, D. (2016), mangal –
+making ecological network analysis simple. Ecography, 39: 384-390.
+doi:10.1111/ecog.00976
