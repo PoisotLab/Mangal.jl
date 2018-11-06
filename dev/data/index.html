@@ -20,12 +20,34 @@ tpl = mt&quot;&quot;&quot;
 ## Programmatic access
 
     using Mangal
-    {{rawname}} = dataset({{id}})
+    {{rawname}} = dataset(&quot;{{rawname}}&quot;) # or dataset({{id}})
+
+## Networks
+
+{{networks}}
 
 &quot;&quot;&quot;
 
-for d in datasets()
+for d in datasets([&quot;sort&quot; =&gt; &quot;id&quot;])
    _clean_name = titlecase(replace(d.name, &quot;_&quot; =&gt; &quot; &quot;))
+   ncount = count(MangalNetwork, [&quot;dataset_id&quot; =&gt; d.id])
+   page_size = 200
+   n_pages = convert(Int64, ceil(ncount/page_size))
+   n = MangalNetwork[]
+   for p in 1:n_pages
+      paging_q = [&quot;count&quot; =&gt; page_size, &quot;page&quot; =&gt; p-1]
+      q = [&quot;dataset_id&quot; =&gt; d.id]
+      append!(q, paging_q)
+      append!(n, networks(d, q))
+   end
+   rows = String[]
+   push!(rows, &quot;| id | name | description | public | nodes |\n&quot;)
+   push!(rows, &quot;|:--:|------|-------------|--------|-------|\n&quot;)
+   for ne in n
+      nnode = count(MangalNode, [&quot;network_id&quot; =&gt; ne.id])
+      pub = ne.public ? &quot;✓&quot; : &quot;&quot;
+      push!(rows, &quot;| `$(ne.id)` | `$(ne.name)` | $(ne.description) | $(pub) | $(nnode) |\n&quot;)
+   end
    _infos = Dict(
       &quot;name&quot; =&gt; _clean_name,
       &quot;rawname&quot; =&gt; d.name,
@@ -34,7 +56,8 @@ for d in datasets()
       &quot;date&quot; =&gt; Dates.format(d.date, &quot;yyyy-mm-dd&quot;),
       &quot;created&quot; =&gt; Dates.format(d.created, &quot;yyyy-mm-dd&quot;),
       &quot;updated&quot; =&gt; Dates.format(d.updated, &quot;yyyy-mm-dd&quot;),
-      &quot;ncount&quot; =&gt; count(MangalNetwork, [&quot;dataset_id&quot; =&gt; d.id])
+      &quot;ncount&quot; =&gt; ncount,
+      &quot;networks&quot; =&gt; reduce(*, rows)
       )
    _text = render(tpl, _infos)
    write(joinpath(&quot;docs&quot;, &quot;src&quot;, &quot;data&quot;, &quot;dataset&quot;, &quot;$(d.name).md&quot;), _text)
