@@ -32,9 +32,9 @@ deps = ["LinearAlgebra", "Random", "Serialization", "Sockets"]
 uuid = "8ba89e20-285c-5b6f-9357-94700520ee1b"
 
 [[EcologicalNetworks]]
-deps = ["Combinatorics", "DelimitedFiles", "LinearAlgebra", "Random", "StatsBase", "Test"]
-git-tree-sha1 = "ee67a1c65db1eb10637a5db9087e9156fd2ee7aa"
-repo-rev = "master"
+deps = ["Combinatorics", "DataStructures", "DelimitedFiles", "LinearAlgebra", "Random", "StatsBase", "Test"]
+git-tree-sha1 = "daa14fb264906d3e44899eed0024f528bef1913b"
+repo-rev = "develop"
 repo-url = "https://github.com/PoisotLab/EcologicalNetworks.jl"
 uuid = "26cd3c7c-942f-11e8-1e85-357945f36438"
 version = "1.0.0"
