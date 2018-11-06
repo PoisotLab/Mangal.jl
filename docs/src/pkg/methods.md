@@ -1,4 +1,19 @@
-## A note on paging and package design
+This page presents the basic functions to access all of the data stored in
+*mangal*. They are meant to be used for (i) advanced analyses where the user
+knows what they are looking for and (ii) development of functions for specific
+analyses. In most cases, the functions that return objects for the
+`EcologicalNetworks` package are recommended.
+
+!!! note "Naming conventions"
+    Functions whose name is plural (*e.g* `networks`) will return a `Vector` of
+    their type. Functions whose name is singular (*e.g.* `network`) return a single
+    object. All functions returning a `Vector` can also take a `query` argument (see
+    notes below about formatting queries).
+
+In addition to the search by name (when available) and ID (for all objects),
+most of the functions have methods to work on other types of objects. For
+example, `networks` has a function taking a `MangalDataset` as an object, which
+will retrieve the networks belonging to this dataset.
 
 !!! danger "Paging matters!"
     The server returns (by default) 50 objects for a given query, and this number
@@ -13,6 +28,9 @@
 All queries are passed as *vectors of pairs*. For example, filtering
 interactions that are of the mutualist type can be done with `[Pair("type",
 "mutualism")]`.
+
+- epilogue
+- table
 
 ## For datasets
 
