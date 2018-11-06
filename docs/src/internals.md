@@ -1,5 +1,9 @@
 ## Login
 
+!!! info "Login"
+    Mangal relies on [ORCID](https://orcid.org/) for authentication and login. As
+    long as you have an ORCID profile, you can login.
+
 ```@docs
 Mangal.login
 ```

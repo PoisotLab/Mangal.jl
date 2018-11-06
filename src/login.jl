@@ -1,6 +1,8 @@
 """
+    login(token::AbstractString)
+
 This function will store the token in the `MANGAL_BEARER_TOKEN` environmental
-variable.
+variable. To get the your token, please use `login` with no argument.
 """
 function login(token::AbstractString)
     ENV["MANGAL_BEARER_TOKEN"] = token
@@ -9,6 +11,12 @@ function login(token::AbstractString)
     end
 end
 
+"""
+    login()
+
+Read the bearer token from the `MANGAL_BEARER_TOKEN` environment variable. If
+not found, displays a login message with a login URL.
+"""
 function login()
     if haskey(ENV, "MANGAL_BEARER_TOKEN")
         if Mangal.isverbose()
@@ -19,6 +27,12 @@ function login()
     end
 end
 
+"""
+    login_message()
+
+Points user to the login URL, and explains how the bearer token can be saved
+persistently.
+"""
 function login_message()
     @info "You need to login"
 

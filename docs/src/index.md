@@ -5,7 +5,9 @@ data from species interaction networks. This package is a wrapper around the
 *new* API for the mangal ecological interactions database. It uses [Julia
 1.0](https://julialang.org/) to provide a programmatic interface to *read* the
 data. Development of this package and the underlying database was funded by the
-[Canadian Foundation for Innovation](https://www.innovation.ca/).
+[Canadian Foundation for Innovation](https://www.innovation.ca/) and the
+[Natural Sciences and Engineering Research Council of
+Canada](http://www.nserc-crsng.gc.ca/).
 
 
 ## Original publication
