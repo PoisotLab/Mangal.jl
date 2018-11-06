@@ -1,0 +1,19 @@
+```julia; echo=false
+using Mangal
+```
+
+```julia; echo=false; results="raw"
+columns = String[]
+header    = "| ID | Name | Public | Description | # of networks |\n"
+separator = "|---:|:-----|:------:|:------------|:--------------|\n"
+push!(columns, header)
+push!(columns, separator)
+for d in datasets()
+   op = d.public ? "✅" : " "
+   n_net = count(MangalNetwork, ["dataset_id" => d.id])
+   string = "| `$(d.id)` | `$(d.name)` | $(op) | $(d.description)  | $(n_net) |\n"
+   push!(columns, string)
+end
+
+print(reduce(*, columns))
+```
