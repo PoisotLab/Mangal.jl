@@ -1,0 +1,29 @@
+```julia; echo=false
+using Mangal
+```
+
+```julia; results="raw"
+using Mustache
+
+tpl = mt"""
+{{description}}
+
+To get this dataset from the package, use
+
+    using Mangal
+    {{rawname}} = dataset({{id}})
+
+"""
+
+for d in datasets()
+   _clean_name = titlecase(replace(d.name, "_" => " "))
+   _infos = Dict(
+      "name" => _clean_name,
+      "rawname" => d.name,
+      "description" => d.description,
+      "id" => d.id
+      )
+   _text = render(tpl, _infos)
+   write(joinpath("docs", "src", "data", "dataset", "$(d.name).md"), _text)
+end
+```

@@ -1,0 +1,27 @@
+```julia; echo=false
+using Mangal
+```
+
+```julia; echo=false; results="raw"
+total_count = count(MangalNetwork)
+page_size = 200
+pages_to_do = convert(Int64, ceil(total_count/page_size))
+result_set = MangalNetwork[]
+for page in 1:pages_to_do
+   paging_query = ["count" => page_size, "page" => page-1, "sort" => "id"]
+   temp_results = networks(paging_query)
+   append!(result_set, temp_results)
+end
+columns = String[]
+header    = "| ID | Name | Public | Description | # of nodes |\n"
+separator = "|---:|:-----|:------:|:------------|:-----------|\n"
+push!(columns, header)
+push!(columns, separator)
+for r in result_set
+   op = r.public ? "✅" : " "
+   ncount = count(MangalNode, ["network_id" => r.id])
+   string = "| $(r.id) | `$(r.name)` | $(op) | $(r.description) | $(ncount) |\n"
+   push!(columns, string)
+end
+print(reduce(*, columns))
+```

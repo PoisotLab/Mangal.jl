@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>List · Mangal.jl</title><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL=".."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../assets/documenter.js"></script><script src="../siteinfo.js"></script><script src="../../versions.js"></script><link href="../assets/documenter.css" rel="stylesheet" type="text/css"/></head><body><nav class="toc"><a href="../index.html"><img class="logo" src="../assets/logo.png" alt="Mangal.jl logo"/></a><h1>Mangal.jl</h1><select id="version-selector" onChange="window.location.href=this.value" style="visibility: hidden"></select><form class="search" id="search-form" action="../search/"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../">Mangal</a></li><li><span class="toctext">Datasets</span><ul><li class="current"><a class="toctext" href>List</a><ul class="internal"></ul></li><li><span class="toctext">Details</span></li></ul></li><li><span class="toctext">Package documentation</span><ul><li><a class="toctext" href="../pkg/gettingdata/">Getting data</a></li><li><a class="toctext" href="../pkg/types/">Data types</a></li><li><a class="toctext" href="../pkg/methods/">Methods for data retrieval</a></li><li><a class="toctext" href="../pkg/internals/">Internal functions</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>Datasets</li><li><a href>List</a></li></ul><a class="edit-page" href="https://github.com/PoisotLab/Mangal.jl/blob/master/docs/src/data/index.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/><div id="topbar"><span>List</span><a class="fa fa-bars" href="#"></a></div></header><pre><code class="language-julia">using Mustache
+
+tpl = mt&quot;&quot;&quot;
+{{description}}
+
+To get this dataset from the package, use
+
+    using Mangal
+    {{rawname}} = dataset({{id}})
+
+&quot;&quot;&quot;
+
+for d in datasets()
+   _clean_name = titlecase(replace(d.name, &quot;_&quot; =&gt; &quot; &quot;))
+   _infos = Dict(
+      &quot;name&quot; =&gt; _clean_name,
+      &quot;rawname&quot; =&gt; d.name,
+      &quot;description&quot; =&gt; d.description,
+      &quot;id&quot; =&gt; d.id
+      )
+   _text = render(tpl, _infos)
+   write(joinpath(&quot;docs&quot;, &quot;src&quot;, &quot;data&quot;, &quot;dataset&quot;, &quot;$(d.name).md&quot;), _text)
+end</code></pre><footer><hr/><a class="previous" href="../"><span class="direction">Previous</span><span class="title">Mangal</span></a><a class="next" href="dataset/Elberling_Olesen/"><span class="direction">Next</span><span class="title">Elberling Olesen</span></a></footer></article></body></html>
