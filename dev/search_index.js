@@ -953,14 +953,6 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "pkg/types/#Mangal.MangalReferenceTaxon",
-    "page": "Data types",
-    "title": "Mangal.MangalReferenceTaxon",
-    "category": "type",
-    "text": "Reference taxon (unique identifier of network nodes)\n\n\n\n\n\n"
-},
-
-{
     "location": "pkg/types/#Mangal.MangalNode",
     "page": "Data types",
     "title": "Mangal.MangalNode",
@@ -969,11 +961,19 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "pkg/types/#Mangal.MangalReferenceTaxon",
+    "page": "Data types",
+    "title": "Mangal.MangalReferenceTaxon",
+    "category": "type",
+    "text": "Reference taxon (unique identifier of network nodes)\n\n\n\n\n\n"
+},
+
+{
     "location": "pkg/types/#Taxonomy-types-1",
     "page": "Data types",
     "title": "Taxonomy types",
     "category": "section",
-    "text": "MangalReferenceTaxon\nMangalNode"
+    "text": "MangalNode\nMangalReferenceTaxon"
 },
 
 {
@@ -1001,9 +1001,17 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
-    "location": "pkg/methods/#Queries-1",
+    "location": "pkg/methods/#A-note-on-paging-and-package-design-1",
     "page": "Methods for data retrieval",
-    "title": "Queries",
+    "title": "A note on paging and package design",
+    "category": "section",
+    "text": "danger: Paging matters!\nThe server returns (by default) 50 objects for a given query, and this number can be increased up to 200. This may not be sufficient to retrieve the entire information, for example in networks with more than 200 nodes. Not paying attention to paging when using these functions directly (as opposed to within the EcologicalNetworks wrappers) means that you are at risk of not working with the entire dataset."
+},
+
+{
+    "location": "pkg/methods/#A-note-on-queries-1",
+    "page": "Methods for data retrieval",
+    "title": "A note on queries",
     "category": "section",
     "text": "All queries are passed as vectors of pairs. For example, filtering interactions that are of the mutualist type can be done with [Pair(\"type\", \"mutualism\")]."
 },
@@ -1049,6 +1057,22 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "pkg/methods/#Mangal.nodes",
+    "page": "Methods for data retrieval",
+    "title": "Mangal.nodes",
+    "category": "function",
+    "text": "nodes(taxon::MangalReferenceTaxon)\n\nReturns the nodes that are instance of a MangalReferenceTaxon.\n\n\n\n\n\nnodes(taxon::MangalReferenceTaxon, query::Vector{Pair{String,T}}) where {T <: Any}\n\nReturns the nodes that are instance of a MangalReferenceTaxon, with an additional query.\n\n\n\n\n\n"
+},
+
+{
+    "location": "pkg/methods/#Mangal.node",
+    "page": "Methods for data retrieval",
+    "title": "Mangal.node",
+    "category": "function",
+    "text": "\"     node(id::Int64)\n\nReturns a node object by id.\n\n\n\n\n\n"
+},
+
+{
     "location": "pkg/methods/#Nodes-1",
     "page": "Methods for data retrieval",
     "title": "Nodes",
@@ -1061,7 +1085,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Methods for data retrieval",
     "title": "Mangal.backbone",
     "category": "function",
-    "text": "backbone()\n\n\n\n\n\n"
+    "text": "backbone()\n\nReturns the most recent entries in the taxonomic backbone.\n\n\n\n\n\nbackbone(q::Vector{Pair{String,T}}) where {T <: Any}\n\nReturns the most recent entries in the taxonomic backbone that match a given query.\n\n\n\n\n\nbackbone(name::AbstractString)\n\nReturns the backbone entry for a taxon, matched by exact name.\n\n\n\n\n\nbackbone(id::Int64)\n\nReturns the backbone entry for a taxon by id. This function will get the cached version of the backbone if it exists.\n\n\n\n\n\n"
 },
 
 {
