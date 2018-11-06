@@ -925,7 +925,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Data types",
     "title": "Mangal.MangalDataset",
     "category": "type",
-    "text": "A MangalDataset identifies a collection of networks, possibly containing a single element. A dataset is identified by its id or name (both of which are unique).\n\n\n\n\n\n"
+    "text": "A MangalDataset identifies a collection of networks, possibly containing a single element. A dataset is identified by its id or name (both of which are unique).\n\nid (Int64): a unique identifier for the dataset.\n\nname (AbstractString): a unique name describing the dataset.\n\npublic (Bool): indicates whether the dataset details are available to others than its owner.\n\ndate (DateTime): date and time at which the dataset was assembled. This can refer to the sampling time of networks, or to the date at which the dataset was finalized.\n\ncreated (DateTime): date and time at which the dataset was created in the database.\n\nupdated (DateTime): date and time at which the dataset was last modified in the database. For most datasets, this will be equal to created.\n\nreference (Union{Int64,Nothing}) (optional): a reference to the id of the MangalReference, or nothing if there is no associated reference for this dataset.\n\nuser (Int64): id of the user who added the dataset to the database. This is not necessarily the author of the dataset, see reference (and the same field in the MangalNetwork) to get the actual authorship.\n\ndescription (AbstractString): a free-form description of the dataset.\n\n\n\n\n\n"
 },
 
 {
@@ -1061,7 +1061,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Methods for data retrieval",
     "title": "Mangal.nodes",
     "category": "function",
-    "text": "nodes(taxon::MangalReferenceTaxon)\n\nReturns the nodes that are instance of a MangalReferenceTaxon.\n\n\n\n\n\nnodes(taxon::MangalReferenceTaxon, query::Vector{Pair{String,T}}) where {T <: Any}\n\nReturns the nodes that are instance of a MangalReferenceTaxon, with an additional query.\n\n\n\n\n\n"
+    "text": "nodes()\n\nGets the latest MangalNode objects.\n\n\n\n\n\nnodes(q::Vector{Pair{String,T}}) where {T <: Any}\n\nGet the latest MangalNode objects according to a given query.\n\n\n\n\n\nnodes(network::MangalNetwork)\n\nReturns the nodes that are part of a MangalNetwork.\n\n\n\n\n\nnodes(network::MangalNetwork, query::Vector{Pair{String,T}}) where {T <: Any}\n\nReturns the nodes that are part of a MangalNetwork, with an additional query.\n\n\n\n\n\nnodes(taxon::MangalReferenceTaxon)\n\nReturns the nodes that are instance of a MangalReferenceTaxon.\n\n\n\n\n\nnodes(taxon::MangalReferenceTaxon, query::Vector{Pair{String,T}}) where {T <: Any}\n\nReturns the nodes that are instance of a MangalReferenceTaxon, with an additional query.\n\n\n\n\n\n"
 },
 
 {
@@ -1069,7 +1069,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Methods for data retrieval",
     "title": "Mangal.node",
     "category": "function",
-    "text": "\"     node(id::Int64)\n\nReturns a node object by id.\n\n\n\n\n\n"
+    "text": "node(id::Int64)\n\nReturns a node object by id.\n\n\n\n\n\n"
 },
 
 {
