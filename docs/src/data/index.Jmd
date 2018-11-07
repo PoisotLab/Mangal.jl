@@ -4,7 +4,7 @@
 using Mangal
 ```
 
-```julia; results="raw"
+```julia; echo=false
 using Mustache
 using Dates
 

@@ -37,3 +37,10 @@ Mangal.search_objects_by_query
 ```@docs
 Mangal.cache
 ```
+
+## Full data retrieval
+
+```@docs
+Mangal.get_all_nodes
+Mangal.get_all_interactions
+```

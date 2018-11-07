@@ -4,6 +4,7 @@ using HTTP
 using JSON
 using GeoInterface
 using Dates
+using EcologicalNetworks
 
 const web_root = "http://poisotlab.biol.umontreal.ca/"
 const api_root = web_root * "api/v2/"
@@ -70,5 +71,9 @@ export node
 include(joinpath(".", "interaction.jl"))
 export interactions
 export interaction
+
+# EcologicalNetworks
+include(joinpath(".", "ecologicalnetworks.jl"))
+export UnipartiteNetwork, UnipartiteQuantitativeNetwork
 
 end # module

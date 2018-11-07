@@ -3,8 +3,6 @@ A `MangalDataset` identifies a collection of networks, possibly containing
 a single element. A dataset is identified by its `id` or `name` (both of
 which are *unique*).
 
-`id` (`Int64`): a unique identifier for the dataset.
-
 `name` (`AbstractString`): a unique name describing the dataset.
 
 `public` (`Bool`): indicates whether the dataset details are available to others
@@ -13,11 +11,6 @@ than its owner.
 `date` (`DateTime`): date and time at which the dataset was assembled. This can
 refer to the sampling time of networks, or to the date at which the dataset was
 finalized.
-
-`created` (`DateTime`): date and time at which the dataset was created in the database.
-
-`updated` (`DateTime`): date and time at which the dataset was last modified in
-the database. For most datasets, this will be equal to `created`.
 
 `reference` (`Union{Int64,Nothing}`) (*optional*): a reference to the `id` of
 the `MangalReference`, or `nothing` if there is no associated reference for this
@@ -42,7 +35,35 @@ struct MangalDataset
 end
 
 """
-Wrapper for species interactions
+A `MangalNetwork` is a wrapper around *nodes* (and not around interactions, for
+reasons which are really not worth mentioning here, but see the documentation
+for `MangalNode` for some hints).
+
+`name` (`AbstractString`): a unique name describing the network.
+
+`dataset` (`Int64`): the unique id of the `MangalDataset` to which the network
+belongs.
+
+`public` (`Bool`): indicates whether the network details are available to others
+than its owner.
+
+`date` (`DateTime`): date and time at which the network was sampled.
+
+`position` (`AbstractGeometry`): the location at which the network was sampled.
+This can be any sort of geospatial construct, most notably points *or* polygons.
+
+`complete` (`Bool`): indicates whether the network was sampled completely, or is
+a collection of interactions with possible gaps.
+
+`reference` (`Union{Int64,Nothing}`) (*optional*): a reference to the `id` of
+the `MangalReference`, or `nothing` if there is no associated reference for this
+network.
+
+`user` (`Int64`): `id` of the user who added the network to the database. This
+is *not necessarily* the author of the network, see `reference` to get the
+actual authorship.
+
+`description` (`AbstractString`): a free-form description of the network.
 """
 struct MangalNetwork
     id::Int64
