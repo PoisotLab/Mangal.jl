@@ -1113,19 +1113,27 @@ var documenterSearchIndex = {"docs": [
 },
 
 {
+    "location": "pkg/gettingdata/#Mangal.UnipartiteNetwork",
+    "page": "Getting data",
+    "title": "Mangal.UnipartiteNetwork",
+    "category": "function",
+    "text": "UnipartiteNetwork(n::MangalNetwork; resolution::Type=MangalNode)\n\nReturns a UnipartiteNetwork object representation of the MangalNetwork passed as its first argument. The optional keyword resolution (can be MangalNode or MangalReferenceTaxon) is determined to use which level of aggregation should be used. The default (MangalNode) is raw data, and MangalReferenceTaxon is the cleaned version.\n\n\n\n\n\n"
+},
+
+{
+    "location": "pkg/gettingdata/#Mangal.UnipartiteQuantitativeNetwork",
+    "page": "Getting data",
+    "title": "Mangal.UnipartiteQuantitativeNetwork",
+    "category": "function",
+    "text": "UnipartiteQuantitativeNetwork(n::MangalNetwork; resolution::Type=MangalNode)\n\nReturns a UnipartiteQuantitativeNetwork object representation of the MangalNetwork passed as its first argument. The optional keyword resolution (can be MangalNode or MangalReferenceTaxon) is determined to use which level of aggregation should be used. The default (MangalNode) is raw data, and MangalReferenceTaxon is the cleaned version.\n\nThe quantitative interaction value comes from the strength field of the MangalInteraction object. In the case of MangalReferenceTaxon aggregation, these strengths are added.\n\n\n\n\n\n"
+},
+
+{
     "location": "pkg/gettingdata/#",
     "page": "Getting data",
     "title": "Getting data",
     "category": "page",
-    "text": ""
-},
-
-{
-    "location": "pkg/gettingdata/#Test-1",
-    "page": "Getting data",
-    "title": "Test",
-    "category": "section",
-    "text": ""
+    "text": "The recommended way to get data is through Mangal.jl integration with the EcologicalNetworks.jl package for networks analysis.There is no obvious way to know in advance if a network is bipartite or not. For this reason, this wrapper only returns unipartite objects. They can be converted into bipartite networks using the convert methods in EcologicalNetworks.jl.UnipartiteNetwork\nUnipartiteQuantitativeNetwork"
 },
 
 {
@@ -1133,7 +1141,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Data types",
     "title": "Data types",
     "category": "page",
-    "text": ""
+    "text": "All types have three fields in common: id (Int64), a unique identifier, and created and updated (both DateTime), which give the time of in-database creation and last modification."
 },
 
 {
@@ -1141,7 +1149,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Data types",
     "title": "Mangal.MangalDataset",
     "category": "type",
-    "text": "A MangalDataset identifies a collection of networks, possibly containing a single element. A dataset is identified by its id or name (both of which are unique).\n\nid (Int64): a unique identifier for the dataset.\n\nname (AbstractString): a unique name describing the dataset.\n\npublic (Bool): indicates whether the dataset details are available to others than its owner.\n\ndate (DateTime): date and time at which the dataset was assembled. This can refer to the sampling time of networks, or to the date at which the dataset was finalized.\n\ncreated (DateTime): date and time at which the dataset was created in the database.\n\nupdated (DateTime): date and time at which the dataset was last modified in the database. For most datasets, this will be equal to created.\n\nreference (Union{Int64,Nothing}) (optional): a reference to the id of the MangalReference, or nothing if there is no associated reference for this dataset.\n\nuser (Int64): id of the user who added the dataset to the database. This is not necessarily the author of the dataset, see reference (and the same field in the MangalNetwork) to get the actual authorship.\n\ndescription (AbstractString): a free-form description of the dataset.\n\n\n\n\n\n"
+    "text": "A MangalDataset identifies a collection of networks, possibly containing a single element. A dataset is identified by its id or name (both of which are unique).\n\nname (AbstractString): a unique name describing the dataset.\n\npublic (Bool): indicates whether the dataset details are available to others than its owner.\n\ndate (DateTime): date and time at which the dataset was assembled. This can refer to the sampling time of networks, or to the date at which the dataset was finalized.\n\nreference (Union{Int64,Nothing}) (optional): a reference to the id of the MangalReference, or nothing if there is no associated reference for this dataset.\n\nuser (Int64): id of the user who added the dataset to the database. This is not necessarily the author of the dataset, see reference (and the same field in the MangalNetwork) to get the actual authorship.\n\ndescription (AbstractString): a free-form description of the dataset.\n\n\n\n\n\n"
 },
 
 {
@@ -1149,7 +1157,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Data types",
     "title": "Mangal.MangalNetwork",
     "category": "type",
-    "text": "Wrapper for species interactions\n\n\n\n\n\n"
+    "text": "A MangalNetwork is a wrapper around nodes (and not around interactions, for reasons which are really not worth mentioning here, but see the documentation for MangalNode for some hints).\n\nname (AbstractString): a unique name describing the network.\n\ndataset (Int64): the unique id of the MangalDataset to which the network belongs.\n\npublic (Bool): indicates whether the network details are available to others than its owner.\n\ndate (DateTime): date and time at which the network was sampled.\n\nposition (AbstractGeometry): the location at which the network was sampled. This can be any sort of geospatial construct, most notably points or polygons.\n\ncomplete (Bool): indicates whether the network was sampled completely, or is a collection of interactions with possible gaps.\n\nreference (Union{Int64,Nothing}) (optional): a reference to the id of the MangalReference, or nothing if there is no associated reference for this network.\n\nuser (Int64): id of the user who added the network to the database. This is not necessarily the author of the network, see reference to get the actual authorship.\n\ndescription (AbstractString): a free-form description of the network.\n\n\n\n\n\n"
 },
 
 {
@@ -1221,7 +1229,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Methods for data retrieval",
     "title": "A note on queries",
     "category": "section",
-    "text": "All queries are passed as vectors of pairs. For example, filtering interactions that are of the mutualist type can be done with [Pair(\"type\", \"mutualism\")].epilogue\ntable"
+    "text": "The Mangal API is built on epilogue – this offers sorting and filtering functionalities. These operations are refered to as \"queries\" across the package. All queries are passed as vectors of pairs (of types AbstractString, Any). For example, filtering interactions that are of the mutualist type can be done with [Pair(\"type\", \"mutualism\")]."
 },
 
 {
@@ -1398,6 +1406,14 @@ var documenterSearchIndex = {"docs": [
     "title": "Caching",
     "category": "section",
     "text": "Mangal.cache"
+},
+
+{
+    "location": "pkg/internals/#Full-data-retrieval-1",
+    "page": "Internal functions",
+    "title": "Full data retrieval",
+    "category": "section",
+    "text": "Mangal.get_all_nodes\nMangal.get_all_interactions"
 },
 
 ]}
