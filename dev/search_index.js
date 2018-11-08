@@ -1221,7 +1221,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Methods for data retrieval",
     "title": "Methods for data retrieval",
     "category": "page",
-    "text": "This page presents the basic functions to access all of the data stored in mangal. They are meant to be used for (i) advanced analyses where the user knows what they are looking for and (ii) development of functions for specific analyses. In most cases, the functions that return objects for the EcologicalNetworks package are recommended.note: Naming conventions\nFunctions whose name is plural (e.g networks) will return a Vector of their type. Functions whose name is singular (e.g. network) return a single object. All functions returning a Vector can also take a query argument (see notes below about formatting queries).In addition to the search by name (when available) and ID (for all objects), most of the functions have methods to work on other types of objects. For example, networks has a function taking a MangalDataset as an object, which will retrieve the networks belonging to this dataset.danger: Paging matters!\nThe server returns (by default) 50 objects for a given query, and this number can be increased up to 200. This may not be sufficient to retrieve the entire information, for example in networks with more than 200 nodes. Not paying attention to paging when using these functions directly (as opposed to within the EcologicalNetworks wrappers) means that you are at risk of not working with the entire dataset."
+    "text": "This page presents the basic functions to access all of the data stored in mangal. They are meant to be used for (i) advanced analyses where the user knows what they are looking for and (ii) development of functions for specific analyses. In most cases, the functions that return objects for the EcologicalNetworks package are recommended.note: Naming conventions\nFunctions whose name is plural (e.g networks) will return a Vector of their type. Functions whose name is singular (e.g. network) return a single object. All functions returning a Vector can accept Pair object for querying.In addition to the search by name (when available) and ID (for all objects), most of the functions have methods to work on other types of objects. For example, networks has a function taking a MangalDataset as an object, which will retrieve the networks belonging to this dataset.danger: Paging matters!\nThe server returns (by default) 50 objects for a given query, and this number can be increased up to 200. This may not be sufficient to retrieve the entire information, for example in networks with more than 200 nodes. Not paying attention to paging when using these functions directly (as opposed to within the EcologicalNetworks wrappers) means that you are at risk of not working with the entire dataset."
 },
 
 {
@@ -1229,7 +1229,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Methods for data retrieval",
     "title": "A note on queries",
     "category": "section",
-    "text": "The Mangal API is built on epilogue – this offers sorting and filtering functionalities. These operations are refered to as \"queries\" across the package. All queries are passed as vectors of pairs (of types AbstractString, Any). For example, filtering interactions that are of the mutualist type can be done with [Pair(\"type\", \"mutualism\")]."
+    "text": "The Mangal API is built on epilogue – this offers sorting and filtering functionalities. These operations are referred to as \"queries\" across the package. All queries are passed as pairs. For example, filtering interactions that are of the mutualist type, and sorting them by id, is done with:interactions(\"type\" => \"mutualism\", \"sort\" => \"id\")"
 },
 
 {
@@ -1317,7 +1317,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Methods for data retrieval",
     "title": "Mangal.backbone",
     "category": "function",
-    "text": "backbone(query::Pair...)\n\nReturns the most recent entries in the taxonomic backbone that match a given query.\n\n\n\n\n\nbackbone(name::AbstractString)\n\nReturns the backbone entry for a taxon, matched by exact name.\n\n\n\n\n\nbackbone(id::Int64)\n\nReturns the backbone entry for a taxon by id. This function will get the cached version of the backbone if it exists.\n\n\n\n\n\n"
+    "text": "backbone(query::Pair...)\n\nReturns the most recent entries in the taxonomic backbone. This should very rarely be used.\n\n\n\n\n\nbackbone(name::AbstractString)\n\nReturns the backbone entry for a taxon, matched by exact name.\n\n\n\n\n\nbackbone(id::Int64)\n\nReturns the backbone entry for a taxon by id. This function will get the cached version of the backbone if it exists.\n\n\n\n\n\n"
 },
 
 {
