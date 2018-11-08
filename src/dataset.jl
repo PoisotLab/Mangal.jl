@@ -1,8 +1,7 @@
 """
     datasets(query::Pair...)
 
-Will return the most recent datasets that match a given query. The results will
-be returned as a vector of `MangalDataset` object.
+Will return the most recent datasets.
 """
 function datasets(query::Pair...)
     return search_objects_by_query(

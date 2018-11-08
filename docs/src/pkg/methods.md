@@ -35,8 +35,6 @@ is done with:
 interactions("type" => "mutualism", "sort" => "id")
 ~~~
 
-
-
 ## For datasets
 
 ```@docs

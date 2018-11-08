@@ -15,7 +15,4 @@ module MangalTestInteractions
     @test typeof(interactions(node(2045), node(2016))) <: Vector{MangalInteraction}
     @test typeof(interactions(node(2045), node(2016), Pair("type", "mutualism"))) <: Vector{MangalInteraction}
 
-    n2 = network(2)
-    @test typeof(interactions(n2)) <: Vector{MangalInteraction}
-
 end
