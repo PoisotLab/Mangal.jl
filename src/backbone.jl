@@ -1,8 +1,8 @@
 """
     backbone(query::Pair...)
 
-Returns the most recent entries in the taxonomic backbone that match a given
-query.
+Returns the most recent entries in the taxonomic backbone. This should very
+rarely be used.
 """
 function backbone(query::Pair...)
     results = search_objects_by_query(

@@ -7,8 +7,7 @@ analyses. In most cases, the functions that return objects for the
 !!! note "Naming conventions"
     Functions whose name is plural (*e.g* `networks`) will return a `Vector` of
     their type. Functions whose name is singular (*e.g.* `network`) return a single
-    object. All functions returning a `Vector` can also take a `query` argument (see
-    notes below about formatting queries).
+    object. All functions returning a `Vector` can accept `Pair` object for querying.
 
 In addition to the search by name (when available) and ID (for all objects),
 most of the functions have methods to work on other types of objects. For
@@ -27,10 +26,14 @@ will retrieve the networks belonging to this dataset.
 
 The Mangal API is built on
 [`epilogue`](https://github.com/dchester/epilogue#rest-api) -- this offers
-sorting and filtering functionalities. These operations are refered to as
-"queries" across the package. All queries are passed as *vectors of pairs* (of
-types `AbstractString`, `Any`). For example, filtering interactions that are of
-the mutualist type can be done with `[Pair("type", "mutualism")]`.
+sorting and filtering functionalities. These operations are referred to as
+"queries" across the package. All queries are passed as *pairs*. For example,
+filtering interactions that are of the mutualist type, and sorting them by `id`,
+is done with:
+
+~~~
+interactions("type" => "mutualism", "sort" => "id")
+~~~
 
 
 
