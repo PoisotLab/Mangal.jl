@@ -7,7 +7,7 @@ module MangalTestDataset
     @test typeof(datasets()) <: Vector{MangalDataset}
 
     # Datasets with count
-    count_2 = datasets([Pair("count", 2)])
+    count_2 = datasets(Pair("count", 2))
     @test typeof(count_2) <: Vector{MangalDataset}
     @test length(count_2) == 2
 

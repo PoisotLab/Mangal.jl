@@ -54,24 +54,25 @@ function generate_base_header()
     end
 end
 
-function generate_request_query(parameters::Vector{Pair{String,T}}) where {T <: Any}
+function generate_request_query(parameters::Pair...)
     query = ""
-    for (i, pair) in enumerate(parameters)
+    for (i, pair) in enumerate(promote(parameters...))
         i == 1 || (query *= "&")
         i == 1 && (query *= "?")
         query *= pair.first * "=" * string(pair.second)
     end
-    return replace(query, Pair(" ", "+"))
+    return replace(query, " " => "+")
 end
 
 """
+    search_objects_by_query(endpoint::AbstractString, query::Union{Vector{Pair},Nothing}, formatter::Function)
 
 Depending on the verbosity of the package (see documentation for
 `Mangal.isverbose`), this function will let the user know when more objects than
 requested exist. In all cases, it is assumed that the functions will be wrapepd
 in calls to query objects until no further objects are found.
 """
-function search_objects_by_query(endpoint::AbstractString, query::Union{Vector{Pair{String,T}},Nothing}, formatter::Function) where {T <: Any}
+function search_objects_by_query(endpoint::AbstractString, formatter::Function, query::Pair...)
     # Headers
     headers = Mangal.generate_base_header()
 
@@ -79,7 +80,7 @@ function search_objects_by_query(endpoint::AbstractString, query::Union{Vector{P
     endpoint = Mangal.api_root * endpoint
 
     # Convert query parameters
-    request_url = query == nothing ? endpoint : endpoint*Mangal.generate_request_query(query)
+    request_url = length(query) == 0 ? endpoint : endpoint*Mangal.generate_request_query(query...)
 
     # Perform the request
     this_request = HTTP.get(request_url, headers)
@@ -105,7 +106,7 @@ function search_objects_by_query(endpoint::AbstractString, query::Union{Vector{P
     return formatter.(parsed_json)
 end
 
-function number_of_objects(endpoint::AbstractString, query::Union{Vector{Pair{String,T}},Nothing}) where {T <: Any}
+function number_of_objects(endpoint::AbstractString, query::Union{Vector{Pair},Nothing})
     # Headers
     headers = Mangal.generate_base_header()
 

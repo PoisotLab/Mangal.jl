@@ -1,64 +1,28 @@
-function interactions()
+function interactions(query::Pair...)
     return search_objects_by_query(
         Mangal.api_endpoints.interaction,
-        nothing,
-        Mangal.format_interaction_response
+        Mangal.format_interaction_response,
+        query...
     )
 end
 
-function interactions(q::Vector{Pair{String,T}}) where {T <: Any}
-    return search_objects_by_query(
-        Mangal.api_endpoints.interaction,
-        q,
-        Mangal.format_interaction_response
-    )
+function interactions(from::MangalNode, ::Colon, query::Pair...)
+    return interactions(Pair("taxon_1", string(from.id)), query...)
 end
 
-function interactions(from::MangalNode, ::Colon )
-    query = [Pair("taxon_1", string(from.id))]
-    return interactions(query)
+function interactions(::Colon, to::MangalNode, query::Pair...)
+    return interactions(Pair("taxon_2", string(to.id)), query...)
 end
 
-function interactions(from::MangalNode, ::Colon, query::Vector{Pair{String,T}}) where {T <: Any}
-    push!(query, Pair("taxon_1", string(from.id)))
-    return interactions(query)
+function interactions(from::MangalNode, to::MangalNode, query::Pair...)
+    return interactions(Pair("taxon_1", string(from.id)), Pair("taxon_2", string(to.id)), query...)
 end
 
-function interactions(::Colon, to::MangalNode)
-    query = [Pair("taxon_2", string(to.id))]
-    return interactions(query)
-end
-
-function interactions(::Colon, to::MangalNode, query::Vector{Pair{String,T}}) where {T <: Any}
-    push!(query, Pair("taxon_2", string(to.id)))
-    return interactions(query)
-end
-
-function interactions(from::MangalNode, to::MangalNode)
-    query = [Pair("taxon_1", string(from.id)), Pair("taxon_2", string(to.id))]
-    return interactions(query)
-end
-
-function interactions(from::MangalNode, to::MangalNode, query::Vector{Pair{String,T}}) where {T <: Any}
-    push!(query, Pair("taxon_1", string(from.id)))
-    push!(query, Pair("taxon_2", string(to.id)))
-    return interactions(query)
-end
-
-function interactions(network::MangalNetwork)
+function interactions(network::MangalNetwork, query::Pair...)
     network_nodes = nodes(network)
     network_interactions = MangalInteraction[]
     for network_node in network_nodes
-        append!(network_interactions, interactions(network_node, :))
-    end
-    return unique(network_interactions)
-end
-
-function interactions(network::MangalNetwork, query::Vector{Pair{String,T}}) where {T <: Any}
-    network_nodes = nodes(network)
-    network_interactions = MangalInteraction[]
-    for network_node in network_nodes
-        append!(network_interactions, interactions(network_node, :, query))
+        append!(network_interactions, interactions(network_node, :, query...))
     end
     return unique(network_interactions)
 end
@@ -69,5 +33,5 @@ end
 Returns an interaction by its id.
 """
 function interaction(id::Int64)
-    return first(interactions([Pair("id", id)]))
+    return first(interactions(Pair("id", id)))
 end
