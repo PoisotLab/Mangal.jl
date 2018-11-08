@@ -27,7 +27,7 @@ _files_to_include = [hide(format_dsname(f) => joinpath("data", "dataset", f)) fo
 _list_of_pages = [
    "index.md",
    "Data list" => "data/index.md",
-   "Dataset details" => _files_to_include,
+   hide("Dataset details" => _files_to_include),
    "Package documentation" => _pkg_doc
 ]
 
