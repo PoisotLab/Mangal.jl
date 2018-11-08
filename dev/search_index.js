@@ -1237,7 +1237,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Methods for data retrieval",
     "title": "Mangal.datasets",
     "category": "function",
-    "text": "datasets()\n\nWhen called with no arguments, this function will return a list of the most recent datasets.  The results will be returned as a vector of MangalDataset object.\n\n\n\n\n\ndatasets(q::Vector{Pair{String,T}}) where {T <: Any}\n\nWill return the most recent datasets that match a given query. The results will be returned as a vector of MangalDataset object.\n\n\n\n\n\n"
+    "text": "datasets(query::Pair...)\n\nWill return the most recent datasets that match a given query. The results will be returned as a vector of MangalDataset object.\n\n\n\n\n\n"
 },
 
 {
@@ -1261,7 +1261,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Methods for data retrieval",
     "title": "Mangal.networks",
     "category": "function",
-    "text": "networks()\n\nReturns the latest MangalNetwork objects.\n\n\n\n\n\nnetworks(q::Vector{Pair{String,T}}) where {T <: Any}\n\nReturns the latest MangalNetwork objects matching a given query.\n\n\n\n\n\nnetworks(dataset::MangalDataset)\n\nReturns networks that are part of a MangalDataset.\n\n\n\n\n\nnetworks(dataset::MangalDataset, query::Vector{Pair{String,T}}) where {T <: Any}\n\nReturns networks that are part of a MangalDataset. Allows additional query parameters.\n\n\n\n\n\n"
+    "text": "networks(query::Pair...)\n\nReturns the latest MangalNetwork objects matching a given query.\n\n\n\n\n\nnetworks(dataset::MangalDataset, query::Pair...)\n\nReturns networks that are part of a MangalDataset. Allows additional query parameters.\n\n\n\n\n\n"
 },
 
 {
@@ -1293,7 +1293,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Methods for data retrieval",
     "title": "Mangal.nodes",
     "category": "function",
-    "text": "nodes()\n\nGets the latest MangalNode objects.\n\n\n\n\n\nnodes(q::Vector{Pair{String,T}}) where {T <: Any}\n\nGet the latest MangalNode objects according to a given query.\n\n\n\n\n\nnodes(network::MangalNetwork)\n\nReturns the nodes that are part of a MangalNetwork.\n\n\n\n\n\nnodes(network::MangalNetwork, query::Vector{Pair{String,T}}) where {T <: Any}\n\nReturns the nodes that are part of a MangalNetwork, with an additional query.\n\n\n\n\n\nnodes(taxon::MangalReferenceTaxon)\n\nReturns the nodes that are instance of a MangalReferenceTaxon.\n\n\n\n\n\nnodes(taxon::MangalReferenceTaxon, query::Vector{Pair{String,T}}) where {T <: Any}\n\nReturns the nodes that are instance of a MangalReferenceTaxon, with an additional query.\n\n\n\n\n\n"
+    "text": "nodes(query::Pair...)\n\nGet the latest MangalNode objects. The query argument is optional.\n\n\n\n\n\nnodes(network::MangalNetwork, query::Pair...)\n\nReturns the nodes that are part of a MangalNetwork, with an additional optional query.\n\n\n\n\n\nnodes(taxon::MangalReferenceTaxon, query::Pair...)\n\nReturns the nodes that are instance of a MangalReferenceTaxon, with an additional query.\n\n\n\n\n\n"
 },
 
 {
@@ -1317,7 +1317,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Methods for data retrieval",
     "title": "Mangal.backbone",
     "category": "function",
-    "text": "backbone()\n\nReturns the most recent entries in the taxonomic backbone.\n\n\n\n\n\nbackbone(q::Vector{Pair{String,T}}) where {T <: Any}\n\nReturns the most recent entries in the taxonomic backbone that match a given query.\n\n\n\n\n\nbackbone(name::AbstractString)\n\nReturns the backbone entry for a taxon, matched by exact name.\n\n\n\n\n\nbackbone(id::Int64)\n\nReturns the backbone entry for a taxon by id. This function will get the cached version of the backbone if it exists.\n\n\n\n\n\n"
+    "text": "backbone(query::Pair...)\n\nReturns the most recent entries in the taxonomic backbone that match a given query.\n\n\n\n\n\nbackbone(name::AbstractString)\n\nReturns the backbone entry for a taxon, matched by exact name.\n\n\n\n\n\nbackbone(id::Int64)\n\nReturns the backbone entry for a taxon by id. This function will get the cached version of the backbone if it exists.\n\n\n\n\n\n"
 },
 
 {
