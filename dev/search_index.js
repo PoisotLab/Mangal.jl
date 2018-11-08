@@ -1237,7 +1237,7 @@ var documenterSearchIndex = {"docs": [
     "page": "Methods for data retrieval",
     "title": "Mangal.datasets",
     "category": "function",
-    "text": "datasets(query::Pair...)\n\nWill return the most recent datasets that match a given query. The results will be returned as a vector of MangalDataset object.\n\n\n\n\n\n"
+    "text": "datasets(query::Pair...)\n\nWill return the most recent datasets.\n\n\n\n\n\n"
 },
 
 {
@@ -1278,6 +1278,22 @@ var documenterSearchIndex = {"docs": [
     "title": "Networks",
     "category": "section",
     "text": "networks\nnetwork"
+},
+
+{
+    "location": "pkg/methods/#Mangal.interactions",
+    "page": "Methods for data retrieval",
+    "title": "Mangal.interactions",
+    "category": "function",
+    "text": "interactions(query::Pair...)\n\nReturns the most recent interactions.\n\n\n\n\n\ninteractions(from::MangalNode, ::Colon, query::Pair...)\n\nReturns interactions established by the species given as its first argument.\n\n\n\n\n\ninteractions(::Colon, to::MangalNode, query::Pair...)\n\nReturns interactions established to the species given as its second argument.\n\n\n\n\n\ninteractions(from::MangalNode, to::MangalNode, query::Pair...)\n\nReturns interactions between two nodes.\n\n\n\n\n\n"
+},
+
+{
+    "location": "pkg/methods/#Mangal.interaction",
+    "page": "Methods for data retrieval",
+    "title": "Mangal.interaction",
+    "category": "function",
+    "text": "interaction(id::Int64)\n\nReturns an interaction by its id.\n\n\n\n\n\n"
 },
 
 {
