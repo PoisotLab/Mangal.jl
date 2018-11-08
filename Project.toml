@@ -5,6 +5,7 @@ version = "0.0.1"
 
 [deps]
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+EcologicalNetworks = "26cd3c7c-942f-11e8-1e85-357945f36438"
 GeoInterface = "cf35fbd7-0cd7-5166-be24-54bfbe79505f"
 HTTP = "cd3eb016-35fb-5094-929b-558a96fad6f3"
 JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"

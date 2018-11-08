@@ -25,12 +25,14 @@ will retrieve the networks belonging to this dataset.
 
 ## A note on queries
 
-All queries are passed as *vectors of pairs*. For example, filtering
-interactions that are of the mutualist type can be done with `[Pair("type",
-"mutualism")]`.
+The Mangal API is built on
+[`epilogue`](https://github.com/dchester/epilogue#rest-api) -- this offers
+sorting and filtering functionalities. These operations are refered to as
+"queries" across the package. All queries are passed as *vectors of pairs* (of
+types `AbstractString`, `Any`). For example, filtering interactions that are of
+the mutualist type can be done with `[Pair("type", "mutualism")]`.
 
-- epilogue
-- table
+
 
 ## For datasets
 
