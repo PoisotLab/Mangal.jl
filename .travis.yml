@@ -6,13 +6,6 @@ os:
 julia:
   - 1.0
 
-env:
-  - PYTHON=""
-
-script:
-  - if [[ -a .git/shallow ]]; then git fetch --unshallow; fi
-  - julia --check-bounds=yes -e 'using Pkg; Pkg.add("Test"); Pkg.activate("."); Pkg.build("Mangal"); Pkg.test("Mangal"; coverage=true)'
-
 after_success:
   - julia -e 'using Pkg; cd(Pkg.dir("Mangal")); Pkg.add("Coverage"); using Coverage; Coveralls.submit(Coveralls.process_folder()); Codecov.submit(Codecov.process_folder())'
   - julia -e 'using Pkg; Pkg.add("Documenter");'
