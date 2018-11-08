@@ -1,12 +1,12 @@
 """
-    nodes()
+    nodes(query::Union{Nothing,Vector{Pair{String,T}}}=nothing) where {T <: Any}
 
-Gets the latest `MangalNode` objects.
+Get the latest `MangalNode` objects. The `query` argument is optional.
 """
-function nodes()
+function nodes(query::Union{Nothing,Vector{Pair{String,T}}}=nothing) where {T <: Any}
     results = search_objects_by_query(
         Mangal.api_endpoints.node,
-        nothing,
+        query,
         Mangal.format_node_response
     )
     Mangal.cache(results)
@@ -14,56 +14,21 @@ function nodes()
 end
 
 """
-    nodes(q::Vector{Pair{String,T}}) where {T <: Any}
+    nodes(network::MangalNetwork, query::Union{Nothing,Vector{Pair{String,T}}}=nothing) where {T <: Any}
 
-Get the latest `MangalNode` objects according to a given query.
+Returns the nodes that are part of a `MangalNetwork`, with an additional optional query.
 """
-function nodes(q::Vector{Pair{String,T}}) where {T <: Any}
-    results = search_objects_by_query(
-        Mangal.api_endpoints.node,
-        q,
-        Mangal.format_node_response
-    )
-    Mangal.cache(results)
-    return results
-end
-
-"""
-    nodes(network::MangalNetwork)
-
-Returns the nodes that are part of a `MangalNetwork`.
-"""
-function nodes(network::MangalNetwork)
-    query = [Pair("network_id", network.id)]
-    return nodes(query)
-end
-
-"""
-    nodes(network::MangalNetwork, query::Vector{Pair{String,T}}) where {T <: Any}
-
-Returns the nodes that are part of a `MangalNetwork`, with an additional query.
-"""
-function nodes(network::MangalNetwork, query::Vector{Pair{String,T}}) where {T <: Any}
+function nodes(network::MangalNetwork, query::Union{Nothing,Vector{Pair{String,T}}}=nothing) where {T <: Any}
     push!(query, Pair("network_id", network.id))
     return nodes(query)
 end
 
 """
-    nodes(taxon::MangalReferenceTaxon)
-
-Returns the nodes that are instance of a `MangalReferenceTaxon`.
-"""
-function nodes(taxon::MangalReferenceTaxon)
-    query = [Pair("taxo_id", taxon.id)]
-    return nodes(query)
-end
-
-"""
-    nodes(taxon::MangalReferenceTaxon, query::Vector{Pair{String,T}}) where {T <: Any}
+    nodes(taxon::MangalReferenceTaxon, query::Union{Nothing,Vector{Pair{String,T}}}=nothing) where {T <: Any}
 
 Returns the nodes that are instance of a `MangalReferenceTaxon`, with an additional query.
 """
-function nodes(taxon::MangalReferenceTaxon, query::Vector{Pair{String,T}}) where {T <: Any}
+function nodes(taxon::MangalReferenceTaxon, query::Union{Nothing,Vector{Pair{String,T}}}=nothing) where {T <: Any}
     push!(query, Pair("taxo_id", taxon.id))
     return nodes(query)
 end
