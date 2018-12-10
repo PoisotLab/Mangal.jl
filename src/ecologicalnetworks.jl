@@ -5,7 +5,7 @@ function get_all_nodes(n::MangalNetwork)
     network_nodes = MangalNode[]
     for page in 1:pages_to_do
         paging_query = ["page" => page-1, "count" => page_size]
-        append!(network_nodes, nodes(n, paging_query))
+        append!(network_nodes, nodes(n, paging_query...))
     end
     return network_nodes
 end
@@ -18,7 +18,7 @@ function get_all_interactions(n::Array{MangalNode,1})
         pages_to_do = convert(Int64, ceil(interactions_to_get/page_size))
         for page in 1:pages_to_do
             paging_query = ["page" => "$(page-1)", "count" => "page_size"]
-            append!(network_interactions, interactions(this_node, :, paging_query))
+            append!(network_interactions, interactions(this_node, :, paging_query...))
         end
     end
     return network_interactions
