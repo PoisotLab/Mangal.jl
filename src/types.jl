@@ -93,7 +93,6 @@ struct MangalReferenceTaxon
     eol::Union{Int64,Nothing}
     created::DateTime
     updated::DateTime
-    description::Union{AbstractString,Nothing}
 end
 
 """
