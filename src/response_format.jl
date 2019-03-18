@@ -2,8 +2,7 @@ function format_dataset_response(d::Dict{T,Any}) where {T <: AbstractString}
     obj_id = d["id"]
     obj_public = d["public"]
     obj_name = d["name"]
-    @info d["date"]
-    obj_date = DateTime(d["date"][1:19])
+    obj_date = isnothing(d["date"]) ? missing : DateTime(d["date"][1:19])
     obj_created = DateTime(d["created_at"][1:19])
     obj_updated = DateTime(d["updated_at"][1:19])
     obj_reference = d["ref_id"]
