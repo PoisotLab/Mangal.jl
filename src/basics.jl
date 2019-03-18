@@ -65,7 +65,7 @@ function generate_request_query(parameters::Pair...)
 end
 
 """
-    search_objects_by_query(endpoint::AbstractString, query::Union{Vector{Pair},Nothing}, formatter::Function)
+    search_objects_by_query(endpoint::AbstractString, formatter::Function, query::Pair...)
 
 Depending on the verbosity of the package (see documentation for
 `Mangal.isverbose`), this function will let the user know when more objects than
@@ -106,7 +106,7 @@ function search_objects_by_query(endpoint::AbstractString, formatter::Function, 
     return formatter.(parsed_json)
 end
 
-function number_of_objects(endpoint::AbstractString, query::Union{Vector{Pair},Nothing})
+function number_of_objects(endpoint::AbstractString, query::Pair...)
     # Headers
     headers = Mangal.generate_base_header()
 
@@ -114,7 +114,7 @@ function number_of_objects(endpoint::AbstractString, query::Union{Vector{Pair},N
     endpoint = Mangal.api_root * endpoint
 
     # Convert query parameters
-    request_url = query == nothing ? endpoint : endpoint*Mangal.generate_request_query(query)
+    request_url = query == nothing ? endpoint : endpoint*Mangal.generate_request_query(query...)
 
     # Perform the request
     this_request = HTTP.get(request_url, headers)

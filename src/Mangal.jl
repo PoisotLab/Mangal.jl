@@ -12,7 +12,7 @@ const api_root = web_root * "api/v2/"
    # Endpoints
 const api_endpoints = (
     taxonomy = "taxonomy",
-    node = "taxon",
+    node = "node",
     interaction = "interaction",
     network = "network",
     dataset = "dataset",
