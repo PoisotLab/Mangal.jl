@@ -3,6 +3,11 @@ module MangalTestNetwork
     using Test
     include("setup.jl")
 
+    # Nodes of a network
+    N1 = network(10)
+    nN1 = nodes(N1)
+    @test typeof(nN1) <: Vector{MangalNode}
+
     # Datasets with no arguments
     @test typeof(networks()) <: Vector{MangalNetwork}
 
