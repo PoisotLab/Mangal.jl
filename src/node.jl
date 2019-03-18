@@ -28,7 +28,7 @@ end
 Returns the nodes that are instance of a `MangalReferenceTaxon`, with an additional query.
 """
 function nodes(taxon::MangalReferenceTaxon, query::Pair...)
-    return nodes(Pair("taxo_id", taxon.id), query...)
+    return nodes(Pair("taxonomy_id", taxon.id), query...)
 end
 
 """
