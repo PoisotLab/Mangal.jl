@@ -26,7 +26,7 @@ struct MangalDataset
     id::Int64
     public::Bool
     name::AbstractString
-    date::Union{DateTime,Nothing}
+    date::Union{DateTime,Missing}
     created::DateTime
     updated::DateTime
     reference::Union{Int64,Nothing}
