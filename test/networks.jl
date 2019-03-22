@@ -4,7 +4,7 @@ module MangalTestNetwork
     include("setup.jl")
 
     # Nodes of a network
-    N1 = network(10)
+    N1 = network(15)
     nN1 = nodes(N1)
     @test typeof(nN1) <: Vector{MangalNode}
 

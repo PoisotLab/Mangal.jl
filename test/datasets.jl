@@ -15,6 +15,6 @@ module MangalTestDataset
     @test typeof(dataset(1)) <: MangalDataset
 
     # Dataset by name
-    @test typeof(dataset("Roberson_1929")) <: MangalDataset
+    @test typeof(dataset("roberson_1929")) <: MangalDataset
 
 end

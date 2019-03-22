@@ -15,12 +15,12 @@ function format_dataset_response(d::Dict{T,Any}) where {T <: AbstractString}
 end
 
 function format_mangal_coordinates(d::Dict{T,Any}) where {T <: AbstractString}
-    point_type = d["localisation"]["type"] == "Point" ? Point : Polygon
+    point_type = d["geom"]["type"] == "Point" ? Point : Polygon
     if point_type == Polygon
-        coords = [float.(x) for x in first(d["localisation"]["coordinates"])]
+        coords = [float.(x) for x in first(d["geom"]["coordinates"])]
         point_coordinates = point_type(coords)
     else
-        coords = float.(d["localisation"]["coordinates"])
+        coords = float.(d["geom"]["coordinates"])
         point_coordinates = point_type(coords...)
     end
     return point_coordinates
