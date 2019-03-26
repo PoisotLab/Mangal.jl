@@ -113,7 +113,7 @@ struct MangalNode
     name::AbstractString
     created::DateTime
     updated::DateTime
-    taxon::MangalReferenceTaxon
+    taxon::Union{MangalReferenceTaxon,Missing}
 end
 
 """

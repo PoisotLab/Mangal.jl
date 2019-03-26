@@ -52,7 +52,7 @@ function format_node_response(d::Dict{T,Any}) where {T <: AbstractString}
     obj_name = d["original_name"]
     obj_created = DateTime(d["created_at"][1:19])
     obj_updated = DateTime(d["updated_at"][1:19])
-    obj_taxon = Mangal.format_backbone_response(d["taxonomy"])
+    obj_taxon = isnothing(d["taxonomy"] ? missing : Mangal.format_backbone_response(d["taxonomy"])
 
     return MangalNode(obj_id, obj_name, obj_created, obj_updated, obj_taxon)
 
