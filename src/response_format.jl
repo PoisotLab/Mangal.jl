@@ -31,18 +31,17 @@ function format_network_response(d::Dict{T,Any}) where {T <: AbstractString}
     obj_id = d["id"]
     obj_public = d["public"]
     obj_name = d["name"]
-    obj_date = DateTime(d["date"][1:19])
-    obj_position = format_mangal_coordinates(d)
+    obj_date = isnothing(d["date"]) ? missing : DateTime(d["date"][1:19])
+    obj_position = isnothing(d["geom"]) ? missing : format_mangal_coordinates(d)
     obj_created = DateTime(d["created_at"][1:19])
     obj_updated = DateTime(d["updated_at"][1:19])
     obj_user = d["user_id"]
     obj_description = d["description"]
-    obj_environment = d["environment_id"]
     obj_complete = d["all_interactions"]
     obj_dataset = d["dataset_id"]
 
     return MangalNetwork(obj_id, obj_public, obj_name, obj_date, obj_position,
-        obj_created, obj_updated, obj_user, obj_description, obj_environment,
+        obj_created, obj_updated, obj_user, obj_description,
         obj_complete, obj_dataset)
 
 end
@@ -78,22 +77,21 @@ end
 
 function format_interaction_response(d::Dict{T,Any}) where {T <: AbstractString}
     obj_id = d["id"]
-    obj_from = node(d["taxon_1"])
-    obj_to = node(d["taxon_2"])
-    obj_level=(Symbol(d["taxon_1_level"]),Symbol(d["taxon_1_level"]))
-    obj_date = DateTime(d["date"][1:19])
+    obj_from = node(d["node_from"])
+    obj_to = node(d["node_to"])
+    obj_date = isnothing(d["date"]) ? missing : DateTime(d["date"][1:19])
+    obj_position = isnothing(d["geom"]) ? missing : format_mangal_coordinates(d)
     obj_directed = d["direction"] == "directed"
     obj_interaction =Symbol(d["type"])
     obj_method = d["method"]
     obj_strength = d["value"]
-    obj_user = d["user_id"]
     obj_attr = d["attr_id"]
     obj_created = DateTime(d["created_at"][1:19])
     obj_updated = DateTime(d["updated_at"][1:19])
     obj_description = d["description"]
 
-    return MangalInteraction(obj_id, obj_from, obj_to, obj_level, obj_date,
-        obj_directed, obj_interaction, obj_method, obj_strength, obj_user,
+    return MangalInteraction(obj_id, obj_from, obj_to, obj_date, obj_position,
+        obj_directed, obj_interaction, obj_method, obj_strength,
         obj_attr, obj_created, obj_updated, obj_description)
 
 end

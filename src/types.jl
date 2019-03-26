@@ -69,13 +69,12 @@ struct MangalNetwork
     id::Int64
     public::Bool
     name::AbstractString
-    date::DateTime
-    position::AbstractGeometry
+    date::Union{DateTime,Missing}
+    position::Union{AbstractGeometry,Missing}
     created::DateTime
     updated::DateTime
     user::Int64
     description::AbstractString
-    environment::Union{Int64,Nothing}
     complete::Bool
     dataset::Int64
 end
@@ -124,13 +123,12 @@ struct MangalInteraction
     id::Int64
     from::MangalNode
     to::MangalNode
-    level::NTuple{2,Symbol}
-    date::DateTime
+    date::Union{DateTime,Missing}
+    position::Union{AbstractGeometry,Missing}
     directed::Bool
     interaction::Symbol
     method::AbstractString
     strength::Union{Number,Nothing}
-    user::Int64
     attribute::Int64
     created::DateTime
     updated::DateTime

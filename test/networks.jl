@@ -4,7 +4,7 @@ module MangalTestNetwork
     include("setup.jl")
 
     # Nodes of a network
-    N1 = network(15)
+    N1 = network(19)
     nN1 = nodes(N1)
     @test typeof(nN1) <: Vector{MangalNode}
 
@@ -12,13 +12,13 @@ module MangalTestNetwork
     @test typeof(networks()) <: Vector{MangalNetwork}
 
     # Networks by id
-    @test typeof(network(1)) <: MangalNetwork
+    @test typeof(network(19)) <: MangalNetwork
 
     # Network by name
-    @test typeof(network("Howking_1968")) <: MangalNetwork
+    @test typeof(network("howking_1968_19680601_12")) <: MangalNetwork
 
     # Networks by dataset
-    ds = dataset(27)
+    ds = dataset(62) # Olesen
     n_ds = networks(ds)
     @test typeof(n_ds) <: Vector{MangalNetwork}
     n_ds_q = networks(ds, Pair("count", 2))
