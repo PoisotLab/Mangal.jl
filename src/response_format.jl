@@ -85,13 +85,10 @@ function format_interaction_response(d::Dict{T,Any}) where {T <: AbstractString}
     obj_interaction =Symbol(d["type"])
     obj_method = d["method"]
     obj_strength = d["value"]
-    obj_attr = d["attr_id"]
     obj_created = DateTime(d["created_at"][1:19])
     obj_updated = DateTime(d["updated_at"][1:19])
-    obj_description = d["description"]
 
     return MangalInteraction(obj_id, obj_from, obj_to, obj_date, obj_position,
-        obj_directed, obj_interaction, obj_method, obj_strength,
-        obj_attr, obj_created, obj_updated, obj_description)
+        obj_directed, obj_interaction, obj_method, obj_strength, obj_created, obj_updated)
 
 end

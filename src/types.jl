@@ -129,8 +129,6 @@ struct MangalInteraction
     interaction::Symbol
     method::AbstractString
     strength::Union{Number,Nothing}
-    attribute::Int64
     created::DateTime
     updated::DateTime
-    description::Union{AbstractString,Nothing}
 end
