@@ -17,7 +17,7 @@ end
 Returns interactions established *by* the species given as its first argument.
 """
 function interactions(from::MangalNode, ::Colon, query::Pair...)
-    return interactions(Pair("taxon_1", string(from.id)), query...)
+    return interactions(Pair("node_from", string(from.id)), query...)
 end
 
 """
@@ -26,7 +26,7 @@ end
 Returns interactions established *to* the species given as its second argument.
 """
 function interactions(::Colon, to::MangalNode, query::Pair...)
-    return interactions(Pair("taxon_2", string(to.id)), query...)
+    return interactions(Pair("node_to", string(to.id)), query...)
 end
 
 """
@@ -35,7 +35,7 @@ end
 Returns interactions between two nodes.
 """
 function interactions(from::MangalNode, to::MangalNode, query::Pair...)
-    return interactions(Pair("taxon_1", string(from.id)), Pair("taxon_2", string(to.id)), query...)
+    return interactions(Pair("node_from", string(from.id)), Pair("node_to", string(to.id)), query...)
 end
 
 """
