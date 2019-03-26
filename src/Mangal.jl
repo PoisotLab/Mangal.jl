@@ -32,6 +32,7 @@ export MangalNetwork
 export MangalReferenceTaxon
 export MangalNode
 export MangalInteraction
+export MangalReference
 
 # The cache!
 global _MANGAL_CACHES = Dict(
@@ -71,6 +72,11 @@ export node
 include(joinpath(".", "interaction.jl"))
 export interactions
 export interaction
+
+# References
+include(joinpath(".", "reference.jl"))
+export references
+export reference
 
 # EcologicalNetworks
 include(joinpath(".", "ecologicalnetworks.jl"))

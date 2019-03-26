@@ -132,3 +132,17 @@ struct MangalInteraction
     created::DateTime
     updated::DateTime
 end
+
+"""
+Reference
+"""
+struct Reference
+    id::Int64
+    year::Int64
+    doi::Union{String,Missing}
+    jstor::Union{String,Missing}
+    pmid::Union{String,Missing}
+    bibtex::Union{String,Missing}
+    paper::Union{String,Missing}
+    data::Union{String,Missing}
+end

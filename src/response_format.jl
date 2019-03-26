@@ -92,3 +92,17 @@ function format_interaction_response(d::Dict{T,Any}) where {T <: AbstractString}
         obj_directed, obj_interaction, obj_method, obj_strength, obj_created, obj_updated)
 
 end
+
+function format_reference_response(d::Dict{T,Any}) where {T <: AbstractString}
+    obj_id = d["id"]
+    obj_year = parse(Int64, d["year"])
+    obj_doi = isnothing(d["doi"]) ? missing : d["doi"]
+    obj_jstor = isnothing(d["jstor"]) ? missing : d["jstor"]
+    obj_pmid = isnothing(d["pmid"]) ? missing : d["pmid"]
+    obj_bibtex = isnothing(d["bibtex"]) ? missing : d["bibtex"]
+    obj_paper = isnothing(d["paper"]) ? missing : d["paper"]
+    obj_data = isnothing(d["data"]) ? missing : d["data"]
+
+    return MangalReference(obj_id, obj_year, obj_doi, obj_jstor, obj_pmid,
+        obj_bibtex, obj_paper, obj_data)
+end
