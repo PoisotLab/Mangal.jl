@@ -121,6 +121,7 @@ Interaction
 """
 struct MangalInteraction
     id::Int64
+    network::MangalNetwork
     from::MangalNode
     to::MangalNode
     date::Union{DateTime,Missing}
@@ -128,7 +129,7 @@ struct MangalInteraction
     directed::Bool
     interaction::Symbol
     method::AbstractString
-    strength::Union{Number,Nothing}
+    strength::Union{Number,Missing}
     created::DateTime
     updated::DateTime
 end

@@ -9,6 +9,8 @@ function networks(query::Pair...)
         Mangal.format_network_response,
         query...
     )
+    Mangal.cache(results)
+    return results
 end
 
 """
@@ -35,5 +37,5 @@ end
 Returns a network of a given identifier.
 """
 function network(id::Int64)
-    return first(networks(Pair("id", id)))
+    return get(_MANGAL_CACHES[MangalNetwork], id, first(networks(Pair("id", id))))
 end

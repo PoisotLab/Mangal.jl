@@ -77,18 +77,19 @@ end
 
 function format_interaction_response(d::Dict{T,Any}) where {T <: AbstractString}
     obj_id = d["id"]
+    obj_network = network(d["network_id"])
     obj_from = node(d["node_from"])
     obj_to = node(d["node_to"])
     obj_date = isnothing(d["date"]) ? missing : DateTime(d["date"][1:19])
     obj_position = isnothing(d["geom"]) ? missing : format_mangal_coordinates(d)
     obj_directed = d["direction"] == "directed"
-    obj_interaction =Symbol(d["type"])
+    obj_interaction = Symbol(d["type"])
     obj_method = d["method"]
-    obj_strength = d["value"]
+    obj_strength = isnothing(d["value"]) ? missing : d["value"]
     obj_created = DateTime(d["created_at"][1:19])
     obj_updated = DateTime(d["updated_at"][1:19])
 
-    return MangalInteraction(obj_id, obj_from, obj_to, obj_date, obj_position,
+    return MangalInteraction(obj_id, obj_network, obj_from, obj_to, obj_date, obj_position,
         obj_directed, obj_interaction, obj_method, obj_strength, obj_created, obj_updated)
 
 end

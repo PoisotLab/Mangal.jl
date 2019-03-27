@@ -33,7 +33,7 @@ likely to be queried more than once. These are `MangalNode` and
 calling the nodes or backbones by their `id` (which is what the resources-hungry
 functions do internally anyways).
 """
-function cache(results::Vector{T}) where {T <: Union{MangalReferenceTaxon,MangalNode}}
+function cache(results::Vector{T}) where {T <: Union{MangalReferenceTaxon,MangalNode,MangalNetwork}}
     for result in results
         if !haskey(_MANGAL_CACHES[T], result.id)
             global _MANGAL_CACHES[T][result.id] = result

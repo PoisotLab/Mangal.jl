@@ -39,6 +39,15 @@ function interactions(from::MangalNode, to::MangalNode, query::Pair...)
 end
 
 """
+    interactions(n::MangalNetwork, query::Pair...)
+
+Returns interactions within a network.
+"""
+function interactions(n::MangalNetwork, query::Pair...)
+    return interactions("network_id" => n.id, query...)
+end
+
+"""
     interaction(id::Int64)
 
 Returns an interaction by its id.

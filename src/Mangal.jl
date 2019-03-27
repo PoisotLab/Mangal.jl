@@ -4,7 +4,6 @@ using HTTP
 using JSON
 using GeoInterface
 using Dates
-using EcologicalNetworks
 
 const web_root = "http://poisotlab.biol.umontreal.ca/"
 const api_root = web_root * "api/v2/"
@@ -37,7 +36,8 @@ export MangalReference
 # The cache!
 global _MANGAL_CACHES = Dict(
     MangalNode => Dict{Int64, MangalNode}(),
-    MangalReferenceTaxon => Dict{Int64, MangalReferenceTaxon}()
+    MangalReferenceTaxon => Dict{Int64, MangalReferenceTaxon}(),
+    MangalNetwork => Dict{Int64, MangalNetwork}()
     )
 
 # Counting objects
@@ -77,8 +77,5 @@ export interaction
 include(joinpath(".", "reference.jl"))
 export references
 export reference
-
-# EcologicalNetworks -- exports additional methods for Base.convert
-include(joinpath(".", "ecologicalnetworks.jl"))
 
 end # module
