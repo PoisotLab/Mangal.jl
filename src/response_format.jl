@@ -38,7 +38,7 @@ function format_network_response(d::Dict{T,Any}) where {T <: AbstractString}
     obj_user = d["user_id"]
     obj_description = d["description"]
     obj_complete = d["all_interactions"]
-    obj_dataset = d["dataset_id"]
+    obj_dataset = isnothing(d["dataset_id"]) ? missing : dataset(d["dataset_id"])
 
     return MangalNetwork(obj_id, obj_public, obj_name, obj_date, obj_position,
         obj_created, obj_updated, obj_user, obj_description,

@@ -76,7 +76,7 @@ struct MangalNetwork
     user::Int64
     description::AbstractString
     complete::Bool
-    dataset::Int64
+    dataset::Union{MangalDataset,Missing}
 end
 
 """
