@@ -73,7 +73,7 @@ struct MangalNetwork
     position::Union{AbstractGeometry,Missing}
     created::DateTime
     updated::DateTime
-    user::Int64
+    user::Union{Int64,Missing}
     description::AbstractString
     complete::Bool
     dataset::Union{MangalDataset,Missing}

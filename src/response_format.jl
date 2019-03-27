@@ -35,7 +35,7 @@ function format_network_response(d::Dict{T,Any}) where {T <: AbstractString}
     obj_position = isnothing(d["geom"]) ? missing : format_mangal_coordinates(d)
     obj_created = DateTime(d["created_at"][1:19])
     obj_updated = DateTime(d["updated_at"][1:19])
-    obj_user = d["user_id"]
+    obj_user = isnothing(d["user_id"]) ? missing : d["user_id"]
     obj_description = d["description"]
     obj_complete = d["all_interactions"]
     obj_dataset = isnothing(d["dataset_id"]) ? missing : dataset(d["dataset_id"])
