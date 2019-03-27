@@ -24,8 +24,10 @@ function get_all_interactions(n::Array{MangalNode,1})
     return network_interactions
 end
 
+import Base.convert
+
 """
-    UnipartiteNetwork(n::MangalNetwork; resolution::Type=MangalNode)
+    convert(::UnipartiteNetwork, n::MangalNetwork; resolution::Type=MangalNode)
 
 Returns a `UnipartiteNetwork` object representation of the `MangalNetwork`
 passed as its first argument. The optional keyword `resolution` (can be
@@ -33,7 +35,7 @@ passed as its first argument. The optional keyword `resolution` (can be
 aggregation should be used. The default (`MangalNode`) is raw data, and
 `MangalReferenceTaxon` is the cleaned version.
 """
-function UnipartiteNetwork(n::MangalNetwork; resolution::Type=MangalNode)
+function convert(::UnipartiteNetwork, n::MangalNetwork; resolution::Type=MangalNode)
     resolution ∈ [MangalNode, MangalReferenceTaxon] || throw(ArgumentError("The resolution argument can only be MangalNode or MangalReferenceTaxon - you used $(resolution)"))
 
     network_nodes = get_all_nodes(n)
@@ -49,11 +51,10 @@ function UnipartiteNetwork(n::MangalNetwork; resolution::Type=MangalNode)
     end
 
     return N
-
 end
 
 """
-    UnipartiteQuantitativeNetwork(n::MangalNetwork; resolution::Type=MangalNode)
+    convert(::UnipartiteQuantitativeNetwork, n::MangalNetwork; resolution::Type=MangalNode)
 
 Returns a `UnipartiteQuantitativeNetwork` object representation of the
 `MangalNetwork` passed as its first argument. The optional keyword `resolution`
@@ -65,7 +66,7 @@ The quantitative interaction value comes from the `strength` field of the
 `MangalInteraction` object. In the case of `MangalReferenceTaxon` aggregation,
 these strengths are *added*.
 """
-function UnipartiteQuantitativeNetwork(n::MangalNetwork; resolution::Type=MangalNode)
+function convert(::UnipartiteQuantitativeNetwork, n::MangalNetwork; resolution::Type=MangalNode)
     resolution ∈ [MangalNode, MangalReferenceTaxon] || throw(ArgumentError("The resolution argument can only be MangalNode or MangalReferenceTaxon - you used $(resolution)"))
 
     network_nodes = get_all_nodes(n)

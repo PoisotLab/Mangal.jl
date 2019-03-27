@@ -78,8 +78,7 @@ include(joinpath(".", "reference.jl"))
 export references
 export reference
 
-# EcologicalNetworks
+# EcologicalNetworks -- exports additional methods for Base.convert
 include(joinpath(".", "ecologicalnetworks.jl"))
-export UnipartiteNetwork, UnipartiteQuantitativeNetwork
 
 end # module

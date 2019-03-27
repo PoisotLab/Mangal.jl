@@ -7,6 +7,5 @@ converted into bipartite networks using the `convert` methods in
 `EcologicalNetworks.jl`.
 
 ```@docs
-UnipartiteNetwork
-UnipartiteQuantitativeNetwork
+convert
 ```
