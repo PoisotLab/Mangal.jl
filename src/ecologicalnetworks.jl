@@ -1,6 +1,6 @@
 function get_all_nodes(n::MangalNetwork)
     page_size = 200
-    nodes_to_get = count(MangalNode, ["network_id" => n.id])
+    nodes_to_get = count(MangalNode, "network_id" => n.id)
     pages_to_do = convert(Int64, ceil(nodes_to_get/page_size))
     network_nodes = MangalNode[]
     for page in 1:pages_to_do
@@ -14,7 +14,7 @@ function get_all_interactions(n::Array{MangalNode,1})
     page_size = 200
     network_interactions = MangalInteraction[]
     for this_node in n
-        interactions_to_get = count(MangalInteraction, ["taxon_1" => this_node.id])
+        interactions_to_get = count(MangalInteraction, "taxon_1" => this_node.id)
         pages_to_do = convert(Int64, ceil(interactions_to_get/page_size))
         for page in 1:pages_to_do
             paging_query = ["page" => "$(page-1)", "count" => "page_size"]
