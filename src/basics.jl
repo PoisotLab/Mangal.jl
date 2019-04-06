@@ -43,12 +43,12 @@ end
 In all cases, it is assumed that the functions will be wrapepd
 in calls to query objects until no further objects are found.
 """
-function search_objects_by_query(endpoint::AbstractString, ReturnType::Type, query::Pair...)
+function search_objects_by_query(ReturnType::Type, query::Pair...)
     # Headers
     headers = Mangal.generate_base_header()
 
     # Full endpoint
-    endpoint = Mangal.api_root * endpoint
+    endpoint = Mangal.api_root * Mangal._MANGAL_ENDPOINTS[ReturnType]
 
     # Convert query parameters
     request_url = length(query) == 0 ? endpoint : endpoint*Mangal.generate_request_query(query...)

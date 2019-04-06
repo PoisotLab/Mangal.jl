@@ -4,13 +4,13 @@ module MangalTestBackbone
     include("setup.jl")
 
     # Backbone only
-    @test typeof(backbone()) <: Vector{MangalReferenceTaxon}
+    @test typeof(backbones()) <: Vector{MangalReferenceTaxon}
 
-    @test typeof(backbone(Pair("q", "Salix"))) <: Vector{MangalReferenceTaxon}
+    @test typeof(backbones("q" => "Salix")) <: Vector{MangalReferenceTaxon}
 
     @test backbone(1).name == "Abutilon theophrasti"
     @test backbone("Abutilon theophrasti").id == 1
 
-    @test length(backbone(Pair("count", 10))) == 10
+    @test length(backbones(Pair("count", 10))) == 10
 
 end
