@@ -62,7 +62,7 @@ function search_objects_by_query(endpoint::AbstractString, object::Type, query::
     parsed_json = JSON.parse.(request_body)
 
     # Return the formatted object(s)
-    formatter = (x) -> formate_response(object, x)
+    formatter = (x) -> format_response(object, x)
     return formatter.(parsed_json)
 end
 
