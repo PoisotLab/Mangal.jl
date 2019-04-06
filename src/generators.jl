@@ -25,7 +25,7 @@ for mg_type_pair in types_names
     if haskey(Mangal._MANGAL_CACHES, mg_type)
         @eval begin
             """
-                $mg_plural(query::Pair...)
+                $($mg_plural)(query::Pair...)
 
             This function will return objects of type $($mg_type) according to the query
             parameters. To accelerate future queries, the objects returned will be cached.
@@ -39,7 +39,7 @@ for mg_type_pair in types_names
             end
 
             """
-                $mg_singular(id::Int64)
+                $($mg_singular)(id::Int64)
 
             Returns the object of type $mg_type whose identifier is `id`.
             """
@@ -54,7 +54,7 @@ for mg_type_pair in types_names
     else
         @eval begin
             """
-                $mg_plural(query::Pair...)
+                $($mg_plural)(query::Pair...)
 
             This function will return objects of type $($mg_type) according to the query
             parameters.
@@ -67,7 +67,7 @@ for mg_type_pair in types_names
             end
 
             """
-                $mg_singular(id::Int64)
+                $($mg_singular)(id::Int64)
 
             Returns the object of type $($mg_type) whose identifier is `id`.
             """
