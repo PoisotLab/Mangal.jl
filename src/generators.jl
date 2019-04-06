@@ -41,7 +41,7 @@ for mg_type_pair in types_names
             """
                 $($mg_singular)(id::Int64)
 
-            Returns the object of type $mg_type whose identifier is `id`.
+            Returns the object of type $($mg_type) whose identifier is `id`.
             """
             function $mg_singular(id::Int64)
                 if haskey(Mangal._MANGAL_CACHES[$mg_type], id)
