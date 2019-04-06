@@ -73,7 +73,7 @@ function number_of_objects(endpoint::AbstractString, query::Pair...)
     endpoint = Mangal.api_root * endpoint
 
     # Convert query parameters
-    request_url = query == nothing ? endpoint : endpoint*Mangal.generate_request_query(query...)
+    request_url = query == nothing ? endpoint : endpoint*Mangal.generate_request_query("count" => 1, query...)
 
     # Perform the request
     this_request = HTTP.get(request_url, headers)
