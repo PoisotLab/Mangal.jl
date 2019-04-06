@@ -14,9 +14,9 @@ for mg_type_pair in types_names
     mg_plural = Symbol(string(mg_singular)*"s")
     @eval begin
         """
-            count(::Type{$mg_type}, query::Pair...)
+            count(::Type{$($mg_type)}, query::Pair...)
 
-        Returns the number of $mg_type objects that match a query.
+        Returns the number of $($mg_type) objects that match a query.
         """
         function count(::Type{$mg_type}, query::Pair...)
             return Mangal.number_of_objects(Mangal._MANGAL_ENDPOINTS[$mg_type], query...)
@@ -27,10 +27,10 @@ for mg_type_pair in types_names
             """
                 $mg_plural(query::Pair...)
 
-            This function will return objects of type $mg_type according to the query
+            This function will return objects of type $($mg_type) according to the query
             parameters. To accelerate future queries, the objects returned will be cached.
 
-            To get the latest $mg_type records, this function can be called with no arguments.
+            To get the latest $($mg_type) records, this function can be called with no arguments.
             """
             function $mg_plural(query::Pair...)
                 results = search_objects_by_query($mg_type, query...)
@@ -56,10 +56,10 @@ for mg_type_pair in types_names
             """
                 $mg_plural(query::Pair...)
 
-            This function will return objects of type $mg_type according to the query
+            This function will return objects of type $($mg_type) according to the query
             parameters.
 
-            To get the latest $mg_type records, this function can be called with no arguments.
+            To get the latest $($mg_type) records, this function can be called with no arguments.
             """
             function $mg_plural(query::Pair...)
                 results = search_objects_by_query($mg_type, query...)
@@ -69,7 +69,7 @@ for mg_type_pair in types_names
             """
                 $mg_singular(id::Int64)
 
-            Returns the object of type $mg_type whose identifier is `id`.
+            Returns the object of type $($mg_type) whose identifier is `id`.
             """
             function $mg_singular(id::Int64)
                 return first($mg_plural(Pair("id", id)))
