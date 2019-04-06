@@ -3,7 +3,7 @@ push!(LOAD_PATH,"../src/")
 using Pkg
 Pkg.activate(".")
 
-_required = ["Weave", "StatsPlots"]
+_required = ["Weave", "Plots"]
 
 Pkg.add.(_required)
 
