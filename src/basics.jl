@@ -43,12 +43,12 @@ end
 In all cases, it is assumed that the functions will be wrapepd
 in calls to query objects until no further objects are found.
 """
-function search_objects_by_query(endpoint::AbstractString, formatter::Function, query::Pair...)
+function search_objects_by_query(ReturnType::Type, query::Pair...)
     # Headers
     headers = Mangal.generate_base_header()
 
     # Full endpoint
-    endpoint = Mangal.api_root * endpoint
+    endpoint = Mangal.api_root * Mangal._MANGAL_ENDPOINTS[ReturnType]
 
     # Convert query parameters
     request_url = length(query) == 0 ? endpoint : endpoint*Mangal.generate_request_query(query...)
@@ -62,7 +62,8 @@ function search_objects_by_query(endpoint::AbstractString, formatter::Function, 
     parsed_json = JSON.parse.(request_body)
 
     # Return the formatted object(s)
-    return formatter.(parsed_json)
+    formatter = (x) -> format_mangal_response(ReturnType, x)
+    return convert(Vector{ReturnType}, formatter.(parsed_json))
 end
 
 function number_of_objects(endpoint::AbstractString, query::Pair...)

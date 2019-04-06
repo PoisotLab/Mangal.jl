@@ -1,19 +1,4 @@
 """
-    networks(query::Pair...)
-
-Returns the latest `MangalNetwork` objects matching a given query.
-"""
-function networks(query::Pair...)
-    results = search_objects_by_query(
-        Mangal.api_endpoints.network,
-        Mangal.format_network_response,
-        query...
-    )
-    Mangal.cache(results)
-    return results
-end
-
-"""
     networks(dataset::MangalDataset, query::Pair...)
 
 Returns networks that are part of a `MangalDataset`. Allows additional query parameters.
@@ -29,17 +14,4 @@ Returns a network of a given name.
 """
 function network(name::AbstractString)
     return first(networks(Pair("name", name)))
-end
-
-"""
-    network(id::Int64)
-
-Returns a network of a given identifier.
-"""
-function network(id::Int64)
-    if haskey(Mangal._MANGAL_CACHES[MangalNetwork], id)
-        return Mangal._MANGAL_CACHES[MangalNetwork][id]
-    else
-        return first(networks(Pair("id", id)))
-    end
 end
