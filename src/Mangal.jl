@@ -41,16 +41,13 @@ global _MANGAL_CACHES = Dict(
     MangalNetwork => Dict{Int64, MangalNetwork}()
     )
 
-# Counting objects
-include(joinpath(".", "count.jl"))
-
 # Response formatters
 include("response_format.jl")
 
 # Basic functions
 include(joinpath(".", "basics.jl"))
 
-# Generate code to write most of the API
+# Generate code to write most of the API -- including count method
 include(joinpath(".", "generators.jl"))
 export nodes, node
 export backbones, backbone
