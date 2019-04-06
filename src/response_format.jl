@@ -10,7 +10,7 @@ function format_mangal_coordinates(d::Dict{T,Any}) where {T <: AbstractString}
     return point_coordinates
 end
 
-function format_response(::Type{MangalDataset}, d::Dict{T,Any}) where {T <: AbstractString}
+function format_mangal_response(::Type{MangalDataset}, d::Dict{T,Any}) where {T <: AbstractString}
     obj_id = d["id"]
     obj_public = d["public"]
     obj_name = d["name"]
@@ -27,7 +27,7 @@ function format_response(::Type{MangalDataset}, d::Dict{T,Any}) where {T <: Abst
 end
 
 
-function format_response(::Type{MangalNetwork}, d::Dict{T,Any}) where {T <: AbstractString}
+function format_mangal_response(::Type{MangalNetwork}, d::Dict{T,Any}) where {T <: AbstractString}
     obj_id = d["id"]
     obj_public = d["public"]
     obj_name = d["name"]
@@ -46,19 +46,19 @@ function format_response(::Type{MangalNetwork}, d::Dict{T,Any}) where {T <: Abst
 
 end
 
-function format_response(::Type{MangalNode}, d::Dict{T,Any}) where {T <: AbstractString}
+function format_mangal_response(::Type{MangalNode}, d::Dict{T,Any}) where {T <: AbstractString}
 
     obj_id = d["id"]
     obj_name = d["original_name"]
     obj_created = DateTime(d["created_at"][1:19])
     obj_updated = DateTime(d["updated_at"][1:19])
-    obj_taxon = isnothing(d["taxonomy"]) ? missing : Mangal.format_backbone_response(d["taxonomy"])
+    obj_taxon = isnothing(d["taxonomy"]) ? missing : Mangal.format_mangal_response(MangalReferenceTaxon, d["taxonomy"])
 
     return MangalNode(obj_id, obj_name, obj_created, obj_updated, obj_taxon)
 
 end
 
-function format_response(::Type{MangalReferenceTaxon}, d::Dict{T,Any}) where {T <: AbstractString}
+function format_mangal_response(::Type{MangalReferenceTaxon}, d::Dict{T,Any}) where {T <: AbstractString}
 
     obj_id = d["id"]
     obj_name = d["name"]
@@ -75,7 +75,7 @@ function format_response(::Type{MangalReferenceTaxon}, d::Dict{T,Any}) where {T 
 
 end
 
-function format_response(::Type{MangalInteraction}, d::Dict{T,Any}) where {T <: AbstractString}
+function format_mangal_response(::Type{MangalInteraction}, d::Dict{T,Any}) where {T <: AbstractString}
     obj_id = d["id"]
     obj_network = network(d["network_id"])
     obj_from = node(d["node_from"])
@@ -94,7 +94,7 @@ function format_response(::Type{MangalInteraction}, d::Dict{T,Any}) where {T <: 
 
 end
 
-function format_response(::Type{MangalReference}, d::Dict{T,Any}) where {T <: AbstractString}
+function format_mangal_response(::Type{MangalReference}, d::Dict{T,Any}) where {T <: AbstractString}
     obj_id = d["id"]
     obj_year = d["year"] == "NA" ? missing : parse(Int64, d["year"])
     obj_doi = isnothing(d["doi"]) ? missing : d["doi"]

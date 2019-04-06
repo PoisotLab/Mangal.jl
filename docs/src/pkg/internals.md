@@ -11,10 +11,8 @@ Mangal.login
 ## Formatters
 
 ```@docs
-Mangal.format_dataset_response
-Mangal.format_network_response
-Mangal.format_node_response
-Mangal.format_backbone_response
+Mangal.format_mangal_response
+Mangal.format_mangal_coordinates
 ```
 
 ## Other functions
