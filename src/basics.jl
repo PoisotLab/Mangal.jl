@@ -85,7 +85,7 @@ function search_objects_by_query(endpoint::AbstractString, formatter::Function, 
     # Perform the request
     this_request = HTTP.get(request_url, headers)
     request_body = String(this_request.body)
-    request_body = replace(request_body, "" => "-") # There are some weird chars in the DB
+    request_body = replace(request_body, "" => "-") # This shouldn't be necessary anymore but...
 
     # Content-range?
     if Mangal.isverbose()
