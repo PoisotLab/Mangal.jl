@@ -2,7 +2,7 @@
 
 ```julia
 using Mangal
-using StatsPlots
+using Plots
 ```
 
 ```julia
@@ -10,29 +10,29 @@ count(MangalNetwork)
 ```
 
 ```julia
-Kolpelke_data = first(datasets("q" => "kolpelke"))
+Havens_data = first(datasets("q" => "havens"))
 ```
 
 ```julia
-count(MangalNetwork, "dataset_id" => Kolpelke_data.id)
+count(MangalNetwork, "dataset_id" => Havens_data.id)
 ```
 
 Note that there is a shorthand notation for this:
 
 ```julia
-Kolpelke_count = count(MangalNetwork, Kolpelke_data)
+Havens_count = count(MangalNetwork, Havens_data)
 ```
 
 ```julia
-Kolpelke_networks = networks(Kolpelke_data)
+Havens_networks = networks(Havens_data)
 page = 0
-while length(Kolpelke_networks) < Kolpelke_count
+while length(Havens_networks) < Havens_count
   global page = page + 1
-  append!(Kolpelke_networks, networks(Kolpelke_data, "page" => page))
+  append!(Havens_networks, networks(Havens_data, "page" => page))
 end
 ```
 
 ```julia
-LS = [(count(MangalInteraction, n), count(MangalNode, n)) for n in Kolpelke_networks]
+LS = [(count(MangalInteraction, n), count(MangalNode, n)) for n in Havens_networks]
 scatter(LS)
 ```
