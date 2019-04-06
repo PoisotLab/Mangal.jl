@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>Counting &amp; paging · Mangal.jl</title><link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css" rel="stylesheet" type="text/css"/><link href="https://fonts.googleapis.com/css?family=Lato|Roboto+Mono" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="../.."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.2.0/require.min.js" data-main="../../assets/documenter.js"></script><script src="../../siteinfo.js"></script><script src="../../../versions.js"></script><link href="../../assets/documenter.css" rel="stylesheet" type="text/css"/></head><body><nav class="toc"><a href="../../index.html"><img class="logo" src="../../assets/logo.png" alt="Mangal.jl logo"/></a><h1>Mangal.jl</h1><select id="version-selector" onChange="window.location.href=this.value" style="visibility: hidden"></select><form class="search" id="search-form" action="../../search/"><input id="search-query" name="q" type="text" placeholder="Search docs"/></form><ul><li><a class="toctext" href="../../">Mangal</a></li><li><span class="toctext">Vignettes</span><ul><li><a class="toctext" href="../introduction/">Introduction</a></li><li class="current"><a class="toctext" href>Counting &amp; paging</a><ul class="internal"></ul></li></ul></li><li><span class="toctext">Package documentation</span><ul><li><a class="toctext" href="../../pkg/gettingdata/">Getting data</a></li><li><a class="toctext" href="../../pkg/types/">Data types</a></li><li><a class="toctext" href="../../pkg/methods/">Methods for data retrieval</a></li><li><a class="toctext" href="../../pkg/internals/">Internal functions</a></li></ul></li></ul></nav><article id="docs"><header><nav><ul><li>Vignettes</li><li><a href>Counting &amp; paging</a></li></ul><a class="edit-page" href="https://github.com/PoisotLab/Mangal.jl/blob/master/docs/src/vignettes/counting.md"><span class="fa"></span> Edit on GitHub</a></nav><hr/><div id="topbar"><span>Counting &amp; paging</span><a class="fa fa-bars" href="#"></a></div></header><h1><a class="nav-anchor" id="Counting-objects-and-paging-1" href="#Counting-objects-and-paging-1">Counting objects and paging</a></h1><pre><code class="language-julia">using Mangal
-using StatsPlots</code></pre><pre><code class="language-julia">count(MangalNetwork)</code></pre><pre><code class="language-none">1386</code></pre><pre><code class="language-julia">Kolpelke_data = first(datasets(&quot;q&quot; =&gt; &quot;kolpelke&quot;))</code></pre><pre><code class="language-none">MangalDataset(6, true, &quot;kolpelke_et_al_2017&quot;, 1982-06-15T04:00:00, 2019-02-
-22T17:25:01, 2019-03-26T16:27:22, MangalReference(6, 2017, &quot;10.1002/ecy.183
-2&quot;, missing, missing, &quot;@article{Kopelke_2017,doi = {10.1002/ecy.1832},url =
- {https://doi.org/10.1002%2Fecy.1832},year = 2017,month = {may},publisher =
- {Wiley-Blackwell},volume = {98},number = {6},pages = {1730--1730},author =
- {Jens-Peter Kopelke and Tommi Nyman and Kevin Cazelles and Dominique Grave
-l and Steve Vissault and Tomas Roslin},title = {Food-web structure of willo
-w-galling sawflies and their natural enemies across Europe},journal = {Ecol
-ogy}}&quot;, &quot;https://esajournals.onlinelibrary.wiley.com/doi/abs/10.1002/ecy.18
-32&quot;, &quot;https://github.com/TheoreticalEcosystemEcology/reshapeSalix.git&quot;), 3,
- &quot;Food-web structure of willow-galling sawflies and their natural enemies a
-cross Europe.&quot;)</code></pre><pre><code class="language-julia">count(MangalNetwork, &quot;dataset_id&quot; =&gt; Kolpelke_data.id)</code></pre><pre><code class="language-none">783</code></pre><p>Note that there is a shorthand notation for this:</p><pre><code class="language-julia">Kolpelke_count = count(MangalNetwork, Kolpelke_data)</code></pre><pre><code class="language-none">783</code></pre><pre><code class="language-julia">Kolpelke_networks = networks(Kolpelke_data)
+using Plots</code></pre><pre><code class="language-julia">count(MangalNetwork)</code></pre><pre><code class="language-none">1386</code></pre><pre><code class="language-julia">Havens_data = first(datasets(&quot;q&quot; =&gt; &quot;havens&quot;))</code></pre><pre><code class="language-none">MangalDataset(15, true, &quot;havens_1992&quot;, 1984-06-01T04:00:00, 2019-02-23T01:4
+7:06, 2019-02-23T01:47:06, MangalReference(15, 1992, &quot;10.1126/science.257.5
+073.1107&quot;, missing, missing, &quot;@article{Havens_1992, doi = {10.1126/science.
+257.5073.1107}, url = {https://doi.org/10.1126%2Fscience.257.5073.1107}, ye
+ar = 1992, month = {aug}, publisher = {American Association for the Advance
+ment of Science ({AAAS})}, volume = {257}, number = {5073}, pages = {1107--
+1109}, author = {K. Havens}, title = {Scale and Structure in Natural Food W
+ebs}, journal = {Science}}&quot;, &quot;https://doi.org/10.1126%2Fscience.257.5073.11
+07&quot;, &quot;URL of the attached data&quot;), 3, &quot;Pelagic communities of small lakes an
+d ponds of the Adirondack&quot;)</code></pre><pre><code class="language-julia">count(MangalNetwork, &quot;dataset_id&quot; =&gt; Havens_data.id)</code></pre><pre><code class="language-none">50</code></pre><p>Note that there is a shorthand notation for this:</p><pre><code class="language-julia">Havens_count = count(MangalNetwork, Havens_data)</code></pre><pre><code class="language-none">50</code></pre><pre><code class="language-julia">Havens_networks = networks(Havens_data)
 page = 0
-while length(Kolpelke_networks) &lt; Kolpelke_count
+while length(Havens_networks) &lt; Havens_count
   global page = page + 1
-  append!(Kolpelke_networks, networks(Kolpelke_data, &quot;page&quot; =&gt; page))
-end</code></pre><pre><code class="language-julia">LS = [(count(MangalInteraction, n), count(MangalNode, n)) for n in Kolpelke_networks]
+  append!(Havens_networks, networks(Havens_data, &quot;page&quot; =&gt; page))
+end</code></pre><pre><code class="language-julia">LS = [(count(MangalInteraction, n), count(MangalNode, n)) for n in Havens_networks]
 scatter(LS)</code></pre><p><img src="../figures/counting_7_1.png" alt/></p><footer><hr/><a class="previous" href="../introduction/"><span class="direction">Previous</span><span class="title">Introduction</span></a><a class="next" href="../../pkg/gettingdata/"><span class="direction">Next</span><span class="title">Getting data</span></a></footer></article></body></html>
