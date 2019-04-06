@@ -1,9 +1,9 @@
-# Counting objects
+# Counting objects and paging
 
 ```julia
 using Mangal
+using StatsPlots
 ```
-
 
 ```julia
 count(MangalNetwork)
@@ -34,4 +34,5 @@ end
 
 ```julia
 LS = [(count(MangalInteraction, n), count(MangalNode, n)) for n in Kolpelke_networks]
+scatter(LS)
 ```
