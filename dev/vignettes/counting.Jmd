@@ -14,13 +14,19 @@ Kolpelke_data = first(datasets("q" => "kolpelke"))
 ```
 
 ```julia
-c = count(MangalNetwork, "dataset_id" => Kolpelke_data.id)
+count(MangalNetwork, "dataset_id" => Kolpelke_data.id)
+```
+
+Note that there is a shorthand notation for this:
+
+```julia
+Kolpelke_count = count(MangalNetwork, Kolpelke_data)
 ```
 
 ```julia
 Kolpelke_networks = networks(Kolpelke_data)
 page = 0
-while length(Kolpelke_networks) < c
+while length(Kolpelke_networks) < Kolpelke_count
   global page = page + 1
   append!(Kolpelke_networks, networks(Kolpelke_data, "page" => page))
 end
