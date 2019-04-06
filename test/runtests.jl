@@ -14,7 +14,6 @@ global test_n
 global anyerrors
 
 # Shhhh...
-Mangal.verbose(false)
 Mangal.login_message()
 
 test_n = 1

@@ -26,7 +26,6 @@ module MangalTestNetwork
     @test length(n_ds_q) == 2
 
     # Wrap multiple calls
-    Mangal.verbose()
     this_page = 1
     networks_ponisio = networks(dataset("ponisio_2017"), Pair("count", 10), Pair("page", this_page))
     keep_querying = true
@@ -37,6 +36,5 @@ module MangalTestNetwork
         global keep_querying = length(response) > 0
     end
     @test length(networks_ponisio) == 131
-    Mangal.verbose(false)
 
 end

@@ -4,7 +4,7 @@
 Returns the latest `MangalNetwork` objects matching a given query.
 """
 function networks(query::Pair...)
-    return search_objects_by_query(
+    results = search_objects_by_query(
         Mangal.api_endpoints.network,
         Mangal.format_network_response,
         query...
@@ -37,5 +37,9 @@ end
 Returns a network of a given identifier.
 """
 function network(id::Int64)
-    return get(_MANGAL_CACHES[MangalNetwork], id, first(networks(Pair("id", id))))
+    if haskey(Mangal._MANGAL_CACHES[MangalNetwork], id)
+        return Mangal._MANGAL_CACHES[MangalNetwork][id]
+    else
+        return first(networks(Pair("id", id)))
+    end
 end

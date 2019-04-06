@@ -37,5 +37,9 @@ end
 Returns a node object by id.
 """
 function node(id::Int64)
-    return get(_MANGAL_CACHES[MangalNode], id, first(nodes(Pair("id", id))))
+    if haskey(Mangal._MANGAL_CACHES[MangalNode], id)
+        return Mangal._MANGAL_CACHES[MangalNode][id]
+    else
+        return first(nodes(Pair("id", id)))
+    end
 end

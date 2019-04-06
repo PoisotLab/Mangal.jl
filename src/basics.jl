@@ -1,31 +1,4 @@
 """
-    verbose()
-
-This function will *switch* the package to verbose mode.
-"""
-function verbose()
-    Mangal.verbose(true)
-end
-
-"""
-    verbose(vrb::Bool)
-
-This function will *switch* the package to verbose mode, or silence it.
-"""
-function verbose(vrb::Bool)
-    ENV["MANGAL_VERBOSE"] = vrb
-end
-
-"""
-    isverbose()
-
-This function will return a Boolean for the current package verbosity.
-"""
-function isverbose()
-    return parse(Bool, get(ENV, "MANGAL_VERBOSE", "false"))
-end
-
-"""
 Internally, the `Mangal` package uses a cache to store some objects that are
 likely to be queried more than once. These are `MangalNode` and
 `MangalReferenceTaxon`, which are called in a nested way during the querying of
@@ -67,9 +40,7 @@ end
 """
     search_objects_by_query(endpoint::AbstractString, formatter::Function, query::Pair...)
 
-Depending on the verbosity of the package (see documentation for
-`Mangal.isverbose`), this function will let the user know when more objects than
-requested exist. In all cases, it is assumed that the functions will be wrapepd
+In all cases, it is assumed that the functions will be wrapepd
 in calls to query objects until no further objects are found.
 """
 function search_objects_by_query(endpoint::AbstractString, formatter::Function, query::Pair...)
@@ -86,18 +57,6 @@ function search_objects_by_query(endpoint::AbstractString, formatter::Function, 
     this_request = HTTP.get(request_url, headers)
     request_body = String(this_request.body)
     request_body = replace(request_body, "" => "-") # This shouldn't be necessary anymore but...
-
-    # Content-range?
-    if Mangal.isverbose()
-        content_range = first(filter(head -> head.first == "Content-Range", this_request.headers))
-        positions = parse.(Int64, split(content_range.second, [' ', '-', '/'])[2:end])
-        range_begin = positions[1]+1
-        range_stop = positions[2]+1
-        range_ends = positions[3]
-        if range_ends > range_stop
-            @info "Returning object $(range_begin) to $(range_stop) (of $(range_ends) total)"
-        end
-    end
 
     # Returns the collection
     parsed_json = JSON.parse.(request_body)

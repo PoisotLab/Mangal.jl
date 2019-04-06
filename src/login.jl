@@ -6,9 +6,7 @@ variable. To get the your token, please use `login` with no argument.
 """
 function login(token::AbstractString)
     ENV["MANGAL_BEARER_TOKEN"] = token
-    if Mangal.isverbose()
-        @info "Bearer token registered"
-    end
+    @info "Bearer token registered"
 end
 
 """
@@ -19,9 +17,7 @@ not found, displays a login message with a login URL.
 """
 function login()
     if haskey(ENV, "MANGAL_BEARER_TOKEN")
-        if Mangal.isverbose()
-            @info "Your bearer token is already registered"
-        end
+        @info "Your bearer token is already registered"
     else
         Mangal.login_message()
     end

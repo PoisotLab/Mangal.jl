@@ -8,13 +8,6 @@
 Mangal.login
 ```
 
-## Verbosity
-
-```@docs
-Mangal.verbose
-Mangal.isverbose
-```
-
 ## Formatters
 
 ```@docs
