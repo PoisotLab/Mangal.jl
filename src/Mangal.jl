@@ -74,4 +74,7 @@ include(joinpath(".", "interaction.jl"))
 # References
 include(joinpath(".", "reference.jl"))
 
+# Counts
+include(joinpath(".", "count.jl"))
+
 end # module

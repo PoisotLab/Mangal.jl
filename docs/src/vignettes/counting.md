@@ -51,17 +51,28 @@ c = count(MangalNetwork, "dataset_id" => Kolpelke_data.id)
 
 
 ````julia
-n = networks(Kolpelke_data)
-global page = 0
-while length(n) < c
-  page = page + 1
-  append!(n, networks(Kolpelke_data, "page" => page))
+Kolpelke_networks = networks(Kolpelke_data)
+page = 0
+while length(Kolpelke_networks) < c
+  global page = page + 1
+  append!(Kolpelke_networks, networks(Kolpelke_data, "page" => page))
 end
 ````
 
 
+
+````julia
+LS = [(count(MangalInteraction, n), count(MangalNode, n)) for n in Kolpelke_networks]
 ````
-Error: UndefVarError: page not defined
+
+
+````
+Error: MethodError: no method matching iterate(::MangalNetwork)
+Closest candidates are:
+  iterate(!Matched::Core.SimpleVector) at essentials.jl:568
+  iterate(!Matched::Core.SimpleVector, !Matched::Any) at essentials.jl:568
+  iterate(!Matched::ExponentialBackOff) at error.jl:199
+  ...
 ````
 
 
