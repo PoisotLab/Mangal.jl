@@ -7,7 +7,7 @@ rarely be used.
 function backbone(query::Pair...)
     results = search_objects_by_query(
         Mangal.api_endpoints.taxonomy,
-        Mangal.format_backbone_response,
+        MangalReferenceTaxon,
         query...
     )
     Mangal.cache(results)

@@ -1,4 +1,16 @@
-function format_dataset_response(d::Dict{T,Any}) where {T <: AbstractString}
+function format_mangal_coordinates(d::Dict{T,Any}) where {T <: AbstractString}
+    point_type = d["geom"]["type"] == "Point" ? Point : Polygon
+    if point_type == Polygon
+        coords = [float.(x) for x in first(d["geom"]["coordinates"])]
+        point_coordinates = point_type(coords)
+    else
+        coords = float.(d["geom"]["coordinates"])
+        point_coordinates = point_type(coords...)
+    end
+    return point_coordinates
+end
+
+function format_response(::Type{MangalDataset}, d::Dict{T,Any}) where {T <: AbstractString}
     obj_id = d["id"]
     obj_public = d["public"]
     obj_name = d["name"]
@@ -14,20 +26,8 @@ function format_dataset_response(d::Dict{T,Any}) where {T <: AbstractString}
         )
 end
 
-function format_mangal_coordinates(d::Dict{T,Any}) where {T <: AbstractString}
-    point_type = d["geom"]["type"] == "Point" ? Point : Polygon
-    if point_type == Polygon
-        coords = [float.(x) for x in first(d["geom"]["coordinates"])]
-        point_coordinates = point_type(coords)
-    else
-        coords = float.(d["geom"]["coordinates"])
-        point_coordinates = point_type(coords...)
-    end
-    return point_coordinates
-end
 
-function format_network_response(d::Dict{T,Any}) where {T <: AbstractString}
-
+function format_response(::Type{MangalNetwork}, d::Dict{T,Any}) where {T <: AbstractString}
     obj_id = d["id"]
     obj_public = d["public"]
     obj_name = d["name"]
@@ -46,7 +46,7 @@ function format_network_response(d::Dict{T,Any}) where {T <: AbstractString}
 
 end
 
-function format_node_response(d::Dict{T,Any}) where {T <: AbstractString}
+function format_response(::Type{MangalNode}, d::Dict{T,Any}) where {T <: AbstractString}
 
     obj_id = d["id"]
     obj_name = d["original_name"]
@@ -58,7 +58,7 @@ function format_node_response(d::Dict{T,Any}) where {T <: AbstractString}
 
 end
 
-function format_backbone_response(d::Dict{T,Any}) where {T <: AbstractString}
+function format_response(::Type{MangalReferenceTaxon}, d::Dict{T,Any}) where {T <: AbstractString}
 
     obj_id = d["id"]
     obj_name = d["name"]
@@ -75,7 +75,7 @@ function format_backbone_response(d::Dict{T,Any}) where {T <: AbstractString}
 
 end
 
-function format_interaction_response(d::Dict{T,Any}) where {T <: AbstractString}
+function format_response(::Type{MangalInteraction}, d::Dict{T,Any}) where {T <: AbstractString}
     obj_id = d["id"]
     obj_network = network(d["network_id"])
     obj_from = node(d["node_from"])
@@ -94,7 +94,7 @@ function format_interaction_response(d::Dict{T,Any}) where {T <: AbstractString}
 
 end
 
-function format_reference_response(d::Dict{T,Any}) where {T <: AbstractString}
+function format_response(::Type{MangalReference}, d::Dict{T,Any}) where {T <: AbstractString}
     obj_id = d["id"]
     obj_year = d["year"] == "NA" ? missing : parse(Int64, d["year"])
     obj_doi = isnothing(d["doi"]) ? missing : d["doi"]

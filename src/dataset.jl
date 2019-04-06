@@ -6,7 +6,7 @@ Will return the most recent datasets.
 function datasets(query::Pair...)
     return search_objects_by_query(
         Mangal.api_endpoints.dataset,
-        Mangal.format_dataset_response,
+        MangalDataset,
         query...
     )
 end

@@ -6,7 +6,7 @@ Returns the most recent interactions.
 function interactions(query::Pair...)
     return search_objects_by_query(
         Mangal.api_endpoints.interaction,
-        Mangal.format_interaction_response,
+        MangalInteraction,
         query...
     )
 end

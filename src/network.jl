@@ -6,7 +6,7 @@ Returns the latest `MangalNetwork` objects matching a given query.
 function networks(query::Pair...)
     results = search_objects_by_query(
         Mangal.api_endpoints.network,
-        Mangal.format_network_response,
+        MangalNetwork,
         query...
     )
     Mangal.cache(results)

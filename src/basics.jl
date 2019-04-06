@@ -43,7 +43,7 @@ end
 In all cases, it is assumed that the functions will be wrapepd
 in calls to query objects until no further objects are found.
 """
-function search_objects_by_query(endpoint::AbstractString, formatter::Function, query::Pair...)
+function search_objects_by_query(endpoint::AbstractString, object::Type, query::Pair...)
     # Headers
     headers = Mangal.generate_base_header()
 
@@ -62,6 +62,7 @@ function search_objects_by_query(endpoint::AbstractString, formatter::Function, 
     parsed_json = JSON.parse.(request_body)
 
     # Return the formatted object(s)
+    formatter = (x) -> formate_response(object, x)
     return formatter.(parsed_json)
 end
 

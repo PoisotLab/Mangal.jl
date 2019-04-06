@@ -6,7 +6,7 @@ Get the latest `MangalNode` objects. The `query` argument is optional.
 function nodes(query::Pair...)
     results = search_objects_by_query(
         Mangal.api_endpoints.node,
-        Mangal.format_node_response,
+        MangalNode,
         query...
     )
     Mangal.cache(results)

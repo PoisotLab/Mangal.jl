@@ -4,7 +4,7 @@ TODO
 function references(query::Pair...)
     return search_objects_by_query(
         Mangal.api_endpoints.reference,
-        Mangal.format_reference_response,
+        MangalReference,
         query...
     )
 end
