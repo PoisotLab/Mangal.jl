@@ -13,8 +13,13 @@ _pkg_doc = [
    "Internal functions" => "pkg/internals.md"
 ]
 
+_pkg_vig = [
+   "Introduction" => "vignettes/introduction.md"
+]
+
 _list_of_pages = [
    "index.md",
+   "Vignettes" => _pkg_vig,
    "Package documentation" => _pkg_doc
 ]
 
