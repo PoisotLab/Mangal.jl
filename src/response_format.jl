@@ -5,7 +5,7 @@ function format_dataset_response(d::Dict{T,Any}) where {T <: AbstractString}
     obj_date = isnothing(d["date"]) ? missing : DateTime(d["date"][1:19])
     obj_created = DateTime(d["created_at"][1:19])
     obj_updated = DateTime(d["updated_at"][1:19])
-    obj_reference = d["ref_id"]
+    obj_reference = isnothing(d["ref_id"]) ? missing : reference(d["ref_id"])
     obj_user = d["user_id"]
     obj_description = d["description"]
 
@@ -62,16 +62,16 @@ function format_backbone_response(d::Dict{T,Any}) where {T <: AbstractString}
 
     obj_id = d["id"]
     obj_name = d["name"]
-    obj_status = Symbol(d["status"])
-    obj_bold = d["bold"]
-    obj_tsn = d["tsn"]
-    obj_ncbi = d["ncbi"]
-    obj_eol = d["eol"]
+    obj_bold = isnothing(d["bold"]) ? missing : d["bold"]
+    obj_tsn = isnothing(d["tsn"]) ? missing : d["tsn"]
+    obj_ncbi = isnothing(d["ncbi"]) ? missing : d["ncbi"]
+    obj_eol = isnothing(d["eol"]) ? missing : d["eol"]
+    obj_gbif = isnothing(d["gbif"]) ? missing : d["gbif"]
     obj_created = DateTime(d["created_at"][1:19])
     obj_updated = DateTime(d["updated_at"][1:19])
 
-    return MangalReferenceTaxon(obj_id, obj_name, obj_status, obj_bold, obj_tsn,
-        obj_ncbi, obj_eol, obj_created, obj_updated)
+    return MangalReferenceTaxon(obj_id, obj_name, obj_bold, obj_tsn,
+        obj_ncbi, obj_eol, obj_gbif, obj_created, obj_updated)
 
 end
 
@@ -96,13 +96,13 @@ end
 
 function format_reference_response(d::Dict{T,Any}) where {T <: AbstractString}
     obj_id = d["id"]
-    obj_year = parse(Int64, d["year"])
+    obj_year = d["year"] == "NA" ? missing : parse(Int64, d["year"])
     obj_doi = isnothing(d["doi"]) ? missing : d["doi"]
     obj_jstor = isnothing(d["jstor"]) ? missing : d["jstor"]
     obj_pmid = isnothing(d["pmid"]) ? missing : d["pmid"]
     obj_bibtex = isnothing(d["bibtex"]) ? missing : d["bibtex"]
-    obj_paper = isnothing(d["paper"]) ? missing : d["paper"]
-    obj_data = isnothing(d["data"]) ? missing : d["data"]
+    obj_paper = isnothing(d["paper_url"]) ? missing : d["paper_url"]
+    obj_data = isnothing(d["data_url"]) ? missing : d["data_url"]
 
     return MangalReference(obj_id, obj_year, obj_doi, obj_jstor, obj_pmid,
         obj_bibtex, obj_paper, obj_data)

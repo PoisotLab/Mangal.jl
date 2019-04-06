@@ -5,7 +5,7 @@ module MangalTestNodes
 
     @test typeof(nodes()) <: Vector{MangalNode}
 
-    n1 = node(2103)
+    n1 = node(2158)
     @test typeof(n1) <: MangalNode
     @test typeof(n1.taxon) <: MangalReferenceTaxon
 

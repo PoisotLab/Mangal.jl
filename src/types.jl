@@ -1,4 +1,18 @@
 """
+Reference
+"""
+struct MangalReference
+    id::Int64
+    year::Union{Missing,Int64}
+    doi::Union{String,Missing}
+    jstor::Union{String,Missing}
+    pmid::Union{String,Missing}
+    bibtex::Union{String,Missing}
+    paper::Union{String,Missing}
+    data::Union{String,Missing}
+end
+
+"""
 A `MangalDataset` identifies a collection of networks, possibly containing
 a single element. A dataset is identified by its `id` or `name` (both of
 which are *unique*).
@@ -29,7 +43,7 @@ struct MangalDataset
     date::Union{DateTime,Missing}
     created::DateTime
     updated::DateTime
-    reference::Union{Int64,Nothing}
+    reference::Union{MangalReference,Missing}
     user::Int64
     description::AbstractString
 end
@@ -85,11 +99,11 @@ Reference taxon (unique identifier of network nodes)
 struct MangalReferenceTaxon
     id::Int64
     name::AbstractString
-    status::Symbol
-    bold::Union{Int64,Nothing}
-    tsn::Union{Int64,Nothing}
-    ncbi::Union{Int64,Nothing}
-    eol::Union{Int64,Nothing}
+    bold::Union{Int64,Missing}
+    tsn::Union{Int64,Missing}
+    ncbi::Union{Int64,Missing}
+    eol::Union{Int64,Missing}
+    gbif::Union{Int64,Missing}
     created::DateTime
     updated::DateTime
 end
@@ -132,18 +146,4 @@ struct MangalInteraction
     strength::Union{Number,Missing}
     created::DateTime
     updated::DateTime
-end
-
-"""
-Reference
-"""
-struct Reference
-    id::Int64
-    year::Int64
-    doi::Union{String,Missing}
-    jstor::Union{String,Missing}
-    pmid::Union{String,Missing}
-    bibtex::Union{String,Missing}
-    paper::Union{String,Missing}
-    data::Union{String,Missing}
 end
