@@ -1,7 +1,8 @@
-# Counting objects
+# Counting objects and paging
 
 ````julia
 using Mangal
+using StatsPlots
 ````
 
 
@@ -78,31 +79,8 @@ end
 
 ````julia
 LS = [(count(MangalInteraction, n), count(MangalNode, n)) for n in Kolpelke_networks]
+scatter(LS)
 ````
 
 
-````
-783-element Array{Tuple{Int64,Int64},1}:
- (3, 4)  
- (3, 4)  
- (6, 7)  
- (1, 2)  
- (3, 4)  
- (7, 6)  
- (4, 5)  
- (7, 9)  
- (4, 5)  
- (2, 3)  
- ⋮       
- (13, 11)
- (2, 3)  
- (4, 5)  
- (12, 13)
- (2, 3)  
- (11, 12)
- (1, 2)  
- (3, 4)  
- (6, 7)
-````
-
-
+![](figures/counting_7_1.png)
