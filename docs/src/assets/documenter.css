@@ -1,0 +1,10 @@
+/* background-color: #1C9696 */
+
+nav .toc {
+  background-color: #083444;
+  box-shadow: none;
+}
+
+h1 a, h2 a {
+  color: #1C9696;
+}
