@@ -40,7 +40,22 @@ cross Europe.")
 
 
 ````julia
-c = count(MangalNetwork, "dataset_id" => Kolpelke_data.id)
+count(MangalNetwork, "dataset_id" => Kolpelke_data.id)
+````
+
+
+````
+783
+````
+
+
+
+
+
+Note that there is a shorthand notation for this:
+
+````julia
+Kolpelke_count = count(MangalNetwork, Kolpelke_data)
 ````
 
 
@@ -53,7 +68,7 @@ c = count(MangalNetwork, "dataset_id" => Kolpelke_data.id)
 ````julia
 Kolpelke_networks = networks(Kolpelke_data)
 page = 0
-while length(Kolpelke_networks) < c
+while length(Kolpelke_networks) < Kolpelke_count
   global page = page + 1
   append!(Kolpelke_networks, networks(Kolpelke_data, "page" => page))
 end
@@ -67,12 +82,27 @@ LS = [(count(MangalInteraction, n), count(MangalNode, n)) for n in Kolpelke_netw
 
 
 ````
-Error: MethodError: no method matching iterate(::MangalNetwork)
-Closest candidates are:
-  iterate(!Matched::Core.SimpleVector) at essentials.jl:568
-  iterate(!Matched::Core.SimpleVector, !Matched::Any) at essentials.jl:568
-  iterate(!Matched::ExponentialBackOff) at error.jl:199
-  ...
+783-element Array{Tuple{Int64,Int64},1}:
+ (3, 4)  
+ (3, 4)  
+ (6, 7)  
+ (1, 2)  
+ (3, 4)  
+ (7, 6)  
+ (4, 5)  
+ (7, 9)  
+ (4, 5)  
+ (2, 3)  
+ ⋮       
+ (13, 11)
+ (2, 3)  
+ (4, 5)  
+ (12, 13)
+ (2, 3)  
+ (11, 12)
+ (1, 2)  
+ (3, 4)  
+ (6, 7)
 ````
 
 
