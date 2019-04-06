@@ -3,7 +3,9 @@ push!(LOAD_PATH,"../src/")
 using Pkg
 Pkg.activate(".")
 
-Pkg.add("Weave")
+_required = ["Weave"]
+
+Pkg.add.(_required)
 
 using Mangal
 using Weave
@@ -16,4 +18,4 @@ for _file in _files_to_compile
     weave(_file, doctype="github")
 end
 
-Pkg.rm("Weave")
+Pkg.rm.(_required)

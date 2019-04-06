@@ -1,0 +1,31 @@
+# Counting objects
+
+```julia
+using Mangal
+```
+
+
+```julia
+count(MangalNetwork)
+```
+
+```julia
+Kolpelke_data = first(datasets("q" => "kolpelke"))
+```
+
+```julia
+c = count(MangalNetwork, "dataset_id" => Kolpelke_data.id)
+```
+
+```julia
+Kolpelke_networks = networks(Kolpelke_data)
+page = 0
+while length(Kolpelke_networks) < c
+  global page = page + 1
+  append!(Kolpelke_networks, networks(Kolpelke_data, "page" => page))
+end
+```
+
+```julia
+LS = [(count(MangalInteraction, n), count(MangalNode, n)) for n in Kolpelke_networks]
+```
