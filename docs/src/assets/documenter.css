@@ -607,6 +607,6 @@ nav.toc {
   box-shadow: none !important;
 }
 
-h1.a, h2.a {
+.nav-anchor {
   color: #1C9696;
 }
