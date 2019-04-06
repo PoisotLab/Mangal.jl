@@ -13,21 +13,8 @@ _pkg_doc = [
    "Internal functions" => "pkg/internals.md"
 ]
 
-function format_dsname(x)
-   x = replace(x, "dataset_" => "")
-   x = replace(x, ".md" => "")
-   x = replace(x, "_" => " ")
-   return titlecase(x)
-end
-
-_path_elements = ["docs", "src", "data", "dataset"]
-_dataset_files = filter(x -> endswith(x, ".md"), readdir(joinpath(_path_elements...)))
-_files_to_include = [hide(format_dsname(f) => joinpath("data", "dataset", f)) for f in _dataset_files]
-
 _list_of_pages = [
    "index.md",
-   "Data list" => "data/index.md",
-   hide("Dataset details" => _files_to_include),
    "Package documentation" => _pkg_doc
 ]
 
