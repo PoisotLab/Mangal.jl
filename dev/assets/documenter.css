@@ -199,6 +199,7 @@ nav.toc h1 {
     text-align: center;
     margin-top: .57em;
     margin-bottom: 0;
+    color: white;
 }
 
 nav.toc select {
@@ -316,7 +317,7 @@ nav.toc li.current > .toctext {
     border-top: 1px solid #c9c9c9;
     border-bottom: 1px solid #c9c9c9;
     color: #404040;
-    font-weight: bold;
+    font-weight: 500;
     background-color: white;
 }
 
