@@ -22,6 +22,10 @@ body, input {
   text-rendering: optimizeLegibility;
 }
 
+strong, b {
+    font-weight: 500;
+}
+
 pre, code, kbd {
   font-family: 'Fira Mono', Monaco, courier, monospace;
   font-size: 0.90em;
@@ -118,14 +122,14 @@ code {
 
 pre {
     background-color: #fcfcfc;
-    border-left: 3px solid #1C9696;
+    border-left: 2px solid #1C9696;
     border-radius: 0px;
     padding: 0.5em;
     overflow: auto;
 }
 
-pre.language-none {
-    border-left: 3px solid #f5f5f5;
+code.language-none {
+    color: #6e6e6e;
 }
 
 pre code {
@@ -224,10 +228,6 @@ nav.toc select {
     background-position: right;
 }
 
-nav.toc select:hover {
-    border: 1px solid #a0a0a0;
-}
-
 nav.toc select option {
     text-align: center;
 }
@@ -278,10 +278,6 @@ nav.toc ul a:hover {
 nav.toc ul.internal a {
     color: inherit;
     display: block;
-}
-
-nav.toc ul.internal a:hover {
-    background-color: #d6d6d6;
 }
 
 nav.toc ul.internal {
