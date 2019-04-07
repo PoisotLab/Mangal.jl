@@ -1,0 +1,22 @@
+# Integration with `EcologicalNetworks.jl`
+
+```julia
+using Mangal
+using EcologicalNetworks
+```
+
+```julia
+db_version = network("johnston_1956_19560101_947")
+```
+
+```julia
+N = convert(UnipartiteNetwork, db_version)
+```
+
+```julia
+count(MangalInteraction, db_version) == links(N)
+```
+
+```julia
+count(MangalNode, db_version) == richness(N)
+```

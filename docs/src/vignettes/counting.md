@@ -37,7 +37,7 @@ count(MangalNetwork)
 We can also pass queries to the `count` methods. One of the most general way to
 query things is to use `"q"`, which will look for a match in all text fields for
 the type. In this use case, we want to retrieve the dataset corresponding to
-Karl Havens' classical studies about food web scaling, so we can look for the
+Karl Havens' classical study about food web scaling, so we can look for the
 datasets with the string `"havens"` in them:
 
 ````julia
@@ -108,7 +108,9 @@ Havens_networks = networks(Havens_data, "count" => 10)
 page = 0
 while length(Havens_networks) < Havens_count
   global page = page + 1
-  append!(Havens_networks, networks(Havens_data, "page" => page, "count" => 10))
+  append!(Havens_networks,
+    networks(Havens_data, "page" => page, "count" => 10)
+    )
 end
 ````
 
@@ -119,10 +121,12 @@ end
 ## Producing the plot
 
 Finally, we can use additional `count` methods to get the number of nodes
-(species) and interactions within each network, to procude the figure:
+(species) and interactions within each network, to produce the figure:
 
 ````julia
-LS = [(count(MangalInteraction, n), count(MangalNode, n)) for n in Havens_networks]
+LS = [
+  (count(MangalInteraction, n), count(MangalNode, n)) for n in Havens_networks
+  ]
 scatter(LS, c=:white, leg=false, frame=:box)
 xaxis!(:log, "Species richness")
 yaxis!(:log, "Number of interactions")
