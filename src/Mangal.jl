@@ -78,7 +78,7 @@ include(joinpath(".", "reference.jl"))
 include(joinpath(".", "count.jl"))
 
 # EcologicalNetworks wrapper
-using EcologicalNetworks
+import EcologicalNetworks
 include(joinpath(".", "ecologicalnetworks.jl"))
 
 end # module

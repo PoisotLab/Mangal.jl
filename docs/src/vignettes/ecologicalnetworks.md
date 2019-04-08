@@ -1,11 +1,20 @@
 # Integration with `EcologicalNetworks.jl`
 
+The **Mangal** package is integrated with **EcologicalNetworks** for analysis.
+
 ````julia
 using Mangal
 using EcologicalNetworks
 ````
 
 
+
+
+
+## A simple example
+
+In this simple example, we will look at a food web from 1956, retrieve it from
+the Mangal database, then convert it into a usable object:
 
 ````julia
 db_version = network("johnston_1956_19560101_947")
@@ -37,6 +46,12 @@ rsh"))
 
 
 
+
+
+The conversion to the network is done using the `convert` method, which by
+default will return a `UnipartiteNetwork`, where species are the `MangalNode` of
+the original network:
+
 ````julia
 N = convert(UnipartiteNetwork, db_version)
 ````
@@ -44,6 +59,21 @@ N = convert(UnipartiteNetwork, db_version)
 
 ````
 19×19 unipartite  ecological network (Bool, MangalNode) (L: 58)
+````
+
+
+
+
+
+We can check that the type of the network is correct:
+
+````julia
+eltype(N)
+````
+
+
+````
+(Bool, MangalNode)
 ````
 
 
