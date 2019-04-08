@@ -78,6 +78,10 @@ eltype(N)
 
 
 
+
+
+## Sanity check
+
 ````julia
 count(MangalInteraction, db_version) == links(N)
 ````
@@ -96,6 +100,123 @@ count(MangalNode, db_version) == richness(N)
 
 ````
 true
+````
+
+
+
+````julia
+species(N)
+````
+
+
+````
+19-element Array{MangalNode,1}:
+ MangalNode(8470, "Rattus", 2019-02-25T20:52:25, 2019-02-25T20:52:25, Manga
+lReferenceTaxon(3810, "Rattus", 3156, 135059, 10114, 12221616, missing, 201
+9-02-22T14:05:53, 2019-02-22T14:05:53))                  
+ MangalNode(8456, "terrestrial invertebrates", 2019-02-25T20:52:25, 2019-02
+-25T20:52:25, missing)                                                     
+                                                         
+ MangalNode(8473, "terrestrial plants", 2019-02-25T20:52:25, 2019-02-25T20:
+52:25, missing)                                                            
+                                                         
+ MangalNode(8457, "intertidal invertebrates", 2019-02-25T20:52:25, 2019-02-
+25T20:52:25, missing)                                                      
+                                                         
+ MangalNode(8474, "marine plants", 2019-02-25T20:52:25, 2019-02-25T20:52:25
+, missing)                                                                 
+                                                         
+ MangalNode(8459, "fishes", 2019-02-25T20:52:25, 2019-02-25T20:52:25, missi
+ng)                                                                        
+                                                         
+ MangalNode(8458, "marine invertebrates", 2019-02-25T20:52:25, 2019-02-25T2
+0:52:25, missing)                                                          
+                                                         
+ MangalNode(8461, "herons", 2019-02-25T20:52:25, 2019-02-25T20:52:25, Manga
+lReferenceTaxon(4346, "Ardeidae", 1444, 174771, 8899, 11144384, missing, 20
+19-02-23T16:25:14, 2019-02-23T16:25:14))                 
+ MangalNode(8463, "Anas", 2019-02-25T20:52:25, 2019-02-25T20:52:25, MangalR
+eferenceTaxon(3803, "Anas", 3235, 5914, 8835, 10254288, missing, 2019-02-22
+T14:05:52, 2019-02-22T14:05:52))                         
+ MangalNode(8462, "Rallus", 2019-02-25T20:52:25, 2019-02-25T20:52:25, Manga
+lReferenceTaxon(3802, "Rallus", 3288, 113088, 54360, 5730650, missing, 2019
+-02-22T14:05:52, 2019-02-22T14:05:52))                   
+ MangalNode(8465, "waterfowl", 2019-02-25T20:52:25, 2019-02-25T20:52:25, Ma
+ngalReferenceTaxon(3805, "Waterfowl", missing, 174982, 8830, missing, missi
+ng, 2019-02-22T14:05:52, 2019-02-22T14:05:52))           
+ MangalNode(8464, "migrant shorebirds", 2019-02-25T20:52:25, 2019-02-25T20:
+52:25, missing)                                                            
+                                                         
+ MangalNode(8466, "passerines", 2019-02-25T20:52:25, 2019-02-25T20:52:25, M
+angalReferenceTaxon(4985, "Passeriformes", 321, 178265, 9126, 11144180, mis
+sing, 2019-02-25T20:51:32, 2019-02-25T20:51:32))         
+ MangalNode(8468, "Reithrodontomys", 2019-02-25T20:52:25, 2019-02-25T20:52:
+25, MangalReferenceTaxon(3808, "Reithrodontomys", 73424, 180344, 44233, 731
+2617, missing, 2019-02-22T14:05:53, 2019-02-22T14:05:53))
+ MangalNode(8467, "Microtus", 2019-02-25T20:52:25, 2019-02-25T20:52:25, Man
+galReferenceTaxon(3807, "Microtus", 6899, 180300, 10053, 7245360, missing, 
+2019-02-22T14:05:52, 2019-02-22T14:05:52))               
+ MangalNode(8469, "Mus", 2019-02-25T20:52:25, 2019-02-25T20:52:25, MangalRe
+ferenceTaxon(3809, "Mus", 6916, 856, 10088, 12091880, missing, 2019-02-22T1
+4:05:53, 2019-02-22T14:05:53))                           
+ MangalNode(8472, "Asio", 2019-02-25T20:52:25, 2019-02-25T20:52:25, MangalR
+eferenceTaxon(3812, "Asio", 4888, 6396, 56266, 10197460, missing, 2019-02-2
+2T14:05:53, 2019-02-22T14:05:53))                        
+ MangalNode(8460, "Sorex", 2019-02-25T20:52:25, 2019-02-25T20:52:25, Mangal
+ReferenceTaxon(3800, "Sorex", 3032, 179928, 9379, 6984339, missing, 2019-02
+-22T14:05:52, 2019-02-22T14:05:52))                      
+ MangalNode(8471, "Circus", 2019-02-25T20:52:25, 2019-02-25T20:52:25, Manga
+lReferenceTaxon(3811, "Circus", 4452, 175433, 8963, 11145902, missing, 2019
+-02-22T14:05:53, 2019-02-22T14:05:53))
+````
+
+
+
+````julia
+[s.taxon for s in species(N)]
+````
+
+
+````
+19-element Array{Union{Missing, MangalReferenceTaxon},1}:
+ MangalReferenceTaxon(3810, "Rattus", 3156, 135059, 10114, 12221616, missin
+g, 2019-02-22T14:05:53, 2019-02-22T14:05:53)         
+ missing                                                                   
+                                                     
+ missing                                                                   
+                                                     
+ missing                                                                   
+                                                     
+ missing                                                                   
+                                                     
+ missing                                                                   
+                                                     
+ missing                                                                   
+                                                     
+ MangalReferenceTaxon(4346, "Ardeidae", 1444, 174771, 8899, 11144384, missi
+ng, 2019-02-23T16:25:14, 2019-02-23T16:25:14)        
+ MangalReferenceTaxon(3803, "Anas", 3235, 5914, 8835, 10254288, missing, 20
+19-02-22T14:05:52, 2019-02-22T14:05:52)              
+ MangalReferenceTaxon(3802, "Rallus", 3288, 113088, 54360, 5730650, missing
+, 2019-02-22T14:05:52, 2019-02-22T14:05:52)          
+ MangalReferenceTaxon(3805, "Waterfowl", missing, 174982, 8830, missing, mi
+ssing, 2019-02-22T14:05:52, 2019-02-22T14:05:52)     
+ missing                                                                   
+                                                     
+ MangalReferenceTaxon(4985, "Passeriformes", 321, 178265, 9126, 11144180, m
+issing, 2019-02-25T20:51:32, 2019-02-25T20:51:32)    
+ MangalReferenceTaxon(3808, "Reithrodontomys", 73424, 180344, 44233, 731261
+7, missing, 2019-02-22T14:05:53, 2019-02-22T14:05:53)
+ MangalReferenceTaxon(3807, "Microtus", 6899, 180300, 10053, 7245360, missi
+ng, 2019-02-22T14:05:52, 2019-02-22T14:05:52)        
+ MangalReferenceTaxon(3809, "Mus", 6916, 856, 10088, 12091880, missing, 201
+9-02-22T14:05:53, 2019-02-22T14:05:53)               
+ MangalReferenceTaxon(3812, "Asio", 4888, 6396, 56266, 10197460, missing, 2
+019-02-22T14:05:53, 2019-02-22T14:05:53)             
+ MangalReferenceTaxon(3800, "Sorex", 3032, 179928, 9379, 6984339, missing, 
+2019-02-22T14:05:52, 2019-02-22T14:05:52)            
+ MangalReferenceTaxon(3811, "Circus", 4452, 175433, 8963, 11145902, missing
+, 2019-02-22T14:05:53, 2019-02-22T14:05:53)
 ````
 
 

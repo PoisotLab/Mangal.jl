@@ -30,10 +30,20 @@ We can check that the type of the network is correct:
 eltype(N)
 ```
 
+## Sanity check
+
 ```julia
 count(MangalInteraction, db_version) == links(N)
 ```
 
 ```julia
 count(MangalNode, db_version) == richness(N)
+```
+
+```julia
+species(N)
+```
+
+```julia
+[s.taxon for s in species(N)]
 ```
