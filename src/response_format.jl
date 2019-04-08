@@ -102,7 +102,7 @@ end
 
 function format_mangal_response(::Type{MangalReference}, d::Dict{T,Any}) where {T <: AbstractString}
     obj_id = d["id"]
-    obj_year = d["year"] == "NA" ? missing : parse(Int64, d["year"])
+    obj_year = d["year"] == "NA" ? missing : parse(Int64, d["year"][1:4])
     obj_doi = isnothing(d["doi"]) ? missing : d["doi"]
     obj_jstor = isnothing(d["jstor"]) ? missing : d["jstor"]
     obj_pmid = isnothing(d["pmid"]) ? missing : d["pmid"]
