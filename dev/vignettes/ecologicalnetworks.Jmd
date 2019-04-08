@@ -13,7 +13,8 @@ In this simple example, we will look at a food web from 1956, retrieve it from
 the Mangal database, then convert it into a usable object:
 
 ```julia
-db_version = network("johnston_1956_19560101_947")
+db_version = network("johnston_1956_19560101_947");
+db_version.description
 ```
 
 The conversion to the network is done using the `convert` method, which by
@@ -30,7 +31,7 @@ We can check that the type of the network is correct:
 eltype(N)
 ```
 
-## Sanity check
+We can also confirm that all interactions and node counts match:
 
 ```julia
 count(MangalInteraction, db_version) == links(N)
@@ -40,10 +41,6 @@ count(MangalInteraction, db_version) == links(N)
 count(MangalNode, db_version) == richness(N)
 ```
 
-```julia
-species(N)
-```
+## A more complex example
 
-```julia
-[s.taxon for s in species(N)]
-```
+In this 
