@@ -1,3 +1,9 @@
+"""
+    format_mangal_coordinates(d::Dict{T,Any}) where {T <: AbstractString}
+
+Returns a set of coordinates in a `GeoInterface` object, which can be a `Point`
+or a `Polygon`.
+"""
 function format_mangal_coordinates(d::Dict{T,Any}) where {T <: AbstractString}
     point_type = d["geom"]["type"] == "Point" ? Point : Polygon
     if point_type == Polygon
