@@ -36,16 +36,16 @@ pre code {
 }
 
 a {
-    color: #2980b9;
+    color: #b6d8ca;
     text-decoration: none;
 }
 
 a:hover {
-    color: #3091d1;
+    color: #c6dace;
 }
 
 a:visited {
-    color: #9b59b6;
+    color: #84cccc;
 }
 
 body {
@@ -333,7 +333,6 @@ nav.toc ul::-webkit-scrollbar-thumb {
 
 nav.toc ul::-webkit-scrollbar-thumb:hover {
     border-radius: 5px;
-    background: #aaaaaa;
 }
 
 article {
@@ -362,7 +361,8 @@ article > header nav li {
 }
 
 article > header nav li:before {
-    content: "»";
+    content: "›";
+    color: #aaa;
     padding-right: 0.2em;
 }
 
@@ -394,6 +394,10 @@ article section.docstring {
     border-radius: 3px;
 }
 
+article section.docstring div {
+    margin-top: 1.8em;
+}
+
 article section.docstring .docstring-header {
     margin-bottom: 1em;
 }
@@ -409,7 +413,6 @@ article section.docstring .docstring-category {
 
 article section.docstring a.source-link {
     display: block;
-    font-weight: bold;
 }
 
 .nav-anchor,
