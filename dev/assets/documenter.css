@@ -12,11 +12,11 @@
  * License: MIT
  */
 
-@import url('https://fonts.googleapis.com/css?family=Fira+Mono:400,500|Fira+Sans:400,400i,500,500i&subset=greek,greek-ext');
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500|Source+Sans+Pro:400,400i,600,600i&subset=greek');
 
 /* fonts */
 body, input {
-  font-family: 'Fira Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
   color: #222;
   text-rendering: optimizeLegibility;
@@ -27,7 +27,7 @@ strong, b {
 }
 
 pre, code, kbd {
-  font-family: 'Fira Mono', Monaco, courier, monospace;
+  font-family: 'Source Code Pro', Monaco, courier, monospace;
   font-size: 0.90em;
 }
 
@@ -36,16 +36,16 @@ pre code {
 }
 
 a {
-    color: #b6d8ca;
+    color: #8cb6a5;
     text-decoration: none;
 }
 
 a:hover {
-    color: #c6dace;
+    color: #72a48f;
 }
 
 a:visited {
-    color: #84cccc;
+    color: #477160;
 }
 
 body {
@@ -184,7 +184,7 @@ nav.toc {
     flex-flow: column nowrap;
     overflow-y: auto;
     padding: 1em 0 0 0;
-    background-color: #083444 !important;
+    background-color: #485C72 !important;
     box-shadow: none !important;
 }
 
@@ -273,7 +273,7 @@ nav.toc ul .toctext {
 nav.toc ul a:hover {
     color: #fcfcfc;
     /* background-color: #4e4a4a; */
-    filter: brightness(90%);
+    /* filter: brightness(90%); */
 }
 
 nav.toc ul.internal a {
