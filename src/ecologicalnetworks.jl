@@ -101,7 +101,7 @@ function taxonize(N::T) where {T <: EcologicalNetworks.UnipartiteNetwork}
     for s1 in EcologicalNetworks.species(N)
         if !ismissing(s1.taxon)
             for s2 in EcologicalNetworks.species(N)
-                if !ismissing(s1.taxon)
+                if !ismissing(s2.taxon)
                     K[s1.taxon,s2.taxon] = N[s1,s2]
                 end
             end
