@@ -1,5 +1,7 @@
 # Integration with `EcologicalNetworks.jl`
 
+In this vignette, we will de
+
 ```julia
 using Mangal
 using EcologicalNetworks
