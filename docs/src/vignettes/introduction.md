@@ -11,6 +11,16 @@ using Mangal
 
 
 
+## Database status
+
+| Object          |                    Total number |
+| --------------- | -------------------------------:|
+| Datasets        |        172 |
+| Networks        |        1386 |
+| Interactions    |    128331 |
+| Nodes           |           28408 |
+| Reference taxon | 6874 |
+
 ## Types
 
 The package exposes resources from the <mangal.io> database in a series of
@@ -45,4 +55,4 @@ queried one, and then read from cache when they are next part of an interaction.
 ## Queries
 
 *Almost* all functions in the package accept query arguments, which are simply
-*given as a series of pairs.
+given as a series of pairs.
