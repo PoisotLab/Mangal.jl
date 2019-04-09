@@ -108,5 +108,5 @@ function taxonize(N::T) where {T <: EcologicalNetworks.UnipartiteNetwork}
             end
         end
     end
-    return EcologicalNetworks.implify(K)
+    return EcologicalNetworks.simplify(K)
 end

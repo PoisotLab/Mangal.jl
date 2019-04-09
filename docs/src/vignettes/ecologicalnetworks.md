@@ -262,7 +262,7 @@ salmonid_resolved_network = taxonize(salmonid_network)
 
 
 ````
-Error: UndefVarError: simplify not defined
+Error: UndefVarError: implify not defined
 ````
 
 
