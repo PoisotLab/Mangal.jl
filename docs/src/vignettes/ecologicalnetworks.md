@@ -262,7 +262,7 @@ salmonid_resolved_network = taxonize(salmonid_network)
 
 
 ````
-Error: ArgumentError: Not allowed
+Error: UndefVarError: simplify not defined
 ````
 
 
