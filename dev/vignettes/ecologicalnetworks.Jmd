@@ -58,6 +58,10 @@ information related to the network, and converting it into one
 N = [convert(UnipartiteNetwork, n) for n in hp_networks];
 ```
 
+Note that the previous step could use queries too, so it would be possible to
+restrict the interactions to, *e.g.* a certain type, for networks with multiple
+interaction types.
+
 ```julia
 B = [convert(BipartiteNetwork, n) for n in N];
 ```
@@ -67,4 +71,69 @@ using Plots
 histogram(η.(B), frame=:box, c=:white)
 xaxis!("Nestedness", (0,1))
 yaxis!("", (0, 25))
+```
+
+## Building custom networks
+
+Converting to a network is *always* a wrapper around converting an array of
+interactions. Let's imagine that we are interested in representing the network
+of species that either consume, or are consumed by, salmonids. The first step
+will be to retrieve the `MangalReferenceTaxon` that correspond to these species:
+
+```julia
+salmonids = backbones("q" => "Salmo")
+```
+
+For every `MangalReferenceTaxon`, we need to retrieve its number of `MangalNode`
+-- let's see how many there are, using the shorthand `count` method for this:
+
+```julia
+count.(MangalNode, salmonids)
+```
+
+Since none of these are very high, we can retrieve the nodes directly:
+
+
+```julia
+salmonids_nodes = vcat(nodes.(salmonids)...);
+```
+
+At this point, we may want to count the number of interactions for all of the
+nodes, but let us (for the sake of simplicity) trust that there are fewer than
+500 in all cases:
+
+```julia
+all_int = [Mangal.interactions(salmo, "count" => 500) for salmo in salmonids_nodes];
+salmonids_interactions = vcat(all_int...);
+```
+
+At this point, we end up with a `Vector{MangalInteraction}`, *i.e.* an array of
+interactions.
+
+An interesting consequence of this approach is that we now can look at all the
+datasets that are part of this query, and *e.g.* retrieve their DOI:
+
+```julia
+salmonids_datasets = unique([i.network.dataset for i in salmonids_interactions])
+[d.reference.doi for d in salmonids_datasets]
+```
+
+Finally, the array of interactions can be converted into a `UnipartiteNetwork`:
+
+```julia
+salmonid_network = convert(UnipartiteNetwork, salmonids_interactions)
+```
+
+Get the taxa
+
+```julia
+salmonid_resolved_network = taxonize(salmonid_network)
+```
+
+show interactions
+
+```julia
+for i in salmonid_resolved_network
+  println(i)
+end
 ```
