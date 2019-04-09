@@ -97,7 +97,8 @@ function format_mangal_response(::Type{MangalInteraction}, d::Dict{T,Any}) where
     obj_attribute = isnothing(d["attr_id"]) ? missing : format_mangal_response(MangalAttribute, d["attribute"])
 
     return MangalInteraction(obj_id, obj_network, obj_from, obj_to, obj_date, obj_position,
-        obj_directed, obj_interaction, obj_method, obj_strength, obj_created, obj_updated)
+        obj_directed, obj_interaction, obj_method, obj_strength, obj_created, obj_updated,
+        obj_attribute)
 
 end
 
