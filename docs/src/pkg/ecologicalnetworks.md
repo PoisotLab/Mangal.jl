@@ -6,6 +6,14 @@ this reason, this wrapper *only* returns unipartite objects. They can be
 converted into bipartite networks using the `convert` methods in
 `EcologicalNetworks.jl`.
 
+## Generate network objects
+
 ```@docs
 convert
+```
+
+## Increase taxonomic resolution
+
+```@docs
+taxonize
 ```

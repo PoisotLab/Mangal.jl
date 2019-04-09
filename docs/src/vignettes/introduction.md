@@ -24,7 +24,8 @@ types, whose fields are all documented in the manual. Every object in the
 | interactions | `MangalInteraction`    | taxonomic entities involved and metadata             |
 | node         | `MangalNode`           | description of the node in the original dataset      |
 | backbone     | `MangalReferenceTaxon` | actual taxonomic entity reconciled against backbones |
-| reference    | `MangalReference`      | biblographic information                             |
+| reference    | `MangalReference`      | bibliographic information                            |
+| attribute    | `MangalAttribute`      | key/value (used *e.g.* for interaction strength)     |
 
 ## A note on speed
 
