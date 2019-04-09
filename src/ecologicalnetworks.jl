@@ -1,13 +1,13 @@
 EcologicalNetworks.is_valid_species(::Type{MangalNode}) = true
 EcologicalNetworks.is_valid_species(::Type{MangalReferenceTaxon}) = true
 
-function get_all_interactions(n::MangalNetwork)
-    page_size = 200
+function get_all_interactions(n::MangalNetwork, query::Pair...)
+    page_size = 250
     network_interactions = MangalInteraction[]
-    interactions_to_get = count(MangalInteraction, "network_id" => n.id)
+    interactions_to_get = count(MangalInteraction, n, query...)
     pages_to_do = convert(Int64, ceil(interactions_to_get/page_size))
     for page in 1:pages_to_do
-        paging_query = ["page" => "$(page-1)", "count" => "page_size"]
+        paging_query = ["page" => "$(page-1)", "count" => page_size, query...]
         append!(network_interactions, Mangal.interactions(n, paging_query...))
     end
     return network_interactions
@@ -16,33 +16,71 @@ end
 import Base.convert
 
 """
-    convert(::Type{UnipartiteNetwork}, n::MangalNetwork; resolution::Type=MangalNode)
+    convert(::Type{EcologicalNetworks.UnipartiteNetwork}, n::MangalNetwork, query::Pair...)
 
-Returns a `UnipartiteNetwork` object representation of the `MangalNetwork`
-passed as its first argument. The optional keyword `resolution` (can be
-`MangalNode` or `MangalReferenceTaxon`) is determined to use which level of
-aggregation should be used. The default (`MangalNode`) is raw data, and
-`MangalReferenceTaxon` is the cleaned version.
+TODO
 """
-function convert(::Type{EcologicalNetworks.UnipartiteNetwork}, n::MangalNetwork; resolution::Type=MangalNode)
-    resolution ∈ [MangalNode, MangalReferenceTaxon] || throw(ArgumentError("The resolution argument can only be MangalNode or MangalReferenceTaxon - you used $(resolution)"))
+function convert(::Type{EcologicalNetworks.UnipartiteNetwork}, n::MangalNetwork, query::Pair...)
+    all_interactions = Mangal.get_all_interactions(n, query...)
+    return convert(::Type{EcologicalNetworks.UnipartiteNetwork}, all_interactions)
+end
 
-    network_interactions = get_all_interactions(n)
+"""
+    convert(::Type{EcologicalNetworks.UnipartiteNetwork}, n::MangalNetwork, query::Pair...)
+
+TODO
+"""
+function convert(::Type{EcologicalNetworks.UnipartiteQuantitativeNetwork}, n::MangalNetwork, query::Pair...)
+    all_interactions = Mangal.get_all_interactions(n, query...)
+    return convert(::Type{EcologicalNetworks.UnipartiteQuantitativeNetwork}, all_interactions)
+end
+
+"""
+    convert(::Type{UnipartiteNetwork}, i::Vector{MangalInteraction})
+
+TODO
+"""
+function convert(::Type{EcologicalNetworks.UnipartiteNetwork}, i::Vector{MangalInteraction})
+
     all_object_nodes = resolution[]
 
     for i in network_interactions
-        push!(all_object_nodes, resolution == MangalNode ? i.from : i.from.taxon)
-        push!(all_object_nodes, resolution == MangalNode ? i.to : i.to.taxon)
+        append!(all_object_nodes, [i.from, i.to])
     end
 
     object_nodes = unique(all_object_nodes)
-    A = zeros(Bool, (length(object_nodes),length(object_nodes)))
+    S = length(object_nodes)
+    A = zeros(Bool, (S,S))
     N = EcologicalNetworks.UnipartiteNetwork(A, object_nodes)
     for i in network_interactions
         if i.strength != 0
-            t_from = resolution == MangalReferenceTaxon ? i.from.taxon : i.from
-            t_to   = resolution == MangalReferenceTaxon ? i.to.taxon : i.to
-            N[t_from, t_to] = true
+            N[i.from, i.to] = true
+        end
+    end
+
+    return N
+end
+
+"""
+    convert(::Type{UnipartiteNetwork}, i::Vector{MangalInteraction})
+
+TODO
+"""
+function convert(::Type{EcologicalNetworks.UnipartiteQuantitativeNetwork}, i::Vector{MangalInteraction})
+
+    all_object_nodes = resolution[]
+
+    for i in network_interactions
+        append!(all_object_nodes, [i.from, i.to])
+    end
+
+    object_nodes = unique(all_object_nodes)
+    S = length(object_nodes)
+    A = zeros(Float64, (S,S))
+    N = EcologicalNetworks.UnipartiteQuantitativeNetwork(A, object_nodes)
+    for i in network_interactions
+        if i.strength != 0
+            N[i.from, i.to] = convert(Float64, i.strength)
         end
     end
 
