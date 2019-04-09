@@ -89,18 +89,18 @@ end
 
 """
 missing are dropped
-"""
+"""species
 function taxonize(N::T) where {T <: EcologicalNetworks.UnipartiteNetwork}
     @assert last(eltype(N)) == MangalNode
-    unique_ref_taxa = unique([r.taxon for s in species(N)])
+    unique_ref_taxa = unique([r.taxon for s in EcologicalNetworks.species(N)])
     @warn "This function really should inform of dropped nodes"
     filter!(!ismissing, unique_ref_taxa)
     S = length(unique_ref_taxa)
     A = zeros(Bool, (S,S))
     K = EcologicalNetworks.UnipartiteNetwork(A, unique_ref_taxa)
-    for s1 in species(N)
+    for s1 in EcologicalNetworks.species(N)
         if !ismissing(s1.taxon)
-            for s2 in species(N)
+            for s2 in EcologicalNetworks.species(N)
                 if !ismissing(s1.taxon)
                     K[s1.taxon,s2.taxon] = N[s1,s2]
                 end
