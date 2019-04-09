@@ -19,6 +19,7 @@ export MangalReferenceTaxon
 export MangalNode
 export MangalInteraction
 export MangalReference
+export MangalAttribute
 
 # Endpoints
 const _MANGAL_ENDPOINTS = Dict(
@@ -27,18 +28,19 @@ const _MANGAL_ENDPOINTS = Dict(
  MangalInteraction => "interaction",
  MangalNetwork => "network",
  MangalDataset => "dataset",
- MangalReference => "reference"
+ MangalReference => "reference",
+ MangalAttribute => "attribute"
 )
 
 #user = "user",
 #trait = "trait",
-#attribute = "attribute"
 
 # The cache!
 global _MANGAL_CACHES = Dict(
     MangalNode => Dict{Int64, MangalNode}(),
     MangalReferenceTaxon => Dict{Int64, MangalReferenceTaxon}(),
-    MangalNetwork => Dict{Int64, MangalNetwork}()
+    MangalNetwork => Dict{Int64, MangalNetwork}(),
+    MangalAttribute => Dict{Int64, MangalAttribute}()
     )
 
 # Response formatters

@@ -4,7 +4,8 @@ types_names = (
     (MangalNetwork, :network),
     (MangalDataset, :dataset),
     (MangalReference, :reference),
-    (MangalInteraction, :interaction)
+    (MangalInteraction, :interaction),
+    (MangalAttribute, :attribute)
     )
 
 import Base.count

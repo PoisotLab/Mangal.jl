@@ -22,7 +22,7 @@ TODO
 """
 function convert(::Type{EcologicalNetworks.UnipartiteNetwork}, n::MangalNetwork, query::Pair...)
     all_interactions = Mangal.get_all_interactions(n, query...)
-    return convert(::Type{EcologicalNetworks.UnipartiteNetwork}, all_interactions)
+    return convert(EcologicalNetworks.UnipartiteNetwork, all_interactions)
 end
 
 """
@@ -32,7 +32,7 @@ TODO
 """
 function convert(::Type{EcologicalNetworks.UnipartiteQuantitativeNetwork}, n::MangalNetwork, query::Pair...)
     all_interactions = Mangal.get_all_interactions(n, query...)
-    return convert(::Type{EcologicalNetworks.UnipartiteQuantitativeNetwork}, all_interactions)
+    return convert(EcologicalNetworks.UnipartiteQuantitativeNetwork, all_interactions)
 end
 
 """

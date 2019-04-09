@@ -94,6 +94,7 @@ function format_mangal_response(::Type{MangalInteraction}, d::Dict{T,Any}) where
     obj_strength = isnothing(d["value"]) ? missing : d["value"]
     obj_created = DateTime(d["created_at"][1:19])
     obj_updated = DateTime(d["updated_at"][1:19])
+    obj_attribute = isnothing(d["attr_id"]) ? missing : format_mangal_response(MangalAttribute, d["attribute"])
 
     return MangalInteraction(obj_id, obj_network, obj_from, obj_to, obj_date, obj_position,
         obj_directed, obj_interaction, obj_method, obj_strength, obj_created, obj_updated)
@@ -112,4 +113,13 @@ function format_mangal_response(::Type{MangalReference}, d::Dict{T,Any}) where {
 
     return MangalReference(obj_id, obj_year, obj_doi, obj_jstor, obj_pmid,
         obj_bibtex, obj_paper, obj_data)
+end
+
+function format_mangal_response(::Type{MangalAttribute}, d::Dict{T,Any}) where {T <: AbstractString}
+    obj_id = d["id"]
+    obj_name = d["name"]
+    obj_description = d["description"]
+    obj_unit = d["unit"]
+
+    return MangalAttribute(obj_id, obj_name, obj_description, obj_unit)
 end

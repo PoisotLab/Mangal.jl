@@ -1,4 +1,14 @@
 """
+Attribute
+"""
+struct MangalAttribute
+    id::Int64
+    name:: AbstractString
+    description::AbstractString
+    unit::AbstractString
+end
+
+"""
 Reference
 """
 struct MangalReference
@@ -146,4 +156,5 @@ struct MangalInteraction
     strength::Union{Number,Missing}
     created::DateTime
     updated::DateTime
+    attribute::Union{Missing,MangalAttribute}
 end

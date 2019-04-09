@@ -119,7 +119,7 @@ B = [convert(BipartiteNetwork, n) for n in N];
 
 ````julia
 using Plots
-histogram(η.(B), frame=:box)
+histogram(η.(B), frame=:box, c=:white)
 xaxis!("Nestedness", (0,1))
 yaxis!("", (0, 25))
 ````
