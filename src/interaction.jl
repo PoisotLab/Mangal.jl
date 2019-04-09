@@ -17,6 +17,18 @@ function interactions(::Colon, to::MangalNode, query::Pair...)
 end
 
 """
+    interactions(with::MangalNode, query::Pair...)
+
+Returns interactions established *by* the species given as its first argument.
+"""
+function interactions(with::MangalNode, query::Pair...)
+    to = interactions(with, :, query...)
+    fr = interactions(:, with, query...)
+    append!(to, fr)
+    return unique(to)
+end
+
+"""
     interactions(from::MangalNode, to::MangalNode, query::Pair...)
 
 Returns interactions between two nodes.
