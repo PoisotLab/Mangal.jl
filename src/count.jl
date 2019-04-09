@@ -27,3 +27,13 @@ series of queries.
 function count(::Type{MangalNode}, n::MangalNetwork, query::Pair...)
     return count(MangalNode, "network_id" => n.id, query...)
 end
+
+"""
+    count(::Type{MangalNode}, n::MangalReferenceTaxon, query::Pair...)
+
+Return the number of nodes that are instances of a reference taxon, according to an optional
+series of queries.
+"""
+function count(::Type{MangalNode}, r::MangalReferenceTaxon, query::Pair...)
+    return count(MangalNode, "taxonomy_id" => r.id, query...)
+end

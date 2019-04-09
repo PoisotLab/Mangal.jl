@@ -19,7 +19,7 @@ end
 """
     interactions(with::MangalNode, query::Pair...)
 
-Returns interactions established *by* the species given as its first argument.
+Returns interactions established *around* the species given as its first argument.
 """
 function interactions(with::MangalNode, query::Pair...)
     to = interactions(with, :, query...)

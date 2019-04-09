@@ -82,5 +82,6 @@ include(joinpath(".", "count.jl"))
 # EcologicalNetworks wrapper
 import EcologicalNetworks
 include(joinpath(".", "ecologicalnetworks.jl"))
+export taxonize
 
 end # module

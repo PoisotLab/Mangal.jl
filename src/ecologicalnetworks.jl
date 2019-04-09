@@ -36,15 +36,15 @@ function convert(::Type{EcologicalNetworks.UnipartiteQuantitativeNetwork}, n::Ma
 end
 
 """
-    convert(::Type{UnipartiteNetwork}, i::Vector{MangalInteraction})
+    convert(::Type{UnipartiteNetwork}, interac::Vector{MangalInteraction})
 
 TODO
 """
-function convert(::Type{EcologicalNetworks.UnipartiteNetwork}, i::Vector{MangalInteraction})
+function convert(::Type{EcologicalNetworks.UnipartiteNetwork}, interac::Vector{MangalInteraction})
 
-    all_object_nodes = resolution[]
+    all_object_nodes = MangalNode[]
 
-    for i in network_interactions
+    for i in interac
         append!(all_object_nodes, [i.from, i.to])
     end
 
@@ -52,7 +52,7 @@ function convert(::Type{EcologicalNetworks.UnipartiteNetwork}, i::Vector{MangalI
     S = length(object_nodes)
     A = zeros(Bool, (S,S))
     N = EcologicalNetworks.UnipartiteNetwork(A, object_nodes)
-    for i in network_interactions
+    for i in interac
         if i.strength != 0
             N[i.from, i.to] = true
         end
@@ -62,15 +62,15 @@ function convert(::Type{EcologicalNetworks.UnipartiteNetwork}, i::Vector{MangalI
 end
 
 """
-    convert(::Type{UnipartiteNetwork}, i::Vector{MangalInteraction})
+    convert(::Type{UnipartiteNetwork}, interac::Vector{MangalInteraction})
 
 TODO
 """
-function convert(::Type{EcologicalNetworks.UnipartiteQuantitativeNetwork}, i::Vector{MangalInteraction})
+function convert(::Type{EcologicalNetworks.UnipartiteQuantitativeNetwork}, interac::Vector{MangalInteraction})
 
-    all_object_nodes = resolution[]
+    all_object_nodes = MangalNode[]
 
-    for i in network_interactions
+    for i in interac
         append!(all_object_nodes, [i.from, i.to])
     end
 
@@ -78,11 +78,34 @@ function convert(::Type{EcologicalNetworks.UnipartiteQuantitativeNetwork}, i::Ve
     S = length(object_nodes)
     A = zeros(Float64, (S,S))
     N = EcologicalNetworks.UnipartiteQuantitativeNetwork(A, object_nodes)
-    for i in network_interactions
+    for i in interac
         if i.strength != 0
             N[i.from, i.to] = convert(Float64, i.strength)
         end
     end
 
     return N
+end
+
+"""
+missing are dropped
+"""
+function taxonize(N::T) where {T <: EcologicalNetworks.UnipartiteNetwork}
+    @assert last(eltype(N)) == MangalNode
+    unique_ref_taxa = unique([r.taxon for s in species(N)])
+    @warn "This function really should inform of dropped nodes"
+    filter!(!ismissing, unique_ref_taxa)
+    S = length(unique_ref_taxa)
+    A = zeros(Bool, (S,S))
+    K = EcologicalNetworks.UnipartiteNetwork(A, unique_ref_taxa)
+    for s1 in species(N)
+        if !ismissing(s1.taxon)
+            for s2 in species(N)
+                if !ismissing(s1.taxon)
+                    K[s1.taxon,s2.taxon] = N[s1,s2]
+                end
+            end
+        end
+    end
+    return K
 end
