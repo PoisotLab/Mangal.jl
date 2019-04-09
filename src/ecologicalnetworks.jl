@@ -89,7 +89,7 @@ end
 
 """
 missing are dropped
-"""species
+"""
 function taxonize(N::T) where {T <: EcologicalNetworks.UnipartiteNetwork}
     @assert last(eltype(N)) == MangalNode
     unique_ref_taxa = unique([s.taxon for s in EcologicalNetworks.species(N)])
