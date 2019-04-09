@@ -7,6 +7,16 @@ The goal of this vignette is to explain the core design principles of the
 using Mangal
 ```
 
+## Database status
+
+| Object          |                    Total number |
+| --------------- | -------------------------------:|
+| Datasets        |        `j count(MangalDataset)` |
+| Networks        |        `j count(MangalNetwork)` |
+| Interactions    |    `j count(MangalInteraction)` |
+| Nodes           |           `j count(MangalNode)` |
+| Reference taxon | `j count(MangalReferenceTaxon)` |
+
 ## Types
 
 The package exposes resources from the <mangal.io> database in a series of
@@ -41,4 +51,4 @@ queried one, and then read from cache when they are next part of an interaction.
 ## Queries
 
 *Almost* all functions in the package accept query arguments, which are simply
-*given as a series of pairs.
+given as a series of pairs.
