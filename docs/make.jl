@@ -7,9 +7,10 @@ Pkg.activate(".")
 using Mangal
 
 _pkg_doc = [
-   "Getting data" => "pkg/gettingdata.md",
    "Data types" => "pkg/types.md",
+   "Counting objects" => "pkg/count.md",
    "Methods for data retrieval" => "pkg/methods.md",
+   "Networks retrieval" => "pkg/ecologicalnetworks.md",
    "Internal functions" => "pkg/internals.md"
 ]
 

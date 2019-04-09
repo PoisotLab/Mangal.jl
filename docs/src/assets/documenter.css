@@ -394,6 +394,10 @@ article section.docstring {
     border-radius: 3px;
 }
 
+article section.docstring div {
+    margin-top: 1.8em;
+}
+
 article section.docstring .docstring-header {
     margin-bottom: 1em;
 }

@@ -1,4 +1,6 @@
 """
+    cache(results::Vector{T}) where {T <: Union{MangalReferenceTaxon,MangalNode,MangalNetwork}}
+
 Internally, the `Mangal` package uses a cache to store some objects that are
 likely to be queried more than once. These are `MangalNode` and
 `MangalReferenceTaxon`, which are called in a nested way during the querying of
@@ -27,6 +29,11 @@ function generate_base_header()
     end
 end
 
+"""
+    generate_request_query(parameters::Pair...)
+
+Takes a series of `Pairs`, and returns an URL-ready query string.
+"""
 function generate_request_query(parameters::Pair...)
     query = ""
     for (i, pair) in enumerate(promote(parameters...))

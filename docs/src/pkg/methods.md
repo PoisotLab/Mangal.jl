@@ -1,8 +1,5 @@
 This page presents the basic functions to access all of the data stored in
-*mangal*. They are meant to be used for (i) advanced analyses where the user
-knows what they are looking for and (ii) development of functions for specific
-analyses. In most cases, the functions that return objects for the
-`EcologicalNetworks` package are recommended.
+*mangal*.
 
 !!! note "Naming conventions"
     Functions whose name is plural (*e.g* `networks`) will return a `Vector` of
@@ -15,8 +12,8 @@ example, `networks` has a function taking a `MangalDataset` as an object, which
 will retrieve the networks belonging to this dataset.
 
 !!! danger "Paging matters!"
-    The server returns (by default) 50 objects for a given query, and this number
-    can be increased up to 200. This may not be sufficient to retrieve the entire
+    The server returns (by default) 200 objects for a given query, and this number
+    can be increased up to 1000. This may not be sufficient to retrieve the entire
     information, for example in networks with more than 200 nodes. Not paying
     attention to paging when using these functions directly (as opposed to within
     the `EcologicalNetworks` wrappers) means that you are at risk of *not working
@@ -66,6 +63,7 @@ node
 ## Reference taxon
 
 ```@docs
+backbones
 backbone
 ```
 

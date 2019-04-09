@@ -66,10 +66,10 @@ uuid = "f03a62fe-f8ab-5b77-a061-bb599b765229"
 version = "1.0.0"
 
 [[GeoInterface]]
-deps = ["RecipesBase"]
-git-tree-sha1 = "59d34b371abfeda6a876e7d5ad5a12ac45faf252"
+deps = ["RecipesBase", "Test"]
+git-tree-sha1 = "0c0c0bf9c79b10e48aa089e78ac504ebc43db3a0"
 uuid = "cf35fbd7-0cd7-5166-be24-54bfbe79505f"
-version = "0.4.0"
+version = "0.4.1"
 
 [[HTTP]]
 deps = ["Base64", "Dates", "Distributed", "IniFile", "MbedTLS", "Random", "Sockets", "Test"]

@@ -13,7 +13,8 @@ end
     login()
 
 Read the bearer token from the `MANGAL_BEARER_TOKEN` environment variable. If
-not found, displays a login message with a login URL.
+not found, displays a login message with a login URL. Currently, being logged in
+is only necessary to access private datasets.
 """
 function login()
     if haskey(ENV, "MANGAL_BEARER_TOKEN")

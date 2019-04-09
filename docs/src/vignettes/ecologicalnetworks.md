@@ -1,5 +1,7 @@
 # Integration with `EcologicalNetworks.jl`
 
+The **Mangal** package is integrated with **EcologicalNetworks** for analysis.
+
 ````julia
 using Mangal
 using EcologicalNetworks
@@ -7,35 +9,30 @@ using EcologicalNetworks
 
 
 
+
+
+## A simple example
+
+In this simple example, we will look at a food web from 1956, retrieve it from
+the Mangal database, then convert it into a usable object:
+
 ````julia
-db_version = network("johnston_1956_19560101_947")
+db_version = network("johnston_1956_19560101_947");
+db_version.description
 ````
 
 
 ````
-MangalNetwork(947, true, "johnston_1956_19560101_947", 1956-01-01T05:00:00,
- GeoInterface.Point([-122.363, 38.0037]), 2019-02-25T20:51:26, 2019-02-25T2
-0:51:26, 3, "Predation by short-eared owls on a salicornia salt marsh", fal
-se, MangalDataset(14, true, "johnston_1956", 1956-01-01T05:00:00, 2019-02-2
-2T21:10:45, 2019-02-22T21:10:45, MangalReference(14, 1956, missing, missing
-, missing, "@article{Johnston_1956, ISSN = {00435643}, URL = {http://www.js
-tor.org/stable/4158481}, abstract = {The Short-eared Owl is a common winter
- visitant to the salt marshes around San Francisco Bay. Between four and te
-n owls live in the winter on the study plot of some 200 acres on San Pablo
-salt marsh. The owls forage mainly at night there. Of 638 items found in pe
-llets, 75 per cent were mammals, 20 per cent birds, and 5 per cent insects.
- Mammals were responsible for about 90 per cent of the mass consumed, Micro
-tus and Rattus being the most important kinds. The relationship of Short-ea
-red Owl predation to the community food web is indicated by means of a diag
-ram.}, author = {Richard F. Johnston}, journal = {The Wilson Bulletin}, num
-ber = {2}, pages = {91--102}, publisher = {Wilson Ornithological Society},
-title = {Predation by Short-Eared Owls on a Salicornia Salt Marsh}, volume
-= {68}, year = {1956}}", "http://www.jstor.org/stable/4158481", "https://gl
-obalwebdb.com/"), 3, "Predation by short-eared owls on a salicornia salt ma
-rsh"))
+"Predation by short-eared owls on a salicornia salt marsh"
 ````
 
 
+
+
+
+The conversion to the network is done using the `convert` method, which by
+default will return a `UnipartiteNetwork`, where species are the `MangalNode` of
+the original network:
 
 ````julia
 N = convert(UnipartiteNetwork, db_version)
@@ -47,6 +44,25 @@ N = convert(UnipartiteNetwork, db_version)
 ````
 
 
+
+
+
+We can check that the type of the network is correct:
+
+````julia
+eltype(N)
+````
+
+
+````
+(Bool, MangalNode)
+````
+
+
+
+
+
+We can also confirm that all interactions and node counts match:
 
 ````julia
 count(MangalInteraction, db_version) == links(N)
@@ -67,3 +83,46 @@ count(MangalNode, db_version) == richness(N)
 ````
 true
 ````
+
+
+
+
+
+## A more complex example
+
+In this
+
+````julia
+hp_dataset = dataset("hadfield_2014");
+hp_networks = networks(hp_dataset);
+````
+
+
+
+
+
+The next step might take a minute or two, but will consist in downloading every
+information related to the network, and converting it into one
+`UnipartiteNetwork` for every network in the dataset.
+
+````julia
+N = [convert(UnipartiteNetwork, n) for n in hp_networks];
+````
+
+
+
+````julia
+B = [convert(BipartiteNetwork, n) for n in N];
+````
+
+
+
+````julia
+using Plots
+histogram(η.(B), frame=:box)
+xaxis!("Nestedness", (0,1))
+yaxis!("", (0, 25))
+````
+
+
+![](figures/ecologicalnetworks_10_1.png)

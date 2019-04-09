@@ -1,3 +1,9 @@
+"""
+    format_mangal_coordinates(d::Dict{T,Any}) where {T <: AbstractString}
+
+Returns a set of coordinates in a `GeoInterface` object, which can be a `Point`
+or a `Polygon`.
+"""
 function format_mangal_coordinates(d::Dict{T,Any}) where {T <: AbstractString}
     point_type = d["geom"]["type"] == "Point" ? Point : Polygon
     if point_type == Polygon
@@ -96,7 +102,7 @@ end
 
 function format_mangal_response(::Type{MangalReference}, d::Dict{T,Any}) where {T <: AbstractString}
     obj_id = d["id"]
-    obj_year = d["year"] == "NA" ? missing : parse(Int64, d["year"])
+    obj_year = d["year"] == "NA" ? missing : parse(Int64, d["year"][1:4])
     obj_doi = isnothing(d["doi"]) ? missing : d["doi"]
     obj_jstor = isnothing(d["jstor"]) ? missing : d["jstor"]
     obj_pmid = isnothing(d["pmid"]) ? missing : d["pmid"]
