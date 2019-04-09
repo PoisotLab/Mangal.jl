@@ -95,9 +95,10 @@ function taxonize(N::T) where {T <: EcologicalNetworks.UnipartiteNetwork}
     unique_ref_taxa = unique([s.taxon for s in EcologicalNetworks.species(N)])
     @warn "This function really should inform of dropped nodes"
     filter!(!ismissing, unique_ref_taxa)
-    S = length(unique_ref_taxa)
+    u_refs = convert(Vector{MangalReferenceTaxon}, unique_ref_taxa)
+    S = length(u_refs)
     A = zeros(Bool, (S,S))
-    K = EcologicalNetworks.UnipartiteNetwork(A, unique_ref_taxa)
+    K = EcologicalNetworks.UnipartiteNetwork(A, u_refs)
     for s1 in EcologicalNetworks.species(N)
         if !ismissing(s1.taxon)
             for s2 in EcologicalNetworks.species(N)
@@ -107,5 +108,5 @@ function taxonize(N::T) where {T <: EcologicalNetworks.UnipartiteNetwork}
             end
         end
     end
-    return K
+    return simplify(K)
 end

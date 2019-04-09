@@ -262,7 +262,7 @@ salmonid_resolved_network = taxonize(salmonid_network)
 
 
 ````
-Error: UndefVarError: species not defined
+Error: ArgumentError: Not allowed
 ````
 
 
