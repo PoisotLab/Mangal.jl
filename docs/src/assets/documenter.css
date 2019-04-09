@@ -12,22 +12,26 @@
  * License: MIT
  */
 
-@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:400,500|Source+Sans+Pro:400,400i,600,600i&subset=greek');
+@import url('https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,400i,600,600i|IBM+Plex+Sans:400,400i,600,600i|IBM+Plex+Serif:400,400i,600,600i&subset=greek');
 
 /* fonts */
 body, input {
-  font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+  font-family: 'IBM Plex Serif', 'Helvetica Neue', Arial, sans-serif;
   font-size: 16px;
   color: #222;
   text-rendering: optimizeLegibility;
 }
 
+h1, h2, h3, h4, h5, h6, table, nav, header, footer, .docstring {
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
 strong, b {
-    font-weight: 500;
+    font-weight: 600;
 }
 
 pre, code, kbd {
-  font-family: 'Source Code Pro', Monaco, courier, monospace;
+  font-family: 'IBM Plex Mono', Monaco, courier, monospace;
   font-size: 0.90em;
 }
 
@@ -344,6 +348,27 @@ article {
 
 article > header {}
 
+nav.toc ul::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #c9c9c9;
+}
+
+nav.toc ul::-webkit-scrollbar-thumb:hover {
+    border-radius: 5px;
+}
+
+article {
+    margin-left: 17em;
+    min-width: 23em;
+    max-width: 48em;
+    padding: 2em;
+}
+
+article > header {}
+
+article > header div#topbar {
+    display: none;
+}
 article > header div#topbar {
     display: none;
 }
