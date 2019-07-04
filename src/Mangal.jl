@@ -5,7 +5,7 @@ using JSON
 using GeoInterface
 using Dates
 
-const web_root = "http://poisotlab.biol.umontreal.ca/"
+const web_root = "https://mangal.io/"
 const api_root = web_root * "api/v2/"
 
 # Login
