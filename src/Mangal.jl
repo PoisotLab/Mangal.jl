@@ -3,6 +3,7 @@ module Mangal
 using HTTP
 using JSON
 using GeoInterface
+using EcologicalNetworks
 using Dates
 
 const web_root = "https://mangal.io/"

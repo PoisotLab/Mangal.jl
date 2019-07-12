@@ -73,6 +73,12 @@ function search_objects_by_query(ReturnType::Type, query::Pair...)
     return convert(Vector{ReturnType}, formatter.(parsed_json))
 end
 
+"""
+    number_of_objects(endpoint::AbstractString, query::Pair...)
+
+This function will return the number of objects already queried, and remaining
+to query, for any given query.
+"""
 function number_of_objects(endpoint::AbstractString, query::Pair...)
     # Headers
     headers = Mangal.generate_base_header()
