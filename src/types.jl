@@ -5,7 +5,7 @@ struct MangalAttribute
     id::Int64
     name:: AbstractString
     description::AbstractString
-    unit::AbstractString
+    unit::Union{Missing,AbstractString}
 end
 
 """
