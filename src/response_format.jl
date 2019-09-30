@@ -119,7 +119,7 @@ function format_mangal_response(::Type{MangalAttribute}, d::Dict{T,Any}) where {
     obj_id = d["id"]
     obj_name = d["name"]
     obj_description = d["description"]
-    obj_unit = d["unit"]
+    obj_unit = isnothing(d["unit"] ? missing : d["unit"]
 
     return MangalAttribute(obj_id, obj_name, obj_description, obj_unit)
 end
