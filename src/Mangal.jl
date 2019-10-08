@@ -58,6 +58,7 @@ export datasets, dataset
 export networks, network
 export references, reference
 export interactions, interaction
+export attributes, attribute
 
 # Datasets
 include(joinpath(".", "dataset.jl"))

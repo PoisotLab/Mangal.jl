@@ -5,6 +5,7 @@ my_tests = [
     "backbone.jl",
     "nodes.jl",
     "cache.jl",
+    "attributes.jl",
     "datasets.jl",
     "networks.jl",
     "interactions.jl"
