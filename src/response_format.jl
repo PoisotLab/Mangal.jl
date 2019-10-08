@@ -20,14 +20,13 @@ function format_mangal_response(::Type{MangalDataset}, d::Dict{T,Any}) where {T 
     obj_id = d["id"]
     obj_public = d["public"]
     obj_name = d["name"]
-    obj_date = isnothing(d["date"]) ? missing : DateTime(d["date"][1:19])
     obj_created = DateTime(d["created_at"][1:19])
     obj_updated = DateTime(d["updated_at"][1:19])
     obj_reference = isnothing(d["ref_id"]) ? missing : reference(d["ref_id"])
     obj_user = d["user_id"]
     obj_description = d["description"]
 
-    return MangalDataset(obj_id, obj_public, obj_name, obj_date, obj_created,
+    return MangalDataset(obj_id, obj_public, obj_name, obj_created,
         obj_updated, obj_reference, obj_user, obj_description
         )
 end
@@ -120,7 +119,7 @@ function format_mangal_response(::Type{MangalAttribute}, d::Dict{T,Any}) where {
     obj_id = d["id"]
     obj_name = d["name"]
     obj_description = d["description"]
-    obj_unit = inothing(d["unit"]) ? missing : d["unit"]
+    obj_unit = isnothing(d["unit"] ? missing : d["unit"]
 
     return MangalAttribute(obj_id, obj_name, obj_description, obj_unit)
 end

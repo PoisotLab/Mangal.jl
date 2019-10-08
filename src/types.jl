@@ -5,7 +5,7 @@ struct MangalAttribute
     id::Int64
     name:: AbstractString
     description::AbstractString
-    unit::Union{AbstractString,Missing}
+    unit::Union{Missing,AbstractString}
 end
 
 """
@@ -32,10 +32,6 @@ which are *unique*).
 `public` (`Bool`): indicates whether the dataset details are available to others
 than its owner.
 
-`date` (`DateTime`): date and time at which the dataset was assembled. This can
-refer to the sampling time of networks, or to the date at which the dataset was
-finalized.
-
 `reference` (`Union{Int64,Nothing}`) (*optional*): a reference to the `id` of
 the `MangalReference`, or `nothing` if there is no associated reference for this
 dataset.
@@ -50,7 +46,6 @@ struct MangalDataset
     id::Int64
     public::Bool
     name::AbstractString
-    date::Union{DateTime,Missing}
     created::DateTime
     updated::DateTime
     reference::Union{MangalReference,Missing}
