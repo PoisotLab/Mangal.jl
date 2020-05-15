@@ -1,5 +1,5 @@
-EcologicalNetworks.is_valid_species(::Type{MangalNode}) = true
-EcologicalNetworks.is_valid_species(::Type{MangalReferenceTaxon}) = true
+EcologicalNetworks.check_species_validity(::Type{MangalNode}) = nothing
+EcologicalNetworks.check_species_validity(::Type{MangalReferenceTaxon}) = nothing
 
 function get_all_interactions(n::MangalNetwork, query::Pair...)
     page_size = 250
