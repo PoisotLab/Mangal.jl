@@ -1,9 +1,8 @@
 using Pkg
 using Documenter
 
-push!(LOAD_PATH,"../src/")
+# push!(LOAD_PATH,"../src/")
 
-Pkg.activate(".")
 using Mangal
 
 _pkg_doc = [
