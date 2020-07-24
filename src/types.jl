@@ -147,7 +147,7 @@ struct MangalInteraction
     position::Union{AbstractGeometry,Missing}
     directed::Bool
     interaction::Symbol
-    method::AbstractString
+    method::Union{AbstractString,Missing}
     strength::Union{Number,Missing}
     created::DateTime
     updated::DateTime

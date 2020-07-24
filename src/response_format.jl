@@ -89,7 +89,7 @@ function format_mangal_response(::Type{MangalInteraction}, d::Dict{T,Any}) where
     obj_position = isnothing(d["geom"]) ? missing : format_mangal_coordinates(d)
     obj_directed = d["direction"] == "directed"
     obj_interaction = Symbol(d["type"])
-    obj_method = d["method"]
+    obj_method = isnothing(d["method"]) ? missing : d["method"]
     obj_strength = isnothing(d["value"]) ? missing : d["value"]
     obj_created = DateTime(d["created_at"][1:19])
     obj_updated = DateTime(d["updated_at"][1:19])

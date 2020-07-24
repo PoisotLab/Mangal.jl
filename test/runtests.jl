@@ -8,7 +8,8 @@ my_tests = [
     "attributes.jl",
     "datasets.jl",
     "networks.jl",
-    "interactions.jl"
+    "interactions.jl",
+    "knownbugs.jl"
 ]
 
 global test_n

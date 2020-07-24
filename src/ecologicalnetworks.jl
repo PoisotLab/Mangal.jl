@@ -46,6 +46,8 @@ function convert(::Type{EcologicalNetworks.UnipartiteNetwork}, interac::Vector{M
 
     for i in interac
         append!(all_object_nodes, [i.from, i.to])
+        @info i.from
+        @info i.to
     end
 
     object_nodes = unique(all_object_nodes)
