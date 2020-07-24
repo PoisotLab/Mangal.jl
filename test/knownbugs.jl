@@ -10,7 +10,7 @@ module MangalTestKnownBugs
         thisnet = Mangal.network(netid)
         @test typeof(thisnet) <: MangalNetwork
         U = convert(UnipartiteNetwork, thisnet) 
-        @test tyepof(U) <: UnipartiteNetwork
+        @test typeof(U) <: UnipartiteNetwork
     end
 
 end
