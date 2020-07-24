@@ -3,10 +3,6 @@ push!(LOAD_PATH,"../src/")
 using Pkg
 Pkg.activate(".")
 
-_required = ["Weave", "Plots"]
-
-Pkg.add.(_required)
-
 using Mangal
 using Weave
 
@@ -18,4 +14,3 @@ for _file in _files_to_compile
     weave(_file, doctype="github")
 end
 
-Pkg.rm.(_required)
