@@ -48,8 +48,8 @@ In order to facilitate data retrieval, `Mangal.jl` is based on a custom hierarch
 Parameters can be used to filter or sort queries. For example, one could retrieve data according to a dataset ID or according to a given type of interaction. The total number of entries in the database can also be counted, each type of object having its own count method.
 
 
-| Type    | Description        | Related custom types |
-| ------- | ------------------ | ------------ |
+| Type        | Description        | Related custom types |
+| ----------- | ------------------ | ------------ |
 | MangalDataset        | Dataset metadata | MangalReference |
 | MangalReference      | Dataset reference | none |               
 | MangalNetwork        | Network metadata | MangalDataset |           
