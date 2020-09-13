@@ -35,8 +35,30 @@ Network ecology is an emerging field of study describing species interactions (e
 
 # Statement of need
 
+Analyzing ecological networks is a challenging task. First, data retrieval and manipulation can be difficult, as authors typically store their data in different repositories and in different formats. Further, a diversity of measures is commonly used to characterize the structure of ecological networks [@DelmBess19], and their implementation can sometimes be arduous or computationally expensive. The Julia programming language was designed for data science and machine learning, and can thus provide the algorithmic efficiency needed in ecology. [EcoJulia](https://ecojulia.github.io/), an integrated environment for the conduction of ecological research in Julia, contains a set of packages that can be used for a variety of ecological topics, from spatial analysis to phylogenetics.
+
+Together, two interrelated packages in EcoJulia provide a useful methodological framework for the analysis of ecological networks: [`Mangal.jl`](https://github.com/EcoJulia/Mangal.jl) and [`EcologicalNetworks.jl`](https://github.com/EcoJulia/EcologicalNetworks.jl). The [Mangal project](https://mangal.io/#/) was set up to meet the need for an extensive ecological interaction database with an easy data retrieval system. In Julia, `Mangal.jl` is used to read data from `mangal.io`. Once imported, these networks can then be analyzed using `EcologicalNetworks.jl`, which could also be used to simulate ecological networks under different statistical and ecological models. Here we provide an overview of the functionalities of these two packages, and illustrate how they can be used to answer fundamental ecological questions.
 
 # Mangal.jl
+
+`Mangal.jl` uses a RESTful API to query data directly from the [`mangal.io`](https://mangal.io/#/) database. To this date, 172 datasets for a total of more than 1,300 ecological networks of various types are archived on `mangal.io`. This makes it one of the most extensive database of empirical ecological networks.
+
+In order to facilitate data retrieval, `Mangal.jl` is based on a custom hierarchical type system outlined in \autoref{tbl:mangal_types}. Objects of type `MangalInteraction` represent the interaction from one `MangalNode` to another, and are associated to a `MangalNetwork` in a `MangalDataset`. Interactions can be Boolean, probabilistic, or quantitative. Types of  interactions (e.g. predation, mutualism, parasitism, competition) are encoded in `MangalAttribute` objects, and different types can be represented in the same network. Objects also contain various metadata, such as the date of data collection, the geographical position, a description, a name and an ID number.
+
+Parameters can be used to filter or sort queries. For example, one could retrieve data according to a dataset ID or according to a given type of interaction. The total number of entries in the database can also be counted, each type of object having its own count method.
+
+
+| Type                 | Description | Related custom types |
+| -------------------- | -------- | -------- |
+| MangalDataset        | Dataset metadata | MangalReference |
+| MangalReference      | Dataset reference | none |               
+| MangalNetwork        | Network metadata | MangalDataset |           
+| MangalInteraction    | Pairwise interaction data and metadata | MangalNetwork, MangalNode, MangalAttribute |
+| MangalAttribute      | Type of interaction | none |
+| MangalNode           | Species observation metadata | MangalReferenceTaxon |
+| MangalReferenceTaxon | Species taxonomic name | none |
+
+Table: Description of all custom types in `Mangal.jl`. Related custom types are used in the fields of a given Mangal type. \label{tbl:mangal_types}
 
 ## Use case 1: Association between the number of species and the number of links
 
@@ -88,6 +110,11 @@ The association between the number of species $S$ and the total number of links 
 
 
 # EcologicalNetworks.jl
+
+For a deeper numerical analysis, Mangal networks can be converted into one of the many custom types of `EcologicalNetworks.jl`. Given that each type of network is measured differently, `EcologicalNetworks.jl` is based upon a hierarchical type system which ensures that measures are applied to appropriate networks [@PoisBeli19a]. The most common measures used to analyze deterministic [@DelmBess19] and probabilistic ecological networks [@PoisCirt16] are implemented in our package. Moreover, a set of functions in `EcologicalNetworks.jl` simulate networks under null models (i.e. models without given processes), a common practice among ecologists to investigate the deviation of empirical measures from their expected values [see for example @BascJord03a; @FortBasc06; and @DelmBess19].
+
+The package [`EcologicalNetworksPlots.jl`](https://github.com/EcoJulia/EcologicalNetworksPlots.jl), for network visualization, uses the same type system as `EcologicalNetworks.jl`.
+
 
 ## Use case 2: Association between meaningful network measures
 
