@@ -14,9 +14,6 @@ authors:
   - name: Steve Vissault
     orcid: 0000-0002-0866-4376
     affiliation: 2
-  - name: Gabriel Dansereau
-    orcid: 0000-0002-2212-3584
-    affiliation: 1
   - name: Timothée Poisot
     orcid: 0000-0002-0735-5184
     affiliation: 1
