@@ -15,16 +15,10 @@ database was funded by the [Canadian Foundation for Innovation][cfi] and
 
 ## Getting started
 
-Entering package mode in Julia:
+Enter package mode by pressing `]` from the Julia REPL. Then install:
 
 ~~~
-using Pkg
-~~~
-
-Installation:
-
-~~~
-Pkg.add("Mangal")
+add Mangal
 ~~~
 
 That's it. Now head over to the
