@@ -12,3 +12,20 @@ database was funded by the [Canadian Foundation for Innovation][cfi] and
 [cfi]: https://www.innovation.ca/
 [nserc]: http://www.nserc-crsng.gc.ca/index_eng.asp
 [jl]: https://julialang.org/
+
+## Getting started
+
+Entering package mode in Julia:
+
+~~~
+using Pkg
+~~~
+
+Installation:
+
+~~~
+Pkg.add("Mangal")
+~~~
+
+That's it. Now head over to the
+[documentation](https://ecojulia.github.io/Mangal.jl/dev/).
