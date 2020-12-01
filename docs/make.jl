@@ -34,6 +34,6 @@ makedocs(
 
 deploydocs(
    deps   = Deps.pip("pygments", "python-markdown-math"),
-   repo   = "github.com/PoisotLab/Mangal.jl.git",
+   repo   = "github.com/EcoJulia/Mangal.jl.git",
    devbranch = "master"
 )
