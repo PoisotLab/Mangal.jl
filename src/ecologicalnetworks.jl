@@ -1,5 +1,11 @@
-EcologicalNetworks.check_species_validity(::Type{MangalNode}) = nothing
-EcologicalNetworks.check_species_validity(::Type{MangalReferenceTaxon}) = nothing
+try
+    EcologicalNetworks._check_species_validity(::Type{MangalNode}) = nothing
+    EcologicalNetworks._check_species_validity(::Type{MangalReferenceTaxon}) = nothing
+catch e
+    @info "Compatibility with EcologicalNetworks 0.3 will be removed soon"
+    EcologicalNetworks.check_species_validity(::Type{MangalNode}) = nothing
+    EcologicalNetworks.check_species_validity(::Type{MangalReferenceTaxon}) = nothing
+end
 
 function get_all_interactions(n::MangalNetwork, query::Pair...)
     page_size = 250
@@ -91,7 +97,7 @@ end
 missing are dropped
 """
 function taxonize(N::T) where {T <: EcologicalNetworks.UnipartiteNetwork}
-    @assert last(eltype(N)) == MangalNode
+    @assert eltype(species(N)) == MangalNode
     unique_ref_taxa = unique([s.taxon for s in EcologicalNetworks.species(N)])
     @warn "This function really should inform of dropped nodes"
     filter!(!ismissing, unique_ref_taxa)

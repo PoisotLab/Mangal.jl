@@ -11,6 +11,8 @@ module MangalTestKnownBugs
         @test typeof(thisnet) <: MangalNetwork
         U = convert(UnipartiteNetwork, thisnet) 
         @test typeof(U) <: UnipartiteNetwork
+        T = taxonize(U)
+        @test eltype(EcologicalNetworks.species(T)) <: MangalReferenceTaxon
     end
 
 end
