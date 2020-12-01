@@ -1,7 +1,10 @@
 ### Mangal.jl
 
-[![Build Status](https://travis-ci.org/EcoJulia/Mangal.jl.svg?branch=master)](https://travis-ci.org/EcoJulia/Mangal.jl) [![Coverage Status](https://coveralls.io/repos/github/EcoJulia/Mangal.jl/badge.svg?branch=master)](https://coveralls.io/github/EcoJulia/Mangal.jl?branch=master)
-[![Manual](https://img.shields.io/badge/manual-latest-orange.svg)](http://EcoJulia.github.io/Mangal.jl/dev/)
+[![latest doc](https://img.shields.io/badge/documentation-stable-brightgreen)](https://ecojulia.github.io/Mangal.jl/stable/) [![latest doc](https://img.shields.io/badge/documentation-latest-green)](https://ecojulia.github.io/Mangal.jl/latest/)
+
+![CI](https://github.com/EcoJulia/Mangal.jl/workflows/CI/badge.svg?branch=master) [![codecov](https://codecov.io/gh/EcoJulia/Mangal.jl/branch/master/graph/badge.svg?token=HKaubLliPG)](https://codecov.io/gh/EcoJulia/Mangal.jl)
+
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) [![DOI](https://zenodo.org/badge/144035225.svg)](https://zenodo.org/badge/latestdoi/144035225)
 
 This package is a wrapper around the *new* API for the mangal ecological
 interactions database. It uses [Julia 1.1][jl] to provide a programmatic
