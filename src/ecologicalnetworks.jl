@@ -1,5 +1,11 @@
-EcologicalNetworks.check_species_validity(::Type{MangalNode}) = nothing
-EcologicalNetworks.check_species_validity(::Type{MangalReferenceTaxon}) = nothing
+try
+    EcologicalNetworks._check_species_validity(::Type{MangalNode}) = nothing
+    EcologicalNetworks._check_species_validity(::Type{MangalReferenceTaxon}) = nothing
+catch e
+    @info "Compatibility with EcologicalNetworks 0.3 will be removed soon"
+    EcologicalNetworks.check_species_validity(::Type{MangalNode}) = nothing
+    EcologicalNetworks.check_species_validity(::Type{MangalReferenceTaxon}) = nothing
+end
 
 function get_all_interactions(n::MangalNetwork, query::Pair...)
     page_size = 250
