@@ -97,7 +97,7 @@ end
 missing are dropped
 """
 function taxonize(N::T) where {T <: EcologicalNetworks.UnipartiteNetwork}
-    @assert last(eltype(N)) == MangalNode
+    @assert eltype(species(N)) == MangalNode
     unique_ref_taxa = unique([s.taxon for s in EcologicalNetworks.species(N)])
     @warn "This function really should inform of dropped nodes"
     filter!(!ismissing, unique_ref_taxa)
