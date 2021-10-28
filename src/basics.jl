@@ -22,11 +22,11 @@ end
 If a bearer token is present, this function will add it to the header.
 """
 function generate_base_header()
+    headers = ["Content-Type" => "application/json"]
     if haskey(ENV, "MANGAL_BEARER_TOKEN")
-        return ["Authorization" => "bearer $(ENV["MANGAL_BEARER_TOKEN"])"]
-    else
-        return []
+        push!(headers, "Authorization" => "bearer $(ENV["MANGAL_BEARER_TOKEN"])")
     end
+    return headers
 end
 
 """
