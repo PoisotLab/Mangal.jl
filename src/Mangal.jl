@@ -81,6 +81,9 @@ include(joinpath(".", "reference.jl"))
 # Counts
 include(joinpath(".", "count.jl"))
 
+# Show
+include(joinpath(".", "show.jl"))
+
 # EcologicalNetworks wrapper
 import EcologicalNetworks
 include(joinpath(".", "ecologicalnetworks.jl"))
