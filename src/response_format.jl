@@ -123,3 +123,12 @@ function format_mangal_response(::Type{MangalAttribute}, d::Dict{T,Any}) where {
 
     return MangalAttribute(obj_id, obj_name, obj_description, obj_unit)
 end
+
+function format_mangal_response(::Type{MangalUser}, d::Dict{T,Any}) where {T <: AbstractString}
+    obj_id = d["id"]
+    obj_name = d["name"]
+    obj_orcid = d["orcid"]
+    obj_email = isnothing(d["email"]) ? missing : d["email"]
+    obj_org = isnothing(d["organization"]) ? missing : d["organization"]
+    return MangalUser(obj_id, obj_name, obj_email, obj_orcid, obj_org)
+end

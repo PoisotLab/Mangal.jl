@@ -13,5 +13,6 @@ end
 Returns a network of a given name.
 """
 function network(name::AbstractString)
-    return first(networks(Pair("name", name)))
+    q = networks(Pair("name", name))
+    return isequal(1)(length(q)) ? only(q) : nothing
 end

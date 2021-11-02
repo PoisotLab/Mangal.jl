@@ -17,4 +17,6 @@ module MangalTestDataset
     # Dataset by name
     @test typeof(dataset("roberson_1929")) <: MangalDataset
 
+    @test isnothing(dataset("This_DOESNOT_exist"))
+
 end

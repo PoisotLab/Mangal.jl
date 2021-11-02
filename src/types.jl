@@ -153,3 +153,15 @@ struct MangalInteraction
     updated::DateTime
     attribute::Union{Missing,MangalAttribute}
 end
+
+
+"""
+    MangalUser
+"""
+struct MangalUser
+    id::Int64
+    name::AbstractString
+    email::Union{Missing,AbstractString}
+    orcid::Union{Missing,AbstractString}
+    organization::Union{Missing,AbstractString}
+end

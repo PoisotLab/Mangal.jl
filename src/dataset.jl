@@ -4,5 +4,6 @@
 Return a single dataset by its name.
 """
 function dataset(name::AbstractString)
-    return first(datasets(Pair("name", name)))
+    q = datasets(Pair("name", name))
+    return isequal(1)(length(q)) ? only(q) : nothing
 end

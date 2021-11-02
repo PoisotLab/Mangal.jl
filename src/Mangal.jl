@@ -21,28 +21,29 @@ export MangalNode
 export MangalInteraction
 export MangalReference
 export MangalAttribute
+export MangalUser
 
 # Endpoints
 const _MANGAL_ENDPOINTS = Dict(
- MangalReferenceTaxon => "taxonomy",
- MangalNode => "node",
- MangalInteraction => "interaction",
- MangalNetwork => "network",
- MangalDataset => "dataset",
- MangalReference => "reference",
- MangalAttribute => "attribute"
+    MangalReferenceTaxon => "taxonomy",
+    MangalNode => "node",
+    MangalInteraction => "interaction",
+    MangalNetwork => "network",
+    MangalDataset => "dataset",
+    MangalReference => "reference",
+    MangalAttribute => "attribute",
+    MangalUser => "user",
 )
 
-#user = "user",
 #trait = "trait",
 
 # The cache!
 global _MANGAL_CACHES = Dict(
-    MangalNode => Dict{Int64, MangalNode}(),
-    MangalReferenceTaxon => Dict{Int64, MangalReferenceTaxon}(),
-    MangalNetwork => Dict{Int64, MangalNetwork}(),
-    MangalAttribute => Dict{Int64, MangalAttribute}()
-    )
+    MangalNode => Dict{Int64,MangalNode}(),
+    MangalReferenceTaxon => Dict{Int64,MangalReferenceTaxon}(),
+    MangalNetwork => Dict{Int64,MangalNetwork}(),
+    MangalAttribute => Dict{Int64,MangalAttribute}(),
+)
 
 # Response formatters
 include("response_format.jl")
@@ -59,6 +60,7 @@ export networks, network
 export references, reference
 export interactions, interaction
 export attributes, attribute
+export users, user
 
 # Datasets
 include(joinpath(".", "dataset.jl"))
@@ -85,7 +87,7 @@ include(joinpath(".", "count.jl"))
 include(joinpath(".", "show.jl"))
 
 # EcologicalNetworks wrapper
-import EcologicalNetworks
+using EcologicalNetworks: EcologicalNetworks
 include(joinpath(".", "ecologicalnetworks.jl"))
 export taxonize
 
