@@ -5,14 +5,15 @@ types_names = (
     (MangalDataset, :dataset),
     (MangalReference, :reference),
     (MangalInteraction, :interaction),
-    (MangalAttribute, :attribute)
-    )
+    (MangalAttribute, :attribute),
+    (MangalUser, :user),
+)
 
 import Base.count
 
 for mg_type_pair in types_names
     mg_type, mg_singular = mg_type_pair
-    mg_plural = Symbol(string(mg_singular)*"s")
+    mg_plural = Symbol(string(mg_singular) * "s")
     @eval begin
         """
             count(::Type{$($mg_type)}, query::Pair...)
