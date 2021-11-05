@@ -165,3 +165,13 @@ struct MangalUser
     orcid::Union{Missing,AbstractString}
     organization::Union{Missing,AbstractString}
 end
+
+struct MangalTrait
+    id::Int64
+    date::Union{Missing,DateTime}
+    value::Any
+    description::AbstractString
+    attribute::MangalAttribute
+    node::Union{Missing,MangalNode}
+    taxon::Union{Missing,MangalReferenceTaxon}
+end
