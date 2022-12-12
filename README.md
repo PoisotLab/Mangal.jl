@@ -1,8 +1,8 @@
 ### Mangal.jl
 
-[![latest doc](https://img.shields.io/badge/documentation-stable-brightgreen)](https://ecojulia.github.io/Mangal.jl/stable/) [![latest doc](https://img.shields.io/badge/documentation-latest-green)](https://ecojulia.github.io/Mangal.jl/latest/)
+[![latest doc](https://img.shields.io/badge/documentation-stable-brightgreen)](https://poisotlab.github.io/Mangal.jl/stable/) [![latest doc](https://img.shields.io/badge/documentation-latest-green)](https://poisotlab.github.io/Mangal.jl/latest/)
 
-![CI](https://github.com/EcoJulia/Mangal.jl/workflows/CI/badge.svg?branch=master) [![codecov](https://codecov.io/gh/EcoJulia/Mangal.jl/branch/master/graph/badge.svg?token=HKaubLliPG)](https://codecov.io/gh/EcoJulia/Mangal.jl)
+![CI](https://github.com/PoisotLab/Mangal.jl/workflows/CI/badge.svg?branch=master) [![codecov](https://codecov.io/gh/PoisotLab/Mangal.jl/branch/master/graph/badge.svg?token=HKaubLliPG)](https://codecov.io/gh/PoisotLab/Mangal.jl)
 
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) [![DOI](https://zenodo.org/badge/144035225.svg)](https://zenodo.org/badge/latestdoi/144035225)
 
@@ -25,4 +25,4 @@ add Mangal
 ~~~
 
 That's it. Now head over to the
-[documentation](https://ecojulia.github.io/Mangal.jl/dev/).
+[documentation](https://poisotlab.github.io/Mangal.jl/dev/).
