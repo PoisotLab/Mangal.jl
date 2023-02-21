@@ -9,7 +9,7 @@ module MangalTestNetwork
     @test typeof(nN1) <: Vector{MangalNode}
 
     # Datasets with no arguments
-    @test typeof(networks()) <: Vector{MangalNetwork}
+    @test typeof(networks()) <: Vector{MangalNetwork} 
 
     # Networks by id
     @test typeof(network(19)) <: MangalNetwork

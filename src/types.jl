@@ -68,7 +68,7 @@ than its owner.
 
 `date` (`DateTime`): date and time at which the network was sampled.
 
-`position` (`AbstractGeometry`): the location at which the network was sampled.
+`position` (`AbstractGeometryTrait`): the location at which the network was sampled.
 This can be any sort of geospatial construct, most notably points *or* polygons.
 
 `complete` (`Bool`): indicates whether the network was sampled completely, or is
@@ -84,12 +84,12 @@ actual authorship.
 
 `description` (`AbstractString`): a free-form description of the network.
 """
-struct MangalNetwork
+struct MangalNetwork{T}
     id::Int64
     public::Bool
     name::AbstractString
     date::Union{DateTime,Missing}
-    position::Union{AbstractGeometry,Missing}
+    position::T
     created::DateTime
     updated::DateTime
     user::Union{Int64,Missing}
@@ -138,13 +138,13 @@ end
 """
 Interaction
 """
-struct MangalInteraction
+struct MangalInteraction{T}
     id::Int64
     network::MangalNetwork
     from::MangalNode
     to::MangalNode
     date::Union{DateTime,Missing}
-    position::Union{AbstractGeometry,Missing}
+    position::T
     directed::Bool
     interaction::Symbol
     method::Union{AbstractString,Missing}
