@@ -84,12 +84,12 @@ actual authorship.
 
 `description` (`AbstractString`): a free-form description of the network.
 """
-struct MangalNetwork{T}
+struct MangalNetwork
     id::Int64
     public::Bool
     name::AbstractString
     date::Union{DateTime,Missing}
-    position::T
+    position
     created::DateTime
     updated::DateTime
     user::Union{Int64,Missing}
@@ -138,13 +138,13 @@ end
 """
 Interaction
 """
-struct MangalInteraction{T}
+struct MangalInteraction
     id::Int64
     network::MangalNetwork
     from::MangalNode
     to::MangalNode
     date::Union{DateTime,Missing}
-    position::T
+    position
     directed::Bool
     interaction::Symbol
     method::Union{AbstractString,Missing}
