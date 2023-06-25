@@ -16,7 +16,6 @@ _pkg_doc = [
 _pkg_vig = [
    "Introduction" => "vignettes/introduction.md",
    "Counting & paging" => "vignettes/counting.md",
-   "Network analysis" => "vignettes/ecologicalnetworks.md"
 ]
 
 _list_of_pages = [
@@ -34,6 +33,6 @@ makedocs(
 
 deploydocs(
    deps   = Deps.pip("pygments", "python-markdown-math"),
-   repo   = "github.com/EcoJulia/Mangal.jl.git",
-   devbranch = "master"
+   repo   = "github.com/PoisotLab/Mangal.jl.git",
+   devbranch = "main"
 )

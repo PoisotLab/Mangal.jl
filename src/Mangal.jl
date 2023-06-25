@@ -3,8 +3,8 @@ module Mangal
 using HTTP
 using JSON
 using GeoInterface
-using EcologicalNetworks
 using Dates
+using TestItems
 
 const web_root = "https://mangal.io/"
 const api_root = web_root * "api/v2/"
@@ -86,9 +86,15 @@ include(joinpath(".", "count.jl"))
 # Show
 include(joinpath(".", "show.jl"))
 
-# EcologicalNetworks wrapper
-using EcologicalNetworks: EcologicalNetworks
-include(joinpath(".", "ecologicalnetworks.jl"))
-export taxonize
+@testitem "We can get data in/out of cache" begin
+    N = nodes()[1]
+    n = node(N.id)
+    @test length(Mangal._MANGAL_CACHES[MangalNode]) != 0
+end
+
+@testitem "We can get attribute data" begin
+    @test typeof(attributes()) <: Vector{MangalAttribute}
+    @test typeof(attribute(6)) <: MangalAttribute
+end
 
 end # module

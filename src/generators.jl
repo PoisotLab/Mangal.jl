@@ -20,7 +20,7 @@ for mg_type_pair in types_names
 
         Returns the number of $($mg_type) objects that match a query.
         """
-        function count(::Type{$mg_type}, query::Pair...)
+        function Base.count(::Type{$mg_type}, query::Pair...)
             return Mangal.number_of_objects(Mangal._MANGAL_ENDPOINTS[$mg_type], query...)
         end
     end
