@@ -86,4 +86,15 @@ include(joinpath(".", "count.jl"))
 # Show
 include(joinpath(".", "show.jl"))
 
+@testitem "We can get data in/out of cache" begin
+    N = nodes()[1]
+    n = node(N.id)
+    @test length(Mangal._MANGAL_CACHES[MangalNode]) != 0
+end
+
+@testitem "We can get attribute data" begin
+    @test typeof(attributes()) <: Vector{MangalAttribute}
+    @test typeof(attribute(6)) <: MangalAttribute
+end
+
 end # module

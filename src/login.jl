@@ -52,3 +52,7 @@ function login_message()
 
     @info msg
 end
+
+@testitem "We can get user data" begin
+    @test typeof(users()) <: Vector{MangalUser}
+end
