@@ -46,7 +46,6 @@ function interactions(n::MangalNetwork, query::Pair...)
     return interactions("network_id" => n.id, query...)
 end
 
-
 @testitem "We can get all interactions" begin
     @test typeof(interactions()) <: Vector{MangalInteraction}
 end
