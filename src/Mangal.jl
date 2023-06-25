@@ -3,8 +3,8 @@ module Mangal
 using HTTP
 using JSON
 using GeoInterface
-using EcologicalNetworks
 using Dates
+using TestItems
 
 const web_root = "https://mangal.io/"
 const api_root = web_root * "api/v2/"
@@ -85,10 +85,5 @@ include(joinpath(".", "count.jl"))
 
 # Show
 include(joinpath(".", "show.jl"))
-
-# EcologicalNetworks wrapper
-using EcologicalNetworks: EcologicalNetworks
-include(joinpath(".", "ecologicalnetworks.jl"))
-export taxonize
 
 end # module
