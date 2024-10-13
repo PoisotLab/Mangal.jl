@@ -3,7 +3,7 @@ Attribute
 """
 struct MangalAttribute
     id::Int64
-    name:: AbstractString
+    name::AbstractString
     description::AbstractString
     unit::Union{Missing,AbstractString}
 end
