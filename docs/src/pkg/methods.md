@@ -73,3 +73,24 @@ backbone
 references
 reference
 ```
+
+## Users
+
+```@docs
+users
+user
+```
+
+## Attributes
+
+```@docs
+attributes
+attribute
+```
+
+## Additional methods
+
+```@docs
+Mangal.number_of_objects
+Mangal.login_message
+```

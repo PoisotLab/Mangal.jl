@@ -17,13 +17,6 @@ MangalNode
 MangalReferenceTaxon
 ```
 
-## Additional information
-
-```@docs
-MangalTrait
-MangalAttribute
-```
-
 ## Metadata types
 
 ```@docs

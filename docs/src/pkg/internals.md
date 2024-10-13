@@ -8,13 +8,6 @@
 Mangal.login
 ```
 
-## Formatters
-
-```@docs
-Mangal.format_mangal_response
-Mangal.format_mangal_coordinates
-```
-
 ## Other functions
 
 ```@docs
@@ -29,9 +22,3 @@ Mangal.search_objects_by_query
 Mangal.cache
 ```
 
-## Full data retrieval
-
-```@docs
-Mangal.get_all_nodes
-Mangal.get_all_interactions
-```
