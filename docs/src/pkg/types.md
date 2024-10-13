@@ -23,3 +23,9 @@ MangalReferenceTaxon
 MangalUser
 MangalReference
 ```
+
+## Other information
+
+```@docs
+MangalAttribute
+```

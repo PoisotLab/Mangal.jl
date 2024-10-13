@@ -14,6 +14,7 @@ Mangal.login
 Mangal.generate_base_header
 Mangal.generate_request_query
 Mangal.search_objects_by_query
+Mangal.format_mangal_coordinates
 ```
 
 ## Caching
